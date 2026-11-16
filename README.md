@@ -9,7 +9,7 @@ We implemented classes, objects, various OOP concepts, class diagrams, exception
 Basically, we are putting all our knowledge that we gained so far in school and creating application that showcase our current skills.
 
 -- Update--
-We added login and sign up interfaces(Navigable forms) and error handling.
+We added login and sign up interfaces(Navigable forms) and error handling...
 
 Members: Tamaki Shinya,
          Carato Nico,
