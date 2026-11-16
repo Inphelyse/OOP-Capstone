@@ -17,6 +17,7 @@ public class BossStore extends JFrame{
     private JTextField CpassSignUp;
     private JTextField phnum;
     private JTextField addSignup;
+    private JButton signInButton2;
 
     public BossStore(){
 
@@ -28,6 +29,13 @@ public class BossStore extends JFrame{
 
 
         SignUp.setVisible(false);
+        signInButton2.addActionListener(e->{
+            LogIn.setVisible(true);
+            SignUp.setVisible(false);
+
+
+        });
+
 
         signInButton.addActionListener(e->{
 
