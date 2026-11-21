@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class BossStore extends JFrame{
 
@@ -12,7 +13,7 @@ public class BossStore extends JFrame{
     private JRadioButton sellerRadioButton;
     private JButton signUpButton;
     private JTextField UserLogIn;
-    private JTextField passLogin;
+    private JPasswordField passLogin;
     private JTextField PassSignUp;
     private JTextField CpassSignUp;
     private JTextField phnum;
@@ -24,14 +25,15 @@ public class BossStore extends JFrame{
     private JPanel NavigationPnl;
     private JPanel DataPnl;
     private JPanel Summary_Report_Pnl;
-    private JPanel Info_Details_Pnl;
-    private JPanel FeedBack_reports_Pnl;
     private JPanel Report_Details_Admin;
     private JTable ReportsTbl;
-    private JLabel SubjectReport;
-    private JLabel Name_and_Role;
-
-
+    private JButton HomeBtn;
+    private JButton SellersButton;
+    private JPanel SellersPnl;
+    private JPanel CustomersPnl;
+    private JPanel CouriersPnl;
+    private JButton CustomersBtn;
+    private JButton CouriersBtn;
 
     public BossStore(){
 
@@ -39,8 +41,7 @@ public class BossStore extends JFrame{
         bg.add(customerRadioButton1);
         bg.add(sellerRadioButton);
 
-
-
+        SellersPnl.setVisible(false);
         AdminPnl.setVisible(false);
         SignUp.setVisible(false);
 
@@ -57,18 +58,17 @@ public class BossStore extends JFrame{
            String LoginUsername = UserLogIn.getText();
            String LoginPassword = passLogin.getText();
 
-            if(LoginPassword.equals("") && LoginUsername.equals("")){
+            if(LoginPassword.isEmpty() && LoginUsername.isEmpty()){
                 JOptionPane.showMessageDialog(LogIn, "Please enter username and password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-            }else if(LoginUsername.equals("")) {
+            }else if(LoginUsername.isEmpty()) {
                 JOptionPane.showMessageDialog(LogIn, "Please enter username!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-            }else if(LoginPassword.equals("")){
+            }else if(LoginPassword.isEmpty()){
                 JOptionPane.showMessageDialog(LogIn, "Please enter password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
             }else{
                 LogIn.setVisible(false);
                 AdminPnl.setVisible(true);
                 setExtendedState(JFrame.MAXIMIZED_BOTH);
             }
-
         });
 
 
@@ -83,17 +83,17 @@ public class BossStore extends JFrame{
 
 
 
-     if(signupuser.equals("") && signuppass.equals("")){
+     if(signupuser.isEmpty() && signuppass.isEmpty()){
          JOptionPane.showMessageDialog(SignUp, "Please enter username and password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-     }else if(signupuser.equals("")) {
+     }else if(signupuser.isEmpty()) {
          JOptionPane.showMessageDialog(SignUp, "Please enter username!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-     }else if(signuppass.equals("")){
+     }else if(signuppass.isEmpty()){
          JOptionPane.showMessageDialog(SignUp, "Please enter password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
      }else if(phonenum.isEmpty() || !phonenum.chars().allMatch(Character::isDigit)){
          JOptionPane.showMessageDialog(SignUp, "Please enter valid number", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
      }else if(!signupcpass.equals(signuppass)) {
         JOptionPane.showMessageDialog(SignUp, "Password does not match", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-    }else if(add.equals("")) {
+    }else if(add.isEmpty()) {
          JOptionPane.showMessageDialog(SignUp, "Please enter address", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
 
      }
@@ -103,7 +103,10 @@ public class BossStore extends JFrame{
  });
 
 
-
+        HomeBtn.addActionListener(d -> showPage("home"));
+        SellersButton.addActionListener(d -> showPage("sellers"));
+        CustomersBtn.addActionListener(d -> showPage("customers"));
+        CouriersBtn.addActionListener(d -> showPage("couriers"));
 
 
         signUpButton1.addActionListener(e -> {
@@ -122,6 +125,17 @@ public class BossStore extends JFrame{
 
     }
 
+    private void showPage(String page) {
+        // Home parts
+        boolean home = page.equals("home");
+        Summary_Report_Pnl.setVisible(home);
+        Report_Details_Admin.setVisible(home);
+
+        // Other pages
+        SellersPnl.setVisible(page.equals("sellers"));
+        CustomersPnl.setVisible(page.equals("customers"));
+        CouriersPnl.setVisible(page.equals("couriers"));
+    }
 
     public static void main(String[] args) {
         BossStore app = new BossStore();
