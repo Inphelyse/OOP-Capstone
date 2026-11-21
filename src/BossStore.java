@@ -123,10 +123,18 @@ public class BossStore extends JFrame{
 
         });
 
+        Summary_Report_Pnl.setVisible(true);
+        Report_Details_Admin.setVisible(true);
+
+        // Other pages
+        SellersPnl.setVisible(false);
+        CustomersPnl.setVisible(false);
+        CouriersPnl.setVisible(false);
     }
 
     private void showPage(String page) {
-        // Home parts
+        // Home part
+
         boolean home = page.equals("home");
         Summary_Report_Pnl.setVisible(home);
         Report_Details_Admin.setVisible(home);
