@@ -18,6 +18,20 @@ public class BossStore extends JFrame{
     private JTextField phnum;
     private JTextField addSignup;
     private JButton signInButton2;
+    private JPanel AdminPnl;
+    private JPanel HeaderPnl;
+    private JPanel BodyPnl;
+    private JPanel NavigationPnl;
+    private JPanel DataPnl;
+    private JPanel Summary_Report_Pnl;
+    private JPanel Info_Details_Pnl;
+    private JPanel FeedBack_reports_Pnl;
+    private JPanel Report_Details_Admin;
+    private JTable ReportsTbl;
+    private JLabel SubjectReport;
+    private JLabel Name_and_Role;
+
+
 
     public BossStore(){
 
@@ -27,8 +41,9 @@ public class BossStore extends JFrame{
 
 
 
-
+        AdminPnl.setVisible(false);
         SignUp.setVisible(false);
+
         signInButton2.addActionListener(e->{
             LogIn.setVisible(true);
             SignUp.setVisible(false);
@@ -48,6 +63,10 @@ public class BossStore extends JFrame{
                 JOptionPane.showMessageDialog(LogIn, "Please enter username!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
             }else if(LoginPassword.equals("")){
                 JOptionPane.showMessageDialog(LogIn, "Please enter password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                LogIn.setVisible(false);
+                AdminPnl.setVisible(true);
+                setExtendedState(JFrame.MAXIMIZED_BOTH);
             }
 
         });
@@ -78,8 +97,7 @@ public class BossStore extends JFrame{
          JOptionPane.showMessageDialog(SignUp, "Please enter address", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
 
      }
-     LogIn.setVisible(true);
-     SignUp.setVisible(false);
+
 
 
  });
