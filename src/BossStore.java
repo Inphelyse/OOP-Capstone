@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class BossStore extends JFrame{
     public static int size = 0;
@@ -117,12 +120,23 @@ public class BossStore extends JFrame{
             }
 
             // This checks in sign up forum if the user chose either customer or seller. If the user chooses customer,
-            // the filled up form will go directly to the Customer class
+            // the filled up form will go directly to the Customer class and saves it to the file
             if(customerRadioButton.isSelected()) {
                 persons.add(new Customer(username, password, phoneNum, address));
+                savePerson("Customer", username, password, phoneNumString, address);
+                System.out.println("Saved to the file. Custormer");
             } else if(sellerRadioButton.isSelected()) {
                 persons.add(new Seller(username, password, phoneNum, address));
+                savePerson("Seller", username, password, phoneNumString, address);
+                System.out.println("Saved to the file. Seller");
+            } else {
+                JOptionPane.showMessageDialog(signUpPanel, "Please choose Customer or Seller");
+                return;
             }
+
+            clearFields();
+            signUpPanel.setVisible(false);
+            logInPanel.setVisible(true);
 
             new File("Persons").mkdir();
 
@@ -258,8 +272,16 @@ public class BossStore extends JFrame{
         signUpAddressField.setText("");
     }
 
-    public void savePerson() {
+    public void savePerson(String type, String username, String password, String phone, String address) {
+        new File("Persons").mkdir();   // creates the folder if it doesn't exist yet
 
+        // "true" = append, so old accounts aren't overwritten
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Persons/persons.txt", true))) {
+            bw.write(type + "|" + username + "|" + password + "|" + phone + "|" + address);
+            bw.newLine();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(signUpPanel, "Could not save account: " + ex.getMessage());
+        }
     }
 
     public static void main(String[] args) {
