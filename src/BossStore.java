@@ -217,7 +217,7 @@ public class BossStore extends JFrame{
                 System.out.println("Reading a file");
                 String line;
                     // This is for checking/reading the file, it splits each line
-                    // 0=type(ADmin, Seller, Customer, Currier), 1=username, 2=password, 3=phone, 4=address
+                    // 0=type(Admin, Seller, Customer, Courier), 1=username, 2=password, 3=phone, 4=address
                 //Ex. {Admin|Boss Tamaki|12345678|099912312|Secret}
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.split("\\|");
