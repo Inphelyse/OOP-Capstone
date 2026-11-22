@@ -119,6 +119,7 @@ public class BossStore extends JFrame{
                 return;
             }
 
+            new File("Persons").mkdir();
             // This checks in sign up forum if the user chose either customer or seller. If the user chooses customer,
             // the filled up form will go directly to the Customer class and saves it to the file
             if(customerRadioButton.isSelected()) {
@@ -138,7 +139,6 @@ public class BossStore extends JFrame{
             signUpPanel.setVisible(false);
             logInPanel.setVisible(true);
 
-            new File("Persons").mkdir();
 
 //            try {
 //                BufferedWriter bw1 = new BufferedWriter(new FileWriter("Persons/file.txt"), 1024);
@@ -147,10 +147,6 @@ public class BossStore extends JFrame{
 //            } catch(IOException ex) {
 //                System.out.println("An error occured: " + ex.getMessage());
 //            }
-
-            clearFields();
-            signUpPanel.setVisible(false);
-            logInPanel.setVisible(true);
         });
 
         logInButton.addActionListener(e->{
