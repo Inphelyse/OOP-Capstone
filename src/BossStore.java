@@ -48,7 +48,7 @@ public class BossStore extends JFrame{
     private void AdminAccount() {
         File folder = new File("Persons");
         folder.mkdir();
-        File file = new File(folder, "persons.txt");
+        File file = new File("Persons/admin.txt");
 
         if (file.exists() && file.length() > 0) return;
 
@@ -63,6 +63,13 @@ public class BossStore extends JFrame{
     }
 
     public BossStore(){
+        // Either seller or a customer (only choose one)
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(customerRadioButton);
+        bg.add(sellerRadioButton);
+
+        customerRadioButton.setSelected(true);
+
         AdminAccount();
 
         signUpPanel.setVisible(false);
@@ -140,7 +147,7 @@ public class BossStore extends JFrame{
                 return;
             }
 
-            new File("Persons").mkdir();
+            //new File("Persons").mkdir();
             // This checks in sign up forum if the user chose either customer or seller. If the user chooses customer,
             // the filled up form will go directly to the Customer class and saves it to the file
             if(customerRadioButton.isSelected()) {
@@ -372,15 +379,32 @@ public class BossStore extends JFrame{
     }
 
     public void savePerson(String type, String username, String password, String phone, String address) {
-        // Creates the folder if it doesn't exist yet
-        new File("Persons").mkdir();
+        File file = new File("Persons/customer.txt");
+        File file2 = new File("Persons/seller.txt");
+        File file3 = new File("Persons/courier.txt");
 
         // "true" = append, so old accounts aren't overwritten
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Persons/persons.txt", true))) {
-            bw.write(type + "|" + username + "|" + password + "|" + phone + "|" + address);
-            bw.newLine();
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(signUpPanel, "Could not save account: " + ex.getMessage());
+        if(type.equals("Customer")) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+                bw.write(type + "|" + username + "|" + password + "|" + phone + "|" + address);
+                bw.newLine();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(signUpPanel, "Could not save account: " + ex.getMessage());
+            }
+        } else if(type.equals("Seller")) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file2, true))) {
+                bw.write(type + "|" + username + "|" + password + "|" + phone + "|" + address);
+                bw.newLine();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(signUpPanel, "Could not save account: " + ex.getMessage());
+            }
+        } else if(type.equals("Courier")) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file3, true))) {
+                bw.write(type + "|" + username + "|" + password + "|" + phone + "|" + address);
+                bw.newLine();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(signUpPanel, "Could not save account: " + ex.getMessage());
+            }
         }
     }
 
