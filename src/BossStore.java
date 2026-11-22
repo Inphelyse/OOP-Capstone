@@ -315,7 +315,7 @@ public class BossStore extends JFrame{
             }
         });
 
-        //hello
+
         HomeBtn.addActionListener(d -> showPage("home"));
         SellersButton.addActionListener(d -> showPage("sellers"));
         CustomersBtn.addActionListener(d -> showPage("customers"));
