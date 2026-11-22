@@ -58,7 +58,7 @@ public class BossStore extends JFrame{
     private JPanel ActionDetailsPnl;
 
     private ArrayList<Person> persons = new ArrayList<>();
-
+    //
     // Creates an already made account for admin
     private void AdminAccount() {
         new File("Persons").mkdir();
