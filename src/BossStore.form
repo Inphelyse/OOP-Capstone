@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="50" y="18" width="1240" height="2536"/>
+      <xy x="50" y="18" width="1240" height="5484"/>
     </constraints>
     <properties>
       <background color="-3550241"/>
@@ -793,7 +793,7 @@
                       <foreground color="-12957072"/>
                     </properties>
                   </component>
-                  <component id="552df" class="javax.swing.JButton">
+                  <component id="552df" class="javax.swing.JButton" binding="FeedbackBtn">
                     <constraints>
                       <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -808,7 +808,7 @@
                       <text value="Feedback and reports"/>
                     </properties>
                   </component>
-                  <component id="e5fbe" class="javax.swing.JButton">
+                  <component id="e5fbe" class="javax.swing.JButton" binding="BansBtn">
                     <constraints>
                       <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -823,7 +823,7 @@
                       <text value="Bans"/>
                     </properties>
                   </component>
-                  <component id="cda45" class="javax.swing.JButton">
+                  <component id="cda45" class="javax.swing.JButton" binding="HistoryBtn">
                     <constraints>
                       <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -853,7 +853,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="3451e" binding="DataPnl" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="14">
+              <grid id="3451e" binding="DataPnl" layout-manager="GridLayoutManager" row-count="10" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="14">
                 <margin top="20" left="24" bottom="20" right="24"/>
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -2493,6 +2493,1622 @@
                           <vspacer id="878e3">
                             <constraints>
                               <grid row="12" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </vspacer>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="fb100" binding="FeedbackPnl" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="fb101" binding="FeedBacks_and_Report" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="12">
+                        <margin top="16" left="18" bottom="16" right="18"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-14207655"/>
+                        </properties>
+                        <border type="line">
+                          <color color="-12957072"/>
+                        </border>
+                        <children>
+                          <component id="fb102" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="16" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="All submissions"/>
+                            </properties>
+                          </component>
+                          <hspacer id="fb103">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </hspacer>
+                          <component id="fb104" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="12 entries"/>
+                            </properties>
+                          </component>
+                          <grid id="fb105" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="fb106" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Search"/>
+                                </properties>
+                              </component>
+                              <component id="fb107" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Submitted by"/>
+                                </properties>
+                              </component>
+                              <component id="fb108" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Status"/>
+                                </properties>
+                              </component>
+                              <component id="fb109" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="260" height="32"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-1"/>
+                                  <caretColor color="-14800310"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <margin top="2" left="9" bottom="2" right="6"/>
+                                  <toolTipText value="Search subject, name, or ID"/>
+                                </properties>
+                              </component>
+                              <component id="fb110" class="javax.swing.JComboBox">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="150" height="32"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <model>
+                                    <item value="All roles"/>
+                                    <item value="Customer"/>
+                                    <item value="Seller"/>
+                                    <item value="Courier"/>
+                                  </model>
+                                </properties>
+                              </component>
+                              <component id="fb111" class="javax.swing.JComboBox">
+                                <constraints>
+                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="150" height="32"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <model>
+                                    <item value="All statuses"/>
+                                    <item value="New"/>
+                                    <item value="In review"/>
+                                    <item value="Resolved"/>
+                                  </model>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="fb112" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="8" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="fb113" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-875199"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="12" style="1"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="All (12)"/>
+                                </properties>
+                              </component>
+                              <component id="fb114" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="false"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="Reports (8)"/>
+                                </properties>
+                              </component>
+                              <component id="fb115" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="false"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="Feedback (4)"/>
+                                </properties>
+                              </component>
+                              <hspacer id="fb116">
+                                <constraints>
+                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </hspacer>
+                            </children>
+                          </grid>
+                          <scrollpane id="fb117">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="300"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                            <border type="line">
+                              <color color="-12957072"/>
+                            </border>
+                            <children>
+                              <component id="fb118" class="javax.swing.JTable" binding="SubmissionsTbl">
+                                <constraints/>
+                                <properties>
+                                  <background color="-14207655"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <gridColor color="-12957072"/>
+                                  <rowHeight value="44"/>
+                                  <selectionBackground color="-12957072"/>
+                                  <selectionForeground color="-1"/>
+                                  <showVerticalLines value="false"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <grid id="fb119" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="fb120" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Showing 1-6 of 12 entries"/>
+                                </properties>
+                              </component>
+                              <hspacer id="fb121">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </hspacer>
+                              <component id="fb122" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="90" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-1"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="Previous"/>
+                                </properties>
+                              </component>
+                              <component id="fb123" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="1 / 2"/>
+                                </properties>
+                              </component>
+                              <component id="fb124" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="90" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-1"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="Next"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                      <grid id="fb130" binding="Info_Details" layout-manager="GridLayoutManager" row-count="16" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
+                        <margin top="16" left="18" bottom="16" right="18"/>
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="360" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-14207655"/>
+                        </properties>
+                        <border type="line">
+                          <color color="-12957072"/>
+                        </border>
+                        <children>
+                          <component id="fb131" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="16" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Report details"/>
+                            </properties>
+                          </component>
+                          <hspacer id="fb132">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </hspacer>
+                          <component id="fb133" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="1"/>
+                              <foreground color="-875199"/>
+                              <text value="New"/>
+                            </properties>
+                          </component>
+                          <component id="fb134" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <component id="fb135" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="11" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="#R-1048 · Submitted 21 Nov 2026, 10:18 AM"/>
+                            </properties>
+                          </component>
+                          <component id="fb136" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="18" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Payment not reflected"/>
+                            </properties>
+                          </component>
+                          <component id="fb137" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="0"/>
+                              <foreground color="-1643277"/>
+                              <text value="Maya Chen · Customer"/>
+                            </properties>
+                          </component>
+                          <component id="fb138" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="maya.chen@email.com"/>
+                            </properties>
+                          </component>
+                          <component id="fb139" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="Related order: #2084"/>
+                            </properties>
+                          </component>
+                          <component id="fb140" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <component id="fb141" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Message"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="fb142">
+                            <constraints>
+                              <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="90"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                            <border type="line">
+                              <color color="-12957072"/>
+                            </border>
+                            <children>
+                              <component id="fb143" class="javax.swing.JTextArea">
+                                <constraints/>
+                                <properties>
+                                  <background color="-1"/>
+                                  <editable value="false"/>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <lineWrap value="true"/>
+                                  <margin top="6" left="8" bottom="6" right="8"/>
+                                  <text value="Hi admin, my payment for order #2084 was deducted, but the order still shows unpaid. Could you please check this? Thank you."/>
+                                  <wrapStyleWord value="true"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <component id="fb144" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="10" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Internal notes"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="fb145">
+                            <constraints>
+                              <grid row="11" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="80"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                            <border type="line">
+                              <color color="-12957072"/>
+                            </border>
+                            <children>
+                              <component id="fb146" class="javax.swing.JTextArea">
+                                <constraints/>
+                                <properties>
+                                  <background color="-1"/>
+                                  <caretColor color="-14800310"/>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <lineWrap value="true"/>
+                                  <margin top="6" left="8" bottom="6" right="8"/>
+                                  <toolTipText value="Add a note for the admin team..."/>
+                                  <wrapStyleWord value="true"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <grid id="fb147" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="12" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="fb148" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="Status"/>
+                                </properties>
+                              </component>
+                              <component id="fb149" class="javax.swing.JComboBox">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="140" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <model>
+                                    <item value="New"/>
+                                    <item value="In review"/>
+                                    <item value="Resolved"/>
+                                  </model>
+                                </properties>
+                              </component>
+                              <component id="fb150" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="90" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-875199"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="1"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="Save"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <component id="fb151" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="13" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <grid id="fb152" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="true" same-size-vertically="false" hgap="10" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="14" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="fb153" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="34"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-1"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="View account"/>
+                                </properties>
+                              </component>
+                              <component id="fb154" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="34"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-875199"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="1"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="Mark resolved"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <vspacer id="fb155">
+                            <constraints>
+                              <grid row="15" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </vspacer>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="bn099" binding="BansPnl" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="bn116" binding="BannedAccountsPnl" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="12">
+                        <margin top="16" left="18" bottom="16" right="18"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-14207655"/>
+                        </properties>
+                        <border type="line">
+                          <color color="-12957072"/>
+                        </border>
+                        <children>
+                          <component id="bn100" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="16" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Banned accounts"/>
+                            </properties>
+                          </component>
+                          <hspacer id="bn101">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </hspacer>
+                          <component id="bn102" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="69 accounts"/>
+                            </properties>
+                          </component>
+                          <grid id="bn107" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="bn103" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Search banned accounts"/>
+                                </properties>
+                              </component>
+                              <component id="bn104" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Account type"/>
+                                </properties>
+                              </component>
+                              <component id="bn105" class="javax.swing.JTextField">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="260" height="32"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-1"/>
+                                  <caretColor color="-14800310"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <margin top="2" left="9" bottom="2" right="6"/>
+                                  <toolTipText value="Search name, email, or account ID"/>
+                                </properties>
+                              </component>
+                              <component id="bn106" class="javax.swing.JComboBox">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="170" height="32"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <model>
+                                    <item value="All roles"/>
+                                    <item value="Customer"/>
+                                    <item value="Seller"/>
+                                    <item value="Courier"/>
+                                  </model>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <scrollpane id="bn109">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="300"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                            <border type="line">
+                              <color color="-12957072"/>
+                            </border>
+                            <children>
+                              <component id="bn108" class="javax.swing.JTable" binding="BannedTbl">
+                                <constraints/>
+                                <properties>
+                                  <background color="-14207655"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <gridColor color="-12957072"/>
+                                  <rowHeight value="44"/>
+                                  <selectionBackground color="-12957072"/>
+                                  <selectionForeground color="-1"/>
+                                  <showVerticalLines value="false"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <grid id="bn115" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="bn110" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Showing 1-6 of 69 accounts"/>
+                                </properties>
+                              </component>
+                              <hspacer id="bn111">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </hspacer>
+                              <component id="bn112" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="90" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-1"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="Previous"/>
+                                </properties>
+                              </component>
+                              <component id="bn113" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="36" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-875199"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="1"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="1"/>
+                                </properties>
+                              </component>
+                              <component id="bn114" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="90" height="30"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-1"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="Next"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                      <grid id="bn144" binding="Band_DetailsPnl" layout-manager="GridLayoutManager" row-count="14" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
+                        <margin top="16" left="18" bottom="16" right="18"/>
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="360" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-14207655"/>
+                        </properties>
+                        <border type="line">
+                          <color color="-12957072"/>
+                        </border>
+                        <children>
+                          <component id="bn117" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="16" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Ban details"/>
+                            </properties>
+                          </component>
+                          <hspacer id="bn118">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </hspacer>
+                          <component id="bn119" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="1"/>
+                              <foreground color="-1739917"/>
+                              <text value="Banned"/>
+                            </properties>
+                          </component>
+                          <component id="bn120" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <component id="bn121" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="22" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Lucas Martin"/>
+                            </properties>
+                          </component>
+                          <component id="bn122" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="lucas@madebymartin.co"/>
+                            </properties>
+                          </component>
+                          <grid id="bn131" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="40" vgap="6">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="bn123" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Role"/>
+                                </properties>
+                              </component>
+                              <component id="bn124" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="Seller"/>
+                                </properties>
+                              </component>
+                              <component id="bn125" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Banned on"/>
+                                </properties>
+                              </component>
+                              <component id="bn126" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="18 Nov 2026"/>
+                                </properties>
+                              </component>
+                              <component id="bn127" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Banned by"/>
+                                </properties>
+                              </component>
+                              <component id="bn128" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="(admin)"/>
+                                </properties>
+                              </component>
+                              <component id="bn129" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Duration"/>
+                                </properties>
+                              </component>
+                              <component id="bn130" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="Permanent"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <component id="bn132" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <component id="bn133" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Ban reason"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="bn135">
+                            <constraints>
+                              <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="90"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                            <border type="line">
+                              <color color="-12957072"/>
+                            </border>
+                            <children>
+                              <component id="bn134" class="javax.swing.JTextArea">
+                                <constraints/>
+                                <properties>
+                                  <background color="-1"/>
+                                  <caretColor color="-14800310"/>
+                                  <editable value="false"/>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <lineWrap value="true"/>
+                                  <margin top="6" left="8" bottom="6" right="8"/>
+                                  <text value="Repeated misleading product listings. The seller continued to post inaccurate item descriptions after two warnings."/>
+                                  <wrapStyleWord value="true"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <component id="bn136" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Review note"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="bn138">
+                            <constraints>
+                              <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="80"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                            <border type="line">
+                              <color color="-12957072"/>
+                            </border>
+                            <children>
+                              <component id="bn137" class="javax.swing.JTextArea">
+                                <constraints/>
+                                <properties>
+                                  <background color="-1"/>
+                                  <caretColor color="-14800310"/>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <lineWrap value="true"/>
+                                  <margin top="6" left="8" bottom="6" right="8"/>
+                                  <toolTipText value="Add a reason before restoring access..."/>
+                                  <wrapStyleWord value="true"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <component id="bn139" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="10" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <grid id="bn142" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="true" same-size-vertically="false" hgap="10" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="11" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="bn140" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="34"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-1"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="View account"/>
+                                </properties>
+                              </component>
+                              <component id="bn141" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="34"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-875199"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="1"/>
+                                  <foreground color="-14800310"/>
+                                  <opaque value="true"/>
+                                  <text value="Unban account"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <vspacer id="bn143">
+                            <constraints>
+                              <grid row="12" column="0" row-span="2" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </vspacer>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="mh099" binding="HistoryPnl" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="12">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="mh108" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <opaque value="false"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="mh100" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="Search history"/>
+                            </properties>
+                          </component>
+                          <component id="mh101" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="Action"/>
+                            </properties>
+                          </component>
+                          <component id="mh102" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="Administrator"/>
+                            </properties>
+                          </component>
+                          <component id="mh103" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="Date"/>
+                            </properties>
+                          </component>
+                          <component id="mh104" class="javax.swing.JTextField">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="260" height="32"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-1"/>
+                              <caretColor color="-14800310"/>
+                              <font name="Segoe UI" size="13" style="0"/>
+                              <foreground color="-14800310"/>
+                              <margin top="2" left="9" bottom="2" right="6"/>
+                              <toolTipText value="Account, action, or reference ID"/>
+                            </properties>
+                          </component>
+                          <component id="mh105" class="javax.swing.JComboBox">
+                            <constraints>
+                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="170" height="32"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="0"/>
+                              <model>
+                                <item value="All actions"/>
+                                <item value="Account removed"/>
+                                <item value="Account banned"/>
+                                <item value="Account unbanned"/>
+                                <item value="Message sent"/>
+                                <item value="Report resolved"/>
+                                <item value="Internal note added"/>
+                              </model>
+                            </properties>
+                          </component>
+                          <component id="mh106" class="javax.swing.JComboBox">
+                            <constraints>
+                              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="190" height="32"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="0"/>
+                              <model>
+                                <item value="All administrators"/>
+                                <item value="(admin)"/>
+                              </model>
+                            </properties>
+                          </component>
+                          <component id="mh107" class="javax.swing.JComboBox">
+                            <constraints>
+                              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="32"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="0"/>
+                              <model>
+                                <item value="Today"/>
+                                <item value="Last 7 days"/>
+                                <item value="Last 30 days"/>
+                                <item value="All time"/>
+                              </model>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <component id="mh109" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Segoe UI" size="11" style="0"/>
+                          <foreground color="-5785912"/>
+                          <text value="Example activity · 21 Nov 2026 · Not connected to live account actions"/>
+                        </properties>
+                      </component>
+                      <grid id="mh119" binding="ActiveLog_or_HistoryPnl" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="12">
+                        <margin top="16" left="18" bottom="16" right="18"/>
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-14207655"/>
+                        </properties>
+                        <border type="line">
+                          <color color="-12957072"/>
+                        </border>
+                        <children>
+                          <component id="mh110" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="16" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Activity log"/>
+                            </properties>
+                          </component>
+                          <hspacer id="mh111">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </hspacer>
+                          <component id="mh112" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="6 example actions · Newest first"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="mh114">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="330"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                            <border type="line">
+                              <color color="-12957072"/>
+                            </border>
+                            <children>
+                              <component id="mh113" class="javax.swing.JTable" binding="HistoryTbl">
+                                <constraints/>
+                                <properties>
+                                  <background color="-14207655"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <gridColor color="-12957072"/>
+                                  <rowHeight value="52"/>
+                                  <selectionBackground color="-12957072"/>
+                                  <selectionForeground color="-1"/>
+                                  <showVerticalLines value="false"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <grid id="mh118" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="mh115" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Showing all 6 example actions"/>
+                                </properties>
+                              </component>
+                              <hspacer id="mh116">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                              </hspacer>
+                              <component id="mh117" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="1 / 1"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                      <grid id="mh145" binding="ActionDetailsPnl" layout-manager="GridLayoutManager" row-count="16" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
+                        <margin top="16" left="18" bottom="16" right="18"/>
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="360" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-14207655"/>
+                        </properties>
+                        <border type="line">
+                          <color color="-12957072"/>
+                        </border>
+                        <children>
+                          <component id="mh120" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="16" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Action details"/>
+                            </properties>
+                          </component>
+                          <hspacer id="mh121">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </hspacer>
+                          <component id="mh122" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="1"/>
+                              <foreground color="-10044566"/>
+                              <text value="Completed"/>
+                            </properties>
+                          </component>
+                          <component id="mh123" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="11" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="Example record · #MOD-0061"/>
+                            </properties>
+                          </component>
+                          <component id="mh124" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <component id="mh125" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="20" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Account removed"/>
+                            </properties>
+                          </component>
+                          <component id="mh126" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="Archived customer account"/>
+                            </properties>
+                          </component>
+                          <grid id="mh135" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="40" vgap="6">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints>
+                              <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <opaque value="false"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="mh127" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Account ID"/>
+                                </properties>
+                              </component>
+                              <component id="mh128" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="CUS-01904"/>
+                                </properties>
+                              </component>
+                              <component id="mh129" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Performed by"/>
+                                </properties>
+                              </component>
+                              <component id="mh130" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="(admin)"/>
+                                </properties>
+                              </component>
+                              <component id="mh131" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Date and time"/>
+                                </properties>
+                              </component>
+                              <component id="mh132" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="21 Nov 2026, 10:32 AM"/>
+                                </properties>
+                              </component>
+                              <component id="mh133" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-5785912"/>
+                                  <text value="Action scope"/>
+                                </properties>
+                              </component>
+                              <component id="mh134" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-1643277"/>
+                                  <text value="Customer account"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <component id="mh136" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <component id="mh137" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Reason"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="mh139">
+                            <constraints>
+                              <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="60"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                            <border type="line">
+                              <color color="-12957072"/>
+                            </border>
+                            <children>
+                              <component id="mh138" class="javax.swing.JTextArea">
+                                <constraints/>
+                                <properties>
+                                  <background color="-1"/>
+                                  <editable value="false"/>
+                                  <font name="Segoe UI" size="12" style="0"/>
+                                  <foreground color="-14800310"/>
+                                  <lineWrap value="true"/>
+                                  <margin top="6" left="8" bottom="6" right="8"/>
+                                  <text value="Duplicate account confirmed after review."/>
+                                  <wrapStyleWord value="true"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <component id="mh140" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="13" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="Outcome"/>
+                            </properties>
+                          </component>
+                          <component id="mh141" class="javax.swing.JTextArea">
+                            <constraints>
+                              <grid row="10" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="40"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <editable value="false"/>
+                              <font name="Segoe UI" size="12" style="0"/>
+                              <foreground color="-1643277"/>
+                              <lineWrap value="true"/>
+                              <opaque value="false"/>
+                              <text value="Account removed. The account reference is retained in the moderation history."/>
+                              <wrapStyleWord value="true"/>
+                            </properties>
+                          </component>
+                          <component id="mh142" class="javax.swing.JSeparator">
+                            <constraints>
+                              <grid row="11" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-12957072"/>
+                            </properties>
+                          </component>
+                          <component id="mh143" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="12" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="11" style="0"/>
+                              <foreground color="-5785912"/>
+                              <text value="Read-only history · Example data"/>
+                            </properties>
+                          </component>
+                          <vspacer id="mh144">
+                            <constraints>
+                              <grid row="13" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                             </constraints>
                           </vspacer>
                         </children>

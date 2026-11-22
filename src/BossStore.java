@@ -41,6 +41,21 @@ public class BossStore extends JFrame{
     private JPanel CouriersPnl;
     private JButton CustomersBtn;
     private JButton CouriersBtn;
+    private JButton FeedbackBtn;
+    private JButton BansBtn;
+    private JButton HistoryBtn;
+    private JPanel FeedbackPnl;
+    private JPanel FeedBacks_and_Report;
+    private JTable SubmissionsTbl;
+    private JPanel Info_Details;
+    private JPanel BansPnl;
+    private JPanel BannedAccountsPnl;
+    private JTable BannedTbl;
+    private JPanel Band_DetailsPnl;
+    private JPanel HistoryPnl;
+    private JPanel ActiveLog_or_HistoryPnl;
+    private JTable HistoryTbl;
+    private JPanel ActionDetailsPnl;
 
     private ArrayList<Person> persons = new ArrayList<>();
 
@@ -325,7 +340,9 @@ public class BossStore extends JFrame{
         SellersButton.addActionListener(d -> showPage("sellers"));
         CustomersBtn.addActionListener(d -> showPage("customers"));
         CouriersBtn.addActionListener(d -> showPage("couriers"));
-
+        FeedbackBtn.addActionListener(d -> showPage("feedbacks"));
+        BansBtn.addActionListener(d->showPage("bans"));
+        HistoryBtn.addActionListener(d->showPage("history"));
 
         showSignUpButton.addActionListener(e -> {
             logInPanel.setVisible(false);
@@ -348,6 +365,9 @@ public class BossStore extends JFrame{
         SellersPnl.setVisible(false);
         CustomersPnl.setVisible(false);
         CouriersPnl.setVisible(false);
+        FeedbackPnl.setVisible(false);
+        BansPnl.setVisible(false);
+        HistoryPnl.setVisible(false);
     }
 
     private void showPage(String page) {
@@ -361,6 +381,9 @@ public class BossStore extends JFrame{
         SellersPnl.setVisible(page.equals("sellers"));
         CustomersPnl.setVisible(page.equals("customers"));
         CouriersPnl.setVisible(page.equals("couriers"));
+        FeedbackPnl.setVisible(page.equals("feedbacks"));
+        BansPnl.setVisible(page.equals("bans"));
+        HistoryPnl.setVisible(page.equals("history"));
     }
 
     public void clearFields() {
