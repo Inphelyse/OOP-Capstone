@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -42,7 +44,26 @@ public class BossStore extends JFrame{
 
     private ArrayList<Person> persons = new ArrayList<>();
 
+    // Creates an already made account for admin
+    private void AdminAccount() {
+        File folder = new File("Persons");
+        folder.mkdir();
+        File file = new File(folder, "persons.txt");
+
+        if (file.exists() && file.length() > 0) return;
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            bw.write("Admin|Boss Tamaki|12345678|099912312|Secret");
+            bw.newLine();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
+        }
+
+        System.out.println("test file");
+    }
+
     public BossStore(){
+        AdminAccount();
 
         signUpPanel.setVisible(false);
         SellersPnl.setVisible(false);
@@ -149,15 +170,97 @@ public class BossStore extends JFrame{
 //            }
         });
 
-        logInButton.addActionListener(e->{
-            boolean flag = false;
+        logInButton.addActionListener(e -> {
+            String username = logInUsernameField.getText().trim();
+            String password = new String(logInPasswordField.getPassword());
 
-            for(int i = 0; i < size; i++) {
-                System.out.println("hello");
+            boolean flagUsername = false;
+            String account = null;
+
+            // Checks if password or username is empty
+            if (username.isEmpty() && password.isEmpty()) {
+                JOptionPane.showMessageDialog(logInPanel, "Please enter username and password");
+                System.out.println("test pass");
+                return;
             }
-            logInPanel.setVisible(false);
-            AdminPnl.setVisible(true);
-            setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+
+            File file = new File("Persons/persons.txt");
+
+//            if (file.exists() ) {
+//                System.out.println("test file12");
+//                JOptionPane.showMessageDialog(logInPanel, "No accounts yet");
+//            }
+
+            // Checks if the account exist
+            if (!file.exists() || file.length() == 0) {
+                JOptionPane.showMessageDialog(logInPanel, "No accounts yet");
+                System.out.println("No account test");
+                return;
+            }
+
+//            try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+//                String line;
+//                while(!(line = br.readLine())) {
+//
+//                }
+//            } catch(NullPointerException ex) {
+//                JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
+//
+//                return;
+//            } catch (IOException ex) {
+//                throw new RuntimeException(ex);
+//            }
+
+            // This code is used for reading the Person folder file (persons.txt)
+            try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+                System.out.println("Reading a file");
+                String line;
+                    // This is for checking/reading the file, it splits each line
+                    // 0=type(ADmin, Seller, Customer, Currier), 1=username, 2=password, 3=phone, 4=address
+                //Ex. {Admin|Boss Tamaki|12345678|099912312|Secret}
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts[1].equals(username)) {
+                        flagUsername = true;
+                        if (parts[2].equals(password)) {
+                            account = parts[0];
+                        }
+                        break;
+                    }
+                }
+            } catch (IOException ex) {
+                System.out.println("Error 12");
+                JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
+
+                return;
+            }
+
+            // Checks if username was not found in the file
+            if (!flagUsername) {
+                JOptionPane.showMessageDialog(logInPanel, "Username does not exist");
+                clearFields();
+            } else if (account == null) {
+                JOptionPane.showMessageDialog(logInPanel, "Incorrect password");
+
+                logInPasswordField.setText("");
+            } else {
+                logInUsernameField.setText("");
+                logInPasswordField.setText("");
+                logInPanel.setVisible(false);
+
+                // If the username that were inputted is the admin, the adminPanel will be set visible
+                if (account.equals("Admin")) {
+                    System.out.println("Admin account added to the file");
+                    AdminPnl.setVisible(true);
+                    setExtendedState(JFrame.MAXIMIZED_BOTH);
+                } else {
+                    //
+                    JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (" + account + ") Wala pay panel for Customer ug Seller");
+                    System.out.println("Hello ");
+                    logInPanel.setVisible(true);
+                }
+            }
         });
 
 //        ButtonGroup bg = new ButtonGroup();
@@ -269,7 +372,8 @@ public class BossStore extends JFrame{
     }
 
     public void savePerson(String type, String username, String password, String phone, String address) {
-        new File("Persons").mkdir();   // creates the folder if it doesn't exist yet
+        // Creates the folder if it doesn't exist yet
+        new File("Persons").mkdir();
 
         // "true" = append, so old accounts aren't overwritten
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("Persons/persons.txt", true))) {
