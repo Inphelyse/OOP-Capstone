@@ -41,6 +41,21 @@ public class BossStore extends JFrame{
     private JPanel CouriersPnl;
     private JButton CustomersBtn;
     private JButton CouriersBtn;
+    private JButton FeedbackBtn;
+    private JButton BansBtn;
+    private JButton HistoryBtn;
+    private JPanel FeedbackPnl;
+    private JPanel FeedBacks_and_Report;
+    private JTable SubmissionsTbl;
+    private JPanel Info_Details;
+    private JPanel BansPnl;
+    private JPanel BannedAccountsPnl;
+    private JTable BannedTbl;
+    private JPanel Band_DetailsPnl;
+    private JPanel HistoryPnl;
+    private JPanel ActiveLog_or_HistoryPnl;
+    private JTable HistoryTbl;
+    private JPanel ActionDetailsPnl;
 
     private ArrayList<Person> persons = new ArrayList<>();
 
