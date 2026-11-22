@@ -1,24 +1,26 @@
 import javax.swing.*;
-import java.awt.*;
+import java.io.File;
+import java.util.ArrayList;
 
 public class BossStore extends JFrame{
+    public static int size = 0;
 
-    private JPanel pnlMain;
-    private JPanel SignUp;
-    private JPanel LogIn;
-    private JButton signInButton;
-    private JButton signUpButton1;
-    private JTextField UserSignup;
-    private JRadioButton customerRadioButton1;
+    private JPanel panelMain;
+    private JPanel signUpPanel;
+    private JPanel logInPanel;
+    private JButton logInButton;
+    private JButton showSignUpButton;
+    private JTextField signUpUsernameField;
+    private JRadioButton customerRadioButton;
     private JRadioButton sellerRadioButton;
-    private JButton signUpButton;
-    private JTextField UserLogIn;
-    private JPasswordField passLogin;
-    private JTextField PassSignUp;
-    private JTextField CpassSignUp;
-    private JTextField phnum;
-    private JTextField addSignup;
-    private JButton signInButton2;
+    private JButton signUpSubmitButton;
+    private JTextField logInUsernameField;
+    private JPasswordField logInPasswordField;
+    private JTextField signUpPasswordField;
+    private JTextField signUpConfirmPasswordField;
+    private JTextField signUpPhoneField;
+    private JTextField signUpAddressField;
+    private JButton backToLogInButton;
     private JPanel AdminPnl;
     private JPanel HeaderPnl;
     private JPanel BodyPnl;
@@ -35,72 +37,175 @@ public class BossStore extends JFrame{
     private JButton CustomersBtn;
     private JButton CouriersBtn;
 
+    private ArrayList<Person> persons = new ArrayList<>();
+
     public BossStore(){
 
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(customerRadioButton1);
-        bg.add(sellerRadioButton);
-
+        signUpPanel.setVisible(false);
         SellersPnl.setVisible(false);
         AdminPnl.setVisible(false);
-        SignUp.setVisible(false);
 
-        signInButton2.addActionListener(e->{
-            LogIn.setVisible(true);
-            SignUp.setVisible(false);
-
-
+        showSignUpButton.addActionListener(e->{
+            logInPanel.setVisible(false);   //SignUp Panel
+            signUpPanel.setVisible(true);
         });
 
+        backToLogInButton.addActionListener(e->{
+            logInPanel.setVisible(true);    //LogIn Panel
+            signUpPanel.setVisible(false);
+        });
 
-        signInButton.addActionListener(e->{
+        signUpSubmitButton.addActionListener(e->{
 
-           String LoginUsername = UserLogIn.getText();
-           String LoginPassword = passLogin.getText();
+            // Getting the inputted text in the panel and storing it
+            String username = signUpUsernameField.getText();
+            String password = signUpPasswordField.getText();
+            String confirmPass = signUpConfirmPasswordField.getText();
+            String phoneNumString = signUpPhoneField.getText();
+            int phoneNum = 0;
+            String address = signUpAddressField.getText();
 
-            if(LoginPassword.isEmpty() && LoginUsername.isEmpty()){
-                JOptionPane.showMessageDialog(LogIn, "Please enter username and password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-            }else if(LoginUsername.isEmpty()) {
-                JOptionPane.showMessageDialog(LogIn, "Please enter username!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-            }else if(LoginPassword.isEmpty()){
-                JOptionPane.showMessageDialog(LogIn, "Please enter password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                LogIn.setVisible(false);
-                AdminPnl.setVisible(true);
-                setExtendedState(JFrame.MAXIMIZED_BOTH);
+            // Checks if username is Empty
+            if(username.equals("")) {
+                JOptionPane.showMessageDialog(signUpPanel, "Please enter a username");
+                return;
             }
+
+            // Checks if phone number is empty
+            try {
+                if(phoneNumString.isEmpty()) {
+                    JOptionPane.showMessageDialog(signUpPanel, "Please enter phone number");
+                    System.out.println("test phone");
+                    return;
+                }
+                phoneNum = Integer.parseInt(signUpPhoneField.getText());
+            } catch(Exception ex) { // This checks if the inputted character is not a number, if not then error occurs
+                JOptionPane.showMessageDialog(signUpPanel, "Enter valid phone number");
+                System.out.println("test phone 2");
+                signUpPhoneField.setText("");
+                return;
+            }
+
+            // Checks if password is empty
+            if(password.isEmpty()) {
+                JOptionPane.showMessageDialog(signUpPanel, "Please a password");
+                System.out.println("test pass");
+                return;
+            } else if(password.length() < 8) {  // This checks if the password is not above 7 characters or less than 8
+                JOptionPane.showMessageDialog(signUpPanel, "Password must be at least 8 characters");
+                System.out.println("test pass 2");
+                return;
+            }
+
+            // Checks if confirmation password is empty
+            if(confirmPass.isEmpty()) {
+                JOptionPane.showMessageDialog(signUpPanel, "Confirm password");
+                System.out.println("test confirm pass");
+                return;
+            } else if(!(confirmPass.equals(password))) {  // This checks if the confirmation password does not match the password
+                JOptionPane.showMessageDialog(signUpPanel, "Password do not match");
+                System.out.println("test cpnfirm pass 2");
+                signUpConfirmPasswordField.setText("");
+                return;
+            }
+
+            // Checks if address is empty
+            if(address.isEmpty()) {
+                JOptionPane.showMessageDialog(signUpPanel, "Enter your address");
+                System.out.println("test address");
+                return;
+            }
+
+            // This checks in sign up forum if the user chose either customer or seller. If the user chooses customer,
+            // the filled up form will go directly to the Customer class
+            if(customerRadioButton.isSelected()) {
+                persons.add(new Customer(username, password, phoneNum, address));
+            } else if(sellerRadioButton.isSelected()) {
+                persons.add(new Seller(username, password, phoneNum, address));
+            }
+
+            new File("Persons").mkdir();
+
+//            try {
+//                BufferedWriter bw1 = new BufferedWriter(new FileWriter("Persons/file.txt"), 1024);
+//                bw1.write(String.valueOf(persons));
+//                bw1.close();
+//            } catch(IOException ex) {
+//                System.out.println("An error occured: " + ex.getMessage());
+//            }
+
+            clearFields();
+            signUpPanel.setVisible(false);
+            logInPanel.setVisible(true);
         });
 
+        logInButton.addActionListener(e->{
+            boolean flag = false;
 
- signUpButton.addActionListener(e->{
-     String signupuser = UserSignup.getText();
-    String  signuppass = PassSignUp.getText();
-    String signupcpass = CpassSignUp.getText();
-    String phonenum = phnum.getText();
-   String add = addSignup.getText();
+            for(int i = 0; i < size; i++) {
+                System.out.println("hello");
+            }
+            logInPanel.setVisible(false);
+            AdminPnl.setVisible(true);
+            setExtendedState(JFrame.MAXIMIZED_BOTH);
+        });
 
-
-
-
-
-     if(signupuser.isEmpty() && signuppass.isEmpty()){
-         JOptionPane.showMessageDialog(SignUp, "Please enter username and password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-     }else if(signupuser.isEmpty()) {
-         JOptionPane.showMessageDialog(SignUp, "Please enter username!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-     }else if(signuppass.isEmpty()){
-         JOptionPane.showMessageDialog(SignUp, "Please enter password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-     }else if(phonenum.isEmpty() || !phonenum.chars().allMatch(Character::isDigit)){
-         JOptionPane.showMessageDialog(SignUp, "Please enter valid number", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-     }else if(!signupcpass.equals(signuppass)) {
-        JOptionPane.showMessageDialog(SignUp, "Password does not match", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-    }else if(add.isEmpty()) {
-         JOptionPane.showMessageDialog(SignUp, "Please enter address", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
-
-     }
-
-
-
- });
+//        ButtonGroup bg = new ButtonGroup();
+//        bg.add(customerRadioButton);
+//        bg.add(sellerRadioButton);
+//
+//        SellersPnl.setVisible(false);
+//        AdminPnl.setVisible(false);
+//        signUpPanel.setVisible(false);
+//
+//        backToLogInButton.addActionListener(e->{
+//            logInPanel.setVisible(true);
+//            signUpPanel.setVisible(false);
+//
+//
+//        });
+//
+//
+//        logInButton.addActionListener(e->{
+//
+//           String LoginUsername = logInUsernameField.getText();
+//           String LoginPassword = logInPasswordField.getText();
+//
+//            if(LoginPassword.isEmpty() && LoginUsername.isEmpty()){
+//                JOptionPane.showMessageDialog(logInPanel, "Please enter username and password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }else if(LoginUsername.isEmpty()) {
+//                JOptionPane.showMessageDialog(logInPanel, "Please enter username!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }else if(LoginPassword.isEmpty()){
+//                JOptionPane.showMessageDialog(logInPanel, "Please enter password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }else{
+//                logInPanel.setVisible(false);
+//                AdminPnl.setVisible(true);
+//                setExtendedState(JFrame.MAXIMIZED_BOTH);
+//            }
+//        });
+//
+//
+//        signUpSubmitButton.addActionListener(e->{
+//            String signupuser = signUpUsernameField.getText();
+//            String  signuppass = signUpPasswordField.getText();
+//            String signupcpass = signUpConfirmPasswordField.getText();
+//            String phonenum = signUpPhoneField.getText();
+//            String add = signUpAddressField.getText();
+//
+//            if(signupuser.isEmpty() && signuppass.isEmpty()){
+//                 JOptionPane.showMessageDialog(signUpPanel, "Please enter username and password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }else if(signupuser.isEmpty()) {
+//                JOptionPane.showMessageDialog(signUpPanel, "Please enter username!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }else if(signuppass.isEmpty()){
+//                 JOptionPane.showMessageDialog(signUpPanel, "Please enter password!", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }else if(phonenum.isEmpty() || !phonenum.chars().allMatch(Character::isDigit)){
+//                 JOptionPane.showMessageDialog(signUpPanel, "Please enter valid number", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }else if(!signupcpass.equals(signuppass)) {
+//                JOptionPane.showMessageDialog(signUpPanel, "Password does not match", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }else if(add.isEmpty()) {
+//                 JOptionPane.showMessageDialog(signUpPanel, "Please enter address", "ERROR!", JOptionPane.INFORMATION_MESSAGE);
+//            }
+//        });
 
 
         HomeBtn.addActionListener(d -> showPage("home"));
@@ -109,15 +214,15 @@ public class BossStore extends JFrame{
         CouriersBtn.addActionListener(d -> showPage("couriers"));
 
 
-        signUpButton1.addActionListener(e -> {
-            LogIn.setVisible(false);
-            SignUp.setVisible(true);
+        showSignUpButton.addActionListener(e -> {
+            logInPanel.setVisible(false);
+            signUpPanel.setVisible(true);
 
-           UserSignup.setText("");
-            PassSignUp.setText("");
-            CpassSignUp.setText("");
-             phnum.setText("");
-             addSignup.setText("");
+           signUpUsernameField.setText("");
+            signUpPasswordField.setText("");
+            signUpConfirmPasswordField.setText("");
+             signUpPhoneField.setText("");
+             signUpAddressField.setText("");
 
 
 
@@ -145,9 +250,21 @@ public class BossStore extends JFrame{
         CouriersPnl.setVisible(page.equals("couriers"));
     }
 
+    public void clearFields() {
+        signUpUsernameField.setText("");
+        signUpPhoneField.setText("");
+        signUpConfirmPasswordField.setText("");
+        signUpPasswordField.setText("");
+        signUpAddressField.setText("");
+    }
+
+    public void savePerson() {
+
+    }
+
     public static void main(String[] args) {
         BossStore app = new BossStore();
-        app.setContentPane(app.pnlMain);
+        app.setContentPane(app.panelMain);
         app.pack();
         app.setLocationRelativeTo(null);
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

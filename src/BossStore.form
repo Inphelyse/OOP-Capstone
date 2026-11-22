@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="BossStore">
-  <grid id="27dc6" binding="pnlMain" layout-manager="GridLayoutManager" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="50" y="18" width="1240" height="2520"/>
+      <xy x="50" y="18" width="1240" height="2536"/>
     </constraints>
     <properties>
       <background color="-3550241"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="d58fe" binding="LogIn" layout-manager="GridLayoutManager" row-count="10" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
+      <grid id="d58fe" binding="logInPanel" layout-manager="GridLayoutManager" row-count="10" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
         <margin top="30" left="30" bottom="30" right="30"/>
         <constraints>
           <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -23,7 +23,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="c2fe0" class="javax.swing.JButton" binding="signInButton" default-binding="true">
+          <component id="c2fe0" class="javax.swing.JButton" binding="logInButton" default-binding="true">
             <constraints>
               <grid row="7" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="38"/>
@@ -65,7 +65,7 @@
                   <text value="Still Not A Member of AMATOBUZZ?"/>
                 </properties>
               </component>
-              <component id="1c7c0" class="javax.swing.JButton" binding="signUpButton1">
+              <component id="1c7c0" class="javax.swing.JButton" binding="showSignUpButton">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -109,7 +109,7 @@
           </component>
           <component id="62214" class="javax.swing.JLabel">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font name="Segoe UI" size="28" style="1"/>
@@ -127,7 +127,7 @@
               <text value="Welcome back to AMATOBUZZ!"/>
             </properties>
           </component>
-          <component id="66a47" class="javax.swing.JTextField" binding="UserLogIn">
+          <component id="66a47" class="javax.swing.JTextField" binding="logInUsernameField">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="32"/>
@@ -141,7 +141,7 @@
               <margin top="2" left="9" bottom="2" right="6"/>
             </properties>
           </component>
-          <component id="fc6b5" class="javax.swing.JPasswordField" binding="passLogin">
+          <component id="fc6b5" class="javax.swing.JPasswordField" binding="logInPasswordField">
             <constraints>
               <grid row="6" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="32"/>
@@ -167,7 +167,7 @@
           </vspacer>
         </children>
       </grid>
-      <grid id="ff3b2" binding="SignUp" layout-manager="GridLayoutManager" row-count="12" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
+      <grid id="ff3b2" binding="signUpPanel" layout-manager="GridLayoutManager" row-count="12" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
         <margin top="30" left="30" bottom="30" right="30"/>
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -242,7 +242,7 @@
                   <text value="Username: "/>
                 </properties>
               </component>
-              <component id="a9cf8" class="javax.swing.JTextField" binding="UserSignup">
+              <component id="a9cf8" class="javax.swing.JTextField" binding="signUpUsernameField">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="32"/>
@@ -269,7 +269,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="fa4f8" class="javax.swing.JTextField" binding="PassSignUp">
+              <component id="fa4f8" class="javax.swing.JTextField" binding="signUpPasswordField">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="32"/>
@@ -316,7 +316,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="671a2" class="javax.swing.JTextField" binding="CpassSignUp">
+                  <component id="671a2" class="javax.swing.JTextField" binding="signUpConfirmPasswordField">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="32"/>
@@ -387,7 +387,7 @@
                   <text value="Are you a AMATOBUZZ _____ ?"/>
                 </properties>
               </component>
-              <component id="3ed00" class="javax.swing.JRadioButton" binding="customerRadioButton1" default-binding="true">
+              <component id="3ed00" class="javax.swing.JRadioButton" binding="customerRadioButton" default-binding="true">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -434,7 +434,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="c88d4" class="javax.swing.JTextField" binding="phnum">
+                  <component id="c88d4" class="javax.swing.JTextField" binding="signUpPhoneField">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="32"/>
@@ -482,7 +482,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="52957" class="javax.swing.JTextField" binding="addSignup">
+                  <component id="52957" class="javax.swing.JTextField" binding="signUpAddressField">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="32"/>
@@ -520,7 +520,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="f25b2" class="javax.swing.JButton" binding="signUpButton" default-binding="true">
+              <component id="f25b2" class="javax.swing.JButton" binding="signUpSubmitButton" default-binding="true">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="-1" height="38"/>
@@ -552,7 +552,7 @@
                   <text value="Are you already a Buzzer? "/>
                 </properties>
               </component>
-              <component id="4fc25" class="javax.swing.JButton" binding="signInButton2">
+              <component id="4fc25" class="javax.swing.JButton" binding="backToLogInButton">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
