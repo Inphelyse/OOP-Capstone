@@ -38,6 +38,8 @@ public class Admin extends JFrame {
     private JPanel pnlMain;
     private JTable customerInfoTbl;
     private JPanel CustomerDetailsPnl;
+    private JButton logOutAdmin;
+    private JLabel showTotalPeople;
 
     public Admin(){
         CustomerDetailsPnl.setVisible(false);
@@ -65,6 +67,10 @@ public class Admin extends JFrame {
                 String name = customerInfoTbl.getValueAt(row,1).toString();
                 CustomerDetailsPnl.setVisible(true);
             }
+        });
+        logOutAdmin.addActionListener(d->{
+            BossStore.showLogInPanel();
+            this.dispose();
         });
     }
 

@@ -66,7 +66,7 @@
                   <text value="SWITCH ACC"/>
                 </properties>
               </component>
-              <component id="ec261" class="javax.swing.JButton">
+              <component id="ec261" class="javax.swing.JButton" binding="logOutAdmin">
                 <constraints>
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="-1" height="32"/>
@@ -339,14 +339,14 @@
                               <text value="Total people"/>
                             </properties>
                           </component>
-                          <component id="6df0d" class="javax.swing.JLabel">
+                          <component id="6df0d" class="javax.swing.JLabel" binding="showTotalPeople">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="28" style="1"/>
                               <foreground color="-1"/>
-                              <text value="2,216"/>
+                              <text value="0"/>
                             </properties>
                           </component>
                           <component id="10d6d" class="javax.swing.JLabel">
@@ -3055,7 +3055,7 @@
                               <caretColor color="-14800310"/>
                               <font name="Segoe UI" size="13" style="0"/>
                               <foreground color="-14800310"/>
-                              <margin top="2" left="6" bottom="2" right="6"/>
+                              <margin top="2" left="9" bottom="2" right="6"/>
                               <toolTipText value="Account, action, or reference ID"/>
                             </properties>
                           </component>

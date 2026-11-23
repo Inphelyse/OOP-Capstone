@@ -345,9 +345,6 @@ public class BossStore extends JFrame{
             }
         });
 
-
-
-
         showSignUpButton.addActionListener(e -> {
             logInPanel.setVisible(false);
             signUpPanel.setVisible(true);
@@ -361,6 +358,15 @@ public class BossStore extends JFrame{
         });
 
 
+    }
+
+    public static void showLogInPanel() {
+        BossStore app = new BossStore();
+        app.setContentPane(app.panelMain);
+        app.pack();
+        app.setLocationRelativeTo(null);
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        app.setVisible(true);
     }
 
     private void showPage(String page) {
