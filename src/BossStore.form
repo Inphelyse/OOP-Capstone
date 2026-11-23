@@ -2933,7 +2933,7 @@
                                   <foreground color="-14800310"/>
                                   <lineWrap value="true"/>
                                   <margin top="6" left="8" bottom="6" right="8"/>
-                                  <text value="Hi admin, my payment for order #2084 was deducted, but the order still shows unpaid. Could you please check this? Thank you."/>
+                                  <text value="HI boss catalo, gwapo kaayo ka, unsa imo teams id"/>
                                   <wrapStyleWord value="true"/>
                                 </properties>
                               </component>
@@ -2969,6 +2969,7 @@
                                   <foreground color="-14800310"/>
                                   <lineWrap value="true"/>
                                   <margin top="6" left="8" bottom="6" right="8"/>
+                                  <text value="secret dae"/>
                                   <toolTipText value="Add a note for the admin team..."/>
                                   <wrapStyleWord value="true"/>
                                 </properties>
@@ -3506,7 +3507,7 @@
                                   <foreground color="-14800310"/>
                                   <lineWrap value="true"/>
                                   <margin top="6" left="8" bottom="6" right="8"/>
-                                  <text value="Repeated misleading product listings. The seller continued to post inaccurate item descriptions after two warnings."/>
+                                  <text value="ayaw ko ban boss tamaki, di na lagi ko mag send og amatubuz phtos"/>
                                   <wrapStyleWord value="true"/>
                                 </properties>
                               </component>
@@ -3542,6 +3543,7 @@
                                   <foreground color="-14800310"/>
                                   <lineWrap value="true"/>
                                   <margin top="6" left="8" bottom="6" right="8"/>
+                                  <text value="fairs"/>
                                   <toolTipText value="Add a reason before restoring access..."/>
                                   <wrapStyleWord value="true"/>
                                 </properties>
@@ -3611,7 +3613,7 @@
                       </grid>
                     </children>
                   </grid>
-                  <grid id="mh099" binding="HistoryPnl" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="12">
+                  <grid id="mh099" binding="HistoryPnl" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="16" vgap="12">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -3737,20 +3739,10 @@
                           </component>
                         </children>
                       </grid>
-                      <component id="mh109" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="Segoe UI" size="11" style="0"/>
-                          <foreground color="-5785912"/>
-                          <text value="Example activity · 21 Nov 2026 · Not connected to live account actions"/>
-                        </properties>
-                      </component>
                       <grid id="mh119" binding="ActiveLog_or_HistoryPnl" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="12">
                         <margin top="16" left="18" bottom="16" right="18"/>
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-14207655"/>
@@ -3849,10 +3841,10 @@
                           </grid>
                         </children>
                       </grid>
-                      <grid id="mh145" binding="ActionDetailsPnl" layout-manager="GridLayoutManager" row-count="16" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
+                      <grid id="mh145" binding="ActionDetailsPnl" layout-manager="GridLayoutManager" row-count="15" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="8">
                         <margin top="16" left="18" bottom="16" right="18"/>
                         <constraints>
-                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <preferred-size width="360" height="-1"/>
                           </grid>
                         </constraints>
@@ -4056,7 +4048,7 @@
                                   <foreground color="-14800310"/>
                                   <lineWrap value="true"/>
                                   <margin top="6" left="8" bottom="6" right="8"/>
-                                  <text value="Duplicate account confirmed after review."/>
+                                  <text value="samok kaayog nawng maong na ban ayaw na i unabn"/>
                                   <wrapStyleWord value="true"/>
                                 </properties>
                               </component>
@@ -4096,19 +4088,9 @@
                               <foreground color="-12957072"/>
                             </properties>
                           </component>
-                          <component id="mh143" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="12" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <font name="Segoe UI" size="11" style="0"/>
-                              <foreground color="-5785912"/>
-                              <text value="Read-only history · Example data"/>
-                            </properties>
-                          </component>
                           <vspacer id="mh144">
                             <constraints>
-                              <grid row="13" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                              <grid row="12" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                             </constraints>
                           </vspacer>
                         </children>
