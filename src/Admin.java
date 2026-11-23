@@ -46,11 +46,14 @@ public class Admin extends JFrame {
     private JLabel CourierPhoneLbl;
     private JLabel CourierPhoneValueLbl;
     private JLabel CourierAddressLbl;
+    private JButton logOutAdmin;
+    private JLabel showTotalPeople;
 
     // Each row is type|username|password|phone|address, same as Persons/courier.txt
     private final ArrayList<String[]> couriers = new ArrayList<>();
 
     public Admin(){
+        BossStore b = new BossStore();
         HomeBtn.addActionListener(d -> showPage("home"));
         SellersButton.addActionListener(d -> showPage("sellers"));
         CustomersBtn.addActionListener(d -> showPage("customers"));
@@ -66,11 +69,18 @@ public class Admin extends JFrame {
         });
         loadCouriers();
 
+        int totalPeople = b.totalPeople();
+        showTotalPeople.setText(String.valueOf(totalPeople));
+
         setContentPane(pnlMain);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        logOutAdmin.addActionListener(d->{
+            BossStore.showLogInPanel();
+            this.dispose();
+        });
     }
 
     private void loadCouriers() {

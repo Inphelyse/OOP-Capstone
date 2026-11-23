@@ -118,23 +118,26 @@ public class BossStore extends JFrame{
             boolean flagUsername = false;
             File file = new File("Persons/customer.txt");
 
-            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-                // This checks if username already exist in the file
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split("\\|");
-                    if (parts.length < 5) {
-                        continue;
+            if(file.exists()) {
+                try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                    // This checks if username already exist in the file
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        String[] parts = line.split("\\|");
+                        if (parts.length < 5) {
+                            continue;
+                        }
+                        if (parts[1].equals(username)) {
+                            flagUsername = true;
+                            break;
+                        }
                     }
-                    if (parts[1].equals(username)) {
-                        flagUsername = true;
-                        break;
-                    }
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(signUpPanel, "Error: " + ex.getMessage());
+                    return;
                 }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(signUpPanel, "Error: " + ex.getMessage());
-                return;
             }
+
 
             if(flagUsername) {
                 JOptionPane.showMessageDialog(signUpPanel, "Username already exist!");
@@ -258,7 +261,7 @@ public class BossStore extends JFrame{
                         }
                     }
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
+                    JOptionPane.showMessageDialog(logInPanel, "Error1: " + ex.getMessage());
                     return;
                 }
             }
@@ -281,7 +284,7 @@ public class BossStore extends JFrame{
                         }
                     }
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
+                    JOptionPane.showMessageDialog(logInPanel, "Error2: " + ex.getMessage());
                     return;
                 }
             }
@@ -304,7 +307,7 @@ public class BossStore extends JFrame{
                         }
                     }
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
+                    JOptionPane.showMessageDialog(logInPanel, "Error3: " + ex.getMessage());
                     return;
                 }
             }
@@ -327,7 +330,7 @@ public class BossStore extends JFrame{
                         }
                     }
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
+                    JOptionPane.showMessageDialog(logInPanel, "Error4: " + ex.getMessage());
                     return;
                 }
 
@@ -365,9 +368,6 @@ public class BossStore extends JFrame{
             }
         });
 
-
-
-
         showSignUpButton.addActionListener(e -> {
             logInPanel.setVisible(false);
             signUpPanel.setVisible(true);
@@ -379,6 +379,55 @@ public class BossStore extends JFrame{
             signUpAddressField.setText("");
 
         });
+
+
+    }
+
+    public int totalPeople() {
+        File file1 = new File("Persons/customer.txt");
+        File file2 = new File("Persons/seller.txt");
+        int count = 0;
+
+        if(file1.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    count++;
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(logInPanel, "Error5: " + ex.getMessage());
+            }
+        }
+
+        if(file2.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    count++;
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(logInPanel, "Error6: " + ex.getMessage());
+            }
+        }
+
+        return count;
+    }
+
+    public static void showLogInPanel() {
+        BossStore app = new BossStore();
+        app.setContentPane(app.panelMain);
+        app.pack();
+        app.setLocationRelativeTo(null);
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        app.setVisible(true);
 
 
     }
