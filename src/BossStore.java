@@ -27,13 +27,8 @@ public class BossStore extends JFrame{
     private JTextField signUpAddressField;
     private JButton backToLogInButton;
     private JPanel AdminPnl;
-    private JPanel HeaderPnl;
-    private JPanel BodyPnl;
-    private JPanel NavigationPnl;
-    private JPanel DataPnl;
     private JPanel Summary_Report_Pnl;
     private JPanel Report_Details_Admin;
-    private JTable ReportsTbl;
     private JButton HomeBtn;
     private JButton SellersButton;
     private JPanel SellersPnl;
@@ -45,17 +40,8 @@ public class BossStore extends JFrame{
     private JButton BansBtn;
     private JButton HistoryBtn;
     private JPanel FeedbackPnl;
-    private JPanel FeedBacks_and_Report;
-    private JTable SubmissionsTbl;
-    private JPanel Info_Details;
     private JPanel BansPnl;
-    private JPanel BannedAccountsPnl;
-    private JTable BannedTbl;
-    private JPanel Band_DetailsPnl;
     private JPanel HistoryPnl;
-    private JPanel ActiveLog_or_HistoryPnl;
-    private JTable HistoryTbl;
-    private JPanel ActionDetailsPnl;
 
     private ArrayList<Person> persons = new ArrayList<>();
     //
@@ -63,6 +49,7 @@ public class BossStore extends JFrame{
     private void AdminAccount() {
         new File("Persons").mkdir();
         File file4 = new File("Persons/admin.txt");
+
 
         if (file4.exists() && file4.length() > 0) return;
 
@@ -87,8 +74,7 @@ public class BossStore extends JFrame{
         AdminAccount();
 
         signUpPanel.setVisible(false);
-        SellersPnl.setVisible(false);
-        AdminPnl.setVisible(false);
+
 
         showSignUpButton.addActionListener(e->{
             logInPanel.setVisible(false);   //SignUp Panel
@@ -298,6 +284,8 @@ public class BossStore extends JFrame{
                     JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
                     return;
                 }
+
+
             }
 
             // Checks if the acc username was found in any of the files, if !found then it will display error
@@ -319,8 +307,9 @@ public class BossStore extends JFrame{
 
                 // If the account type is Admin, show admin panel
                 if (account.equals("Admin")) {
-                    AdminPnl.setVisible(true);
-                    setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    Admin adminForm = new Admin();
+                    adminForm.setVisible(true);
+                    this.dispose();
                 } else {
                     //
                     JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (" + account + ") Wala pay panel for Customer ug Seller");
@@ -331,10 +320,6 @@ public class BossStore extends JFrame{
         });
 
 
-        HomeBtn.addActionListener(d -> showPage("home"));
-        SellersButton.addActionListener(d -> showPage("sellers"));
-        CustomersBtn.addActionListener(d -> showPage("customers"));
-        CouriersBtn.addActionListener(d -> showPage("couriers"));
 
 
         showSignUpButton.addActionListener(e -> {
@@ -346,15 +331,10 @@ public class BossStore extends JFrame{
             signUpConfirmPasswordField.setText("");
             signUpPhoneField.setText("");
             signUpAddressField.setText("");
+
         });
 
-        Summary_Report_Pnl.setVisible(true);
-        Report_Details_Admin.setVisible(true);
 
-        // Other pages
-        SellersPnl.setVisible(false);
-        CustomersPnl.setVisible(false);
-        CouriersPnl.setVisible(false);
     }
 
     private void showPage(String page) {
@@ -368,6 +348,9 @@ public class BossStore extends JFrame{
         SellersPnl.setVisible(page.equals("sellers"));
         CustomersPnl.setVisible(page.equals("customers"));
         CouriersPnl.setVisible(page.equals("couriers"));
+        FeedbackPnl.setVisible(page.equals("feedbacks"));
+        BansPnl.setVisible(page.equals("bans"));
+        HistoryPnl.setVisible(page.equals("history"));
     }
 
     public void clearFields() {
