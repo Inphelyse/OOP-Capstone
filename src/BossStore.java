@@ -312,7 +312,7 @@ public class BossStore extends JFrame{
                 }
 
 
-            }
+            }//
 
             // Checks if the acc username was found in any of the files, if !found then it will display error
             if (!flagUsername) {
