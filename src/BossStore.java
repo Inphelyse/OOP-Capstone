@@ -63,6 +63,25 @@ public class BossStore extends JFrame{
         System.out.println("test file");
     }
 
+    // Creates example courier accounts, same way the admin account is created
+    private void CourierAccounts() {
+        new File("Persons").mkdir();
+        File file = new File("Persons/courier.txt");
+
+        if (file.exists() && file.length() > 0) return;
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            bw.write("Courier|Nico Carato|courier123|09991112233|Cebu City");
+            bw.newLine();
+            bw.write("Courier|Ana Reyes|delivery88|09171234567|Mandaue City");
+            bw.newLine();
+            bw.write("Courier|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City");
+            bw.newLine();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(logInPanel, "Error: " + ex.getMessage());
+        }
+    }
+
     public BossStore(){
         // Either seller or a customer (only choose one)
         ButtonGroup bg = new ButtonGroup();
@@ -72,6 +91,7 @@ public class BossStore extends JFrame{
         customerRadioButton.setSelected(true);
 
         AdminAccount();
+        CourierAccounts();
 
         signUpPanel.setVisible(false);
 
