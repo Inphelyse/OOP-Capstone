@@ -36,6 +36,7 @@ public class Admin extends JFrame {
     private JLabel showTotalPeople;
 
     public Admin(){
+        BossStore b = new BossStore();
         HomeBtn.addActionListener(d -> showPage("home"));
         SellersButton.addActionListener(d -> showPage("sellers"));
         CustomersBtn.addActionListener(d -> showPage("customers"));
@@ -43,6 +44,9 @@ public class Admin extends JFrame {
         FeedbackBtn.addActionListener(d -> showPage("feedbacks"));
         BansBtn.addActionListener(d->showPage("bans"));
         HistoryBtn.addActionListener(d->showPage("history"));
+
+        int totalPeople = b.totalPeople();
+        showTotalPeople.setText(String.valueOf(totalPeople));
 
         setContentPane(pnlMain);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
