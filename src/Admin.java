@@ -32,6 +32,8 @@ public class Admin extends JFrame {
     private JTable HistoryTbl;
     private JPanel ActionDetailsPnl;
     private JPanel pnlMain;
+    private JButton logOutAdmin;
+    private JLabel showTotalPeople;
 
     public Admin(){
         HomeBtn.addActionListener(d -> showPage("home"));
@@ -47,6 +49,10 @@ public class Admin extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        logOutAdmin.addActionListener(d->{
+            BossStore.showLogInPanel();
+            this.dispose();
+        });
     }
 
     private void showPage(String page) {
