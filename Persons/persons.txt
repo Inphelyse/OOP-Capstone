@@ -1,2 +1,0 @@
-Admin|Boss Tamaki|12345678|099912312|Secret
-Customer|Niekle|Reklamo4ps|123456789|Mars
