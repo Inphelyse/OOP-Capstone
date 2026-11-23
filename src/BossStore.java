@@ -95,6 +95,32 @@ public class BossStore extends JFrame{
             String phoneNumString = signUpPhoneField.getText();
             int phoneNum = 0;
             String address = signUpAddressField.getText();
+            boolean flagUsername = false;
+            File file = new File("Persons/customer.txt");
+
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                // This checks if username already exist in the file
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    if (parts[1].equals(username)) {
+                        flagUsername = true;
+                        break;
+                    }
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(signUpPanel, "Error: " + ex.getMessage());
+                return;
+            }
+
+            if(flagUsername) {
+                JOptionPane.showMessageDialog(signUpPanel, "Username already exist!");
+                return;
+            }
+
 
             // Checks if username is Empty
             if(username.equals("")) {
