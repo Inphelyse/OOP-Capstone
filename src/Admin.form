@@ -1470,14 +1470,14 @@
                               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                           </hspacer>
-                          <component id="5d9ea" class="javax.swing.JLabel">
+                          <component id="5d9ea" class="javax.swing.JLabel" binding="CourierCountLbl">
                             <constraints>
                               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="12" style="0"/>
                               <foreground color="-5785912"/>
-                              <text value="126 accounts"/>
+                              <text value="0 accounts"/>
                             </properties>
                           </component>
                           <grid id="79cb1" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
@@ -1553,7 +1553,7 @@
                               <color color="-12957072"/>
                             </border>
                             <children>
-                              <component id="2c4a3" class="javax.swing.JTable">
+                              <component id="2c4a3" class="javax.swing.JTable" binding="CouriersTbl">
                                 <constraints/>
                                 <properties>
                                   <background color="-14207655"/>
@@ -1578,14 +1578,14 @@
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="71b5d" class="javax.swing.JLabel">
+                              <component id="71b5d" class="javax.swing.JLabel" binding="CourierRangeLbl">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
                                   <foreground color="-5785912"/>
-                                  <text value="Showing 1-6 of 126 accounts"/>
+                                  <text value="Showing 0 accounts"/>
                                 </properties>
                               </component>
                               <hspacer id="c1e78">
@@ -1677,14 +1677,14 @@
                               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                           </hspacer>
-                          <component id="62916" class="javax.swing.JLabel">
+                          <component id="62916" class="javax.swing.JLabel" binding="CourierStatusLbl">
                             <constraints>
                               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="12" style="1"/>
                               <foreground color="-7358242"/>
-                              <text value="Active"/>
+                              <text value=""/>
                             </properties>
                           </component>
                           <component id="dd31d" class="javax.swing.JSeparator">
@@ -1695,24 +1695,24 @@
                               <foreground color="-12957072"/>
                             </properties>
                           </component>
-                          <component id="fddfc" class="javax.swing.JLabel">
+                          <component id="fddfc" class="javax.swing.JLabel" binding="CourierNameLbl">
                             <constraints>
                               <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="22" style="1"/>
                               <foreground color="-1"/>
-                              <text value="Nico Carato"/>
+                              <text value=""/>
                             </properties>
                           </component>
-                          <component id="69c62" class="javax.swing.JLabel">
+                          <component id="69c62" class="javax.swing.JLabel" binding="CourierPhoneLbl">
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="12" style="0"/>
                               <foreground color="-5785912"/>
-                              <text value="nicocarat27@gmail.com"/>
+                              <text value=""/>
                             </properties>
                           </component>
                           <vspacer id="6739e">
@@ -1737,17 +1737,17 @@
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
                                   <foreground color="-5785912"/>
-                                  <text value="Account ID"/>
+                                  <text value="Phone"/>
                                 </properties>
                               </component>
-                              <component id="7093b" class="javax.swing.JLabel">
+                              <component id="7093b" class="javax.swing.JLabel" binding="CourierPhoneValueLbl">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
                                   <foreground color="-1643277"/>
-                                  <text value="88-88-88"/>
+                                  <text value=""/>
                                 </properties>
                               </component>
                               <component id="6d344" class="javax.swing.JLabel">
@@ -1757,17 +1757,17 @@
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
                                   <foreground color="-5785912"/>
-                                  <text value="Joined"/>
+                                  <text value="Address"/>
                                 </properties>
                               </component>
-                              <component id="789aa" class="javax.swing.JLabel">
+                              <component id="789aa" class="javax.swing.JLabel" binding="CourierAddressLbl">
                                 <constraints>
                                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
                                   <foreground color="-1643277"/>
-                                  <text value="21 Jul 2026"/>
+                                  <text value=""/>
                                 </properties>
                               </component>
                               <component id="5df0b" class="javax.swing.JLabel">
@@ -1807,7 +1807,7 @@
                             <properties>
                               <font name="Segoe UI" size="11" style="0"/>
                               <foreground color="-5785912"/>
-                              <text value="3 recent deliveries"/>
+                              <text value="No deliveries recorded"/>
                             </properties>
                           </component>
                           <scrollpane id="10cb8">
@@ -1843,7 +1843,7 @@
                             <properties>
                               <font name="Segoe UI" size="11" style="0"/>
                               <foreground color="-5785912"/>
-                              <text value="148 delivered · 32 this month"/>
+                              <text value=""/>
                             </properties>
                           </component>
                           <component id="6f4cf" class="javax.swing.JButton">
