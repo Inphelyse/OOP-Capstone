@@ -363,6 +363,10 @@ public class BossStore extends JFrame{
                     SellerForm sellerForm = new SellerForm();
                     sellerForm.setVisible(true);
                     this.dispose();
+                } else if (account.equals("Courier")) {
+                    CourierForm courierForm = new CourierForm();
+                    courierForm.setVisible(true);
+                    this.dispose();
                 } else {
                     //
                     JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (" + account + ") Wala pay panel for Customer");
