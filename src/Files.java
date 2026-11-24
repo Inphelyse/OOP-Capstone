@@ -2,11 +2,12 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
+import java.util.Scanner;
 
 public class Files {
 
     // Creating a default data
-    static void defaultAccount() {
+    public static void defaultAccount() {
         // Creating the folder
         new File("Persons").mkdir();
 
@@ -76,4 +77,31 @@ public class Files {
             System.out.println("test customer acc");
         }
     }
+
+    static String[] findAccount(String username) {
+        String[] fileLocation = {"Persons/admin.txt", "Persons/seller.txt", "Persons/customer.txt", "Persons/courier.txt"};
+
+        for (int i = 0; i < fileLocation.length; i++) {
+            String file = fileLocation[i];
+            try {
+                Scanner read = new Scanner(new File(file));
+                while (read.hasNextLine()) {
+                    String line = read.nextLine();
+                    String[] row = line.split("\\|");
+
+                    if (row.length >= 5 && row[1].equals(username)) {
+                        read.close();
+                        return row;
+                    }
+                }
+                read.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found: " + file);
+            }
+        }
+        return null;
+    }
+
+
+
 }

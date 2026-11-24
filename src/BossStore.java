@@ -167,9 +167,9 @@ public class BossStore extends JFrame{
     private void logIn() {
         String username = logInUsernameField.getText().trim();
         String password = new String(logInPasswordField.getPassword());
-
-        boolean flagUsername = false;
-        String account = null;
+        String[] account = Files.findAccount(username);
+ //       boolean flagUsername = false;
+ //       String account = null;
 
         // Checks if password or username is empty
         if (username.isEmpty() || password.isEmpty()) {
@@ -177,151 +177,192 @@ public class BossStore extends JFrame{
             return;
         }
 
-        File file = new File("Persons/admin.txt");
-        File file2 = new File("Persons/seller.txt");
-        File file3 = new File("Persons/customer.txt");
-        File file4 = new File("Persons/courier.txt");
-
-        // Checks if the account exist (length() is 0 if the file is missing or empty)
-        if (file.length() == 0 && file2.length() == 0 && file3.length() == 0 && file4.length() == 0) {
-            JOptionPane.showMessageDialog(logInPanel, "No accounts yet");
+        // It checks if the username do exists
+        if (account == null) {
+            JOptionPane.showMessageDialog(logInPanel,"Username does not exist");
+            logInUsernameField.setText("");
+            logInPasswordField.setText("");
             return;
         }
 
-        // Reads admin file
-        if (file.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-                // This is for checking/reading the file, it splits each line
-                // 0=type(Admin, Seller, Customer, Courier), 1=username, 2=password, 3=phone, 4=address
-                //Ex. {Admin|Boss Tamaki|12345678|099912312|Secret}
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split("\\|");
-                    if (parts.length < 5) {
-                        continue;
-                    }
-                    if (parts[1].equals(username)) {
-                        flagUsername = true;
-                        if (parts[2].equals(password)) {
-                            account = parts[0];
-                        }
-                        break;
-                    }
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(logInPanel, "Error1: " + ex.getMessage());
-                return;
-            }
-        }
-
-        // Reads the seller file - only if the username was not found yet
-        if (!flagUsername && file2.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split("\\|");
-                    if (parts.length < 5) {
-                        continue;
-                    }
-                    if (parts[1].equals(username)) {
-                        flagUsername = true;
-                        if (parts[2].equals(password)) {
-                            account = parts[0];
-                        }
-                        break;
-                    }
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(logInPanel, "Error2: " + ex.getMessage());
-                return;
-            }
-        }
-
-        // Reads the customer file
-        if (!flagUsername && file3.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file3))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split("\\|");
-                    if (parts.length < 5) {
-                        continue;
-                    }
-                    if (parts[1].equals(username)) {
-                        flagUsername = true;
-                        if (parts[2].equals(password)) {
-                            account = parts[0];
-                        }
-                        break;
-                    }
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(logInPanel, "Error3: " + ex.getMessage());
-                return;
-            }
-        }
-
-        // Reads the courier file
-        if (!flagUsername && file4.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file4))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split("\\|");
-                    if (parts.length < 5) {
-                        continue;
-                    }
-                    if (parts[1].equals(username)) {
-                        flagUsername = true;
-                        if (parts[2].equals(password)) {
-                            account = parts[0];
-                        }
-                        break;
-                    }
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(logInPanel, "Error4: " + ex.getMessage());
-                return;
-            }
-
-
-        }//
-
-        // Checks if the acc username was found in any of the files, if !found then it will display error
-        if (!flagUsername) {
-            System.out.println("Not exist?");
-            JOptionPane.showMessageDialog(logInPanel, "Username does not exist");
-            logInUsernameField.setText("");
+        String type = account[0];
+        // It checks if password is correct
+        if (!account[2].equals(password)) {
+            JOptionPane.showMessageDialog(logInPanel,"Incorrect password");
             logInPasswordField.setText("");
-        } else if (account == null) {
-            System.out.println("Hello testw");
-            // Username exists but the password did not match
-            JOptionPane.showMessageDialog(logInPanel, "Incorrect password");
-            logInPasswordField.setText("");
-        } else {
-            System.out.println("Hello test3 Clearing");
-            logInUsernameField.setText("");
-            logInPasswordField.setText("");
-            logInPanel.setVisible(false);
-
-            // If the account type is Admin, show admin panel
-            if (account.equals("Admin")) {
-                Admin adminForm = new Admin();
-                adminForm.setVisible(true);
-                this.dispose();
-            } else if (account.equals("Seller")) {
-                SellerForm sellerForm = new SellerForm();
-                sellerForm.setVisible(true);
-                this.dispose();
-            } else if (account.equals("Courier")) {
-                CourierForm courierForm = new CourierForm();
-                courierForm.setVisible(true);
-                this.dispose();
-            } else {
-                //
-                JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (" + account + ") Wala pay panel for Customer");
-                System.out.println("Hello ");
-                logInPanel.setVisible(true);
-            }
+            return;
         }
+
+        switch(type) {
+            case "Admin":
+                new Admin().setVisible(true);
+                break;
+            case "Customer":
+                JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Customer) Wala pay panel for Customer");
+                new Admin().setVisible(true);
+                break;
+            case "Seller":
+                JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Seller) Wala pay panel for Seller");
+                new SellerForm().setVisible(true);
+                break;
+            case "Courier":
+
+                JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Courier) Wala pay panel for Courier");
+                new CourierForm().setVisible(true);
+                break;
+            default:
+                JOptionPane.showMessageDialog(logInPanel,"Error!");
+                return;
+        }
+
+        this.dispose();
+
+
+//        File file = new File("Persons/admin.txt");
+//        File file2 = new File("Persons/seller.txt");
+//        File file3 = new File("Persons/customer.txt");
+//        File file4 = new File("Persons/courier.txt");
+//
+//        // Checks if the account exist (length() is 0 if the file is missing or empty)
+//        if (file.length() == 0 && file2.length() == 0 && file3.length() == 0 && file4.length() == 0) {
+//            JOptionPane.showMessageDialog(logInPanel, "No accounts yet");
+//            return;
+//        }
+//
+//        // Reads admin file
+//        if (file.exists()) {
+//            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+//                // This is for checking/reading the file, it splits each line
+//                // 0=type(Admin, Seller, Customer, Courier), 1=username, 2=password, 3=phone, 4=address
+//                //Ex. {Admin|Boss Tamaki|12345678|099912312|Secret}
+//                String line;
+//                while ((line = br.readLine()) != null) {
+//                    String[] parts = line.split("\\|");
+//                    if (parts.length < 5) {
+//                        continue;
+//                    }
+//                    if (parts[1].equals(username)) {
+//                        flagUsername = true;
+//                        if (parts[2].equals(password)) {
+//                            account = parts[0];
+//                        }
+//                        break;
+//                    }
+//                }
+//            } catch (IOException ex) {
+//                JOptionPane.showMessageDialog(logInPanel, "Error1: " + ex.getMessage());
+//                return;
+//            }
+//        }
+//
+//        // Reads the seller file - only if the username was not found yet
+//        if (!flagUsername && file2.exists()) {
+//            try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
+//                String line;
+//                while ((line = br.readLine()) != null) {
+//                    String[] parts = line.split("\\|");
+//                    if (parts.length < 5) {
+//                        continue;
+//                    }
+//                    if (parts[1].equals(username)) {
+//                        flagUsername = true;
+//                        if (parts[2].equals(password)) {
+//                            account = parts[0];
+//                        }
+//                        break;
+//                    }
+//                }
+//            } catch (IOException ex) {
+//                JOptionPane.showMessageDialog(logInPanel, "Error2: " + ex.getMessage());
+//                return;
+//            }
+//        }
+//
+//        // Reads the customer file
+//        if (!flagUsername && file3.exists()) {
+//            try (BufferedReader br = new BufferedReader(new FileReader(file3))) {
+//                String line;
+//                while ((line = br.readLine()) != null) {
+//                    String[] parts = line.split("\\|");
+//                    if (parts.length < 5) {
+//                        continue;
+//                    }
+//                    if (parts[1].equals(username)) {
+//                        flagUsername = true;
+//                        if (parts[2].equals(password)) {
+//                            account = parts[0];
+//                        }
+//                        break;
+//                    }
+//                }
+//            } catch (IOException ex) {
+//                JOptionPane.showMessageDialog(logInPanel, "Error3: " + ex.getMessage());
+//                return;
+//            }
+//        }
+//
+//        // Reads the courier file
+//        if (!flagUsername && file4.exists()) {
+//            try (BufferedReader br = new BufferedReader(new FileReader(file4))) {
+//                String line;
+//                while ((line = br.readLine()) != null) {
+//                    String[] parts = line.split("\\|");
+//                    if (parts.length < 5) {
+//                        continue;
+//                    }
+//                    if (parts[1].equals(username)) {
+//                        flagUsername = true;
+//                        if (parts[2].equals(password)) {
+//                            account = parts[0];
+//                        }
+//                        break;
+//                    }
+//                }
+//            } catch (IOException ex) {
+//                JOptionPane.showMessageDialog(logInPanel, "Error4: " + ex.getMessage());
+//                return;
+//            }
+//
+//
+//        }//
+//
+//        // Checks if the acc username was found in any of the files, if !found then it will display error
+//        if (!flagUsername) {
+//            System.out.println("Not exist?");
+//            JOptionPane.showMessageDialog(logInPanel, "Username does not exist");
+//            logInUsernameField.setText("");
+//            logInPasswordField.setText("");
+//        } else if (account == null) {
+//            System.out.println("Hello testw");
+//            // Username exists but the password did not match
+//            JOptionPane.showMessageDialog(logInPanel, "Incorrect password");
+//            logInPasswordField.setText("");
+//        } else {
+//            System.out.println("Hello test3 Clearing");
+//            logInUsernameField.setText("");
+//            logInPasswordField.setText("");
+//            logInPanel.setVisible(false);
+//
+//            // If the account type is Admin, show admin panel
+//            if (account.equals("Admin")) {
+//                Admin adminForm = new Admin();
+//                adminForm.setVisible(true);
+//                this.dispose();
+//            } else if (account.equals("Seller")) {
+//                SellerForm sellerForm = new SellerForm();
+//                sellerForm.setVisible(true);
+//                this.dispose();
+//            } else if (account.equals("Courier")) {
+//                CourierForm courierForm = new CourierForm();
+//                courierForm.setVisible(true);
+//                this.dispose();
+//            } else {
+//                //
+//                JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (" + account + ") Wala pay panel for Customer");
+//                System.out.println("Hello ");
+//                logInPanel.setVisible(true);
+//            }
+//        }
     }
 
     private void signUp() {
@@ -360,8 +401,7 @@ public class BossStore extends JFrame{
             JOptionPane.showMessageDialog(signUpPanel, "Username already exist!");
             return;
         }
-
-
+        
         // Checks if username is Empty
         if(username.equals("")) {
             JOptionPane.showMessageDialog(signUpPanel, "Please enter a username");
