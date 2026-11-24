@@ -15,6 +15,9 @@ public class CourierForm extends JFrame {
     private JPanel HistoryPnl;
     private JTable DeliveriesTbl;
     private JTable HistoryTbl;
+    private JLabel DeliveryOrderLbl;
+    private JLabel DeliveryDropOffLbl;
+    private JLabel DeliveryStatusLbl;
 
     public CourierForm() {
         DeliveriesBtn.addActionListener(e -> showPage("deliveries"));
@@ -51,6 +54,27 @@ public class CourierForm extends JFrame {
         DeliveriesTbl.setModel(model);
         DeliveriesTbl.setRowHeight(44);
         DeliveriesTbl.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        DeliveriesTbl.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                showSelectedDelivery();
+            }
+        });
+        if (model.getRowCount() > 0) {
+            DeliveriesTbl.setRowSelectionInterval(0, 0);
+        }
+    }
+
+    private void showSelectedDelivery() {
+        int row = DeliveriesTbl.getSelectedRow();
+        if (row < 0) {
+            DeliveryOrderLbl.setText("");
+            DeliveryDropOffLbl.setText("");
+            DeliveryStatusLbl.setText("");
+            return;
+        }
+        DeliveryOrderLbl.setText(DeliveriesTbl.getValueAt(row, 0).toString());
+        DeliveryDropOffLbl.setText(DeliveriesTbl.getValueAt(row, 1).toString());
+        DeliveryStatusLbl.setText(DeliveriesTbl.getValueAt(row, 2).toString());
     }
 
     private void fillHistory() {
