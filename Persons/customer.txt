@@ -1,8 +1,0 @@
-Customer|Nico Carato|courier123|09991112233|Cebu City
-Customer|Customer|123123123|09171234567|Mandaue City
-Customer|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City
-Customer|Nico Carato|courier123|09991112233|Cebu City
-Customer|Ana Reyes|delivery88|09171234567|Mandaue City
-Customer|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City
-|Customer1|123123123|21312412|dasd
-|Customer|123123123|4123123|sdsda
