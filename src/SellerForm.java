@@ -34,6 +34,7 @@ public class SellerForm extends JFrame {
     private JPanel Info_Details;
     private JButton LogOutSeller;
 
+
     public SellerForm(){
 
         LogOutSeller.addActionListener(e->{

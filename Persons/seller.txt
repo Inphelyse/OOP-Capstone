@@ -1,1 +1,2 @@
 Seller|Origami|12345678|987654321|Balay ni mayang
+Seller|Seller1|12345678|12345689|adsdfasf
