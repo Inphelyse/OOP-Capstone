@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.awt.Image;
+
 public class SellerForm extends JFrame {
     private JPanel SellerPnl;
     private JPanel HeaderPnl;
@@ -33,9 +35,38 @@ public class SellerForm extends JFrame {
     private JTable SubmissionsTbl;
     private JPanel Info_Details;
     private JButton LogOutSeller;
+    private JPanel ProductImagePnl;
+    private JLabel ProductImageLbl;
 
 
     public SellerForm(){
+        uploadProductImageButton.addActionListener(e -> {
+
+            JFileChooser chooser = new JFileChooser();
+
+            // Only allow image files
+            chooser.setFileFilter(
+                    new javax.swing.filechooser.FileNameExtensionFilter(
+                            "Image Files (JPG, PNG)",
+                            "jpg", "jpeg", "png"
+                    )
+            );
+
+            // Open file selection window
+            int result = chooser.showOpenDialog(this);
+
+            // Check if seller selected an image
+            if (result == JFileChooser.APPROVE_OPTION) {
+
+                java.io.File selectedFile = chooser.getSelectedFile();
+
+                // Display selected image
+                displayImage(selectedFile);
+            }
+
+        });
+
+
 
         LogOutSeller.addActionListener(e->{
             BossStore.showLogInPanel();
@@ -58,6 +89,53 @@ public class SellerForm extends JFrame {
         date.setText(LocalDate.now().format(formatter));
 
 
+    }
+
+    private void displayImage(java.io.File file) {
+
+        // Load original image
+        ImageIcon originalIcon = new ImageIcon(file.getAbsolutePath());
+
+        Image originalImage = originalIcon.getImage();
+
+        // Get original dimensions
+        int originalWidth = originalIcon.getIconWidth();
+        int originalHeight = originalIcon.getIconHeight();
+
+        // Get JLabel dimensions
+        int labelWidth = ProductImageLbl.getWidth();
+        int labelHeight = ProductImageLbl.getHeight();
+
+        // Check dimensions
+        if (originalWidth <= 0 || originalHeight <= 0 ||
+                labelWidth <= 0 || labelHeight <= 0) {
+            return;
+        }
+
+        // Calculate resizing ratio
+        double scale = Math.min(
+                (double) labelWidth / originalWidth,
+                (double) labelHeight / originalHeight
+        );
+
+        // Calculate new dimensions
+        int newWidth = (int) (originalWidth * scale);
+        int newHeight = (int) (originalHeight * scale);
+
+        // Resize image
+        Image resizedImage = originalImage.getScaledInstance(
+                newWidth,
+                newHeight,
+                Image.SCALE_SMOOTH
+        );
+
+        // Display image
+        ProductImageLbl.setIcon(new ImageIcon(resizedImage));
+        ProductImageLbl.setText("");
+
+        // Center image
+        ProductImageLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        ProductImageLbl.setVerticalAlignment(SwingConstants.CENTER);
     }
 
     private void showPage(String page) {
