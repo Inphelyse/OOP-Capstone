@@ -1,20 +1,8 @@
-Customer,Juan Dela Cruz,juan1234,09175550101,Cebu
-Customer,Ana Villanueva,ana56789,09186660202,Mango
-Customer,Mark Bautista,markb999,09207770303,Lapulapu
-Customer,Kristine Lim,kris2468,09218880404,Bisaya
-Customer,Paolo Garcia,paolo135,09229990505,Lechon
-Customer,Jasmine Tan,jas11223,09171112222,Sampaguita
-Customer,Miguel Ramos,mig44556,09182223333,Basketball
-Customer,Bea Fernandez,bea77889,09193334444,Kitty
-Customer,Rico Mendoza,rico0000,09204445555,Jeepney
-Customer,Lea Navarro,lea24680,09215556666,Sinigang
-Customer,Josh Aquino,josh1357,09226667777,Roblox
-Customer,Camille Torres,cam98765,09237778888,Puto
-Customer,Nathan Cruz,nate5432,09248889999,Mars
-Customer,Patricia Uy,pat86420,09259990000,Halohalo
-Customer,Kevin Sy,kev31415,09171239876,Siopao
-Customer,Aira Domingo,aira2727,09189876543,Rainbow
-Customer,Ronald Ocampo,ron80808,09191230987,Tarsier
-Customer,Sofia Reyes,sofi1122,09173214567,Mangga
-Customer,Dennis Castro,den55667,09284561234,Bohol
-Customer,Grace Lopez,grace999,09196547890,Ube
+Customer|Nico Carato|courier123|09991112233|Cebu City
+Customer|Customer|123123123|09171234567|Mandaue City
+Customer|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City
+Customer|Nico Carato|courier123|09991112233|Cebu City
+Customer|Ana Reyes|delivery88|09171234567|Mandaue City
+Customer|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City
+|Customer1|123123123|21312412|dasd
+|Customer|123123123|4123123|sdsda

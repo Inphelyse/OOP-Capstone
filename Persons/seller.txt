@@ -1,2 +1,8 @@
+<<<<<<< Updated upstream
 Seller|Origami|12345678|987654321|Balay ni mayang
 Seller|Seller1|12345678|12345689|adsdfasf
+=======
+Seller|Nico Carato|courier123|09991112233|Cebu City
+Seller|Seller|123123123|09171234567|Mandaue City
+Seller|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City
+>>>>>>> Stashed changes

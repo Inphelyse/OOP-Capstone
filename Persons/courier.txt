@@ -1,3 +1,3 @@
 Courier|Nico Carato|courier123|09991112233|Cebu City
-Courier|Ana Reyes|delivery88|09171234567|Mandaue City
+Courier|Courier|123123123|09171234567|Mandaue City
 Courier|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City
