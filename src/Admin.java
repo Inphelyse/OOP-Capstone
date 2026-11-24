@@ -110,18 +110,6 @@ public class Admin extends JFrame {
         });
         loadCouriers();
 
-       int _customerTotal = Files.customerTotal();
-       customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
-
-        int _sellerTotal = Files.sellerTotal();
-        sellerTotal.setText("Seller: " + String.valueOf(_sellerTotal));
-
-        int _courierTotal = Files.courierTotal();
-        courierTotal.setText("Courier: " + String.valueOf(_courierTotal));
-
-        int totalPeople = _sellerTotal + _courierTotal;
-        showTotalPeople.setText(String.valueOf(totalPeople));
-
         setContentPane(pnlMain);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
@@ -142,6 +130,19 @@ public class Admin extends JFrame {
             BossStore.showLogInPanel();
             this.dispose();
         });
+
+
+        int _customerTotal = Files.customerTotal();
+        customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
+
+        int _sellerTotal = Files.sellerTotal();
+        sellerTotal.setText("Seller: " + String.valueOf(_sellerTotal));
+
+        int _courierTotal = Files.courierTotal();
+        courierTotal.setText("Courier: " + String.valueOf(_courierTotal));
+
+        int totalPeople = _customerTotal + _sellerTotal + _courierTotal;
+        showTotalPeople.setText(String.valueOf(totalPeople));
     }
 
     private void loadCouriers() {
