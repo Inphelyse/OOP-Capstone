@@ -140,8 +140,8 @@ public class Admin extends JFrame {
         int _courierTotal = Files.courierTotal();
         courierTotal.setText("Courier: " + String.valueOf(_courierTotal));
 
-        int totalPeople = _customerTotal + _sellerTotal + _courierTotal;
-        showTotalPeople.setText(String.valueOf(totalPeople));
+        int _totalPeople = Files.totalPeople();
+        showTotalPeople.setText(String.valueOf(_totalPeople + 1));
     }
 
     private void loadCouriers() {
