@@ -77,8 +77,6 @@ public class Admin extends JFrame {
         HistoryPnl.setVisible(false);
         FeedbackPnl.setVisible(false);
 
-
-        BossStore b = new BossStore();
         HomeBtn.addActionListener(d -> showPage("home"));
         SellersButton.addActionListener(d -> showPage("sellers"));
         CustomersBtn.addActionListener(d -> showPage("customers"));
@@ -112,16 +110,16 @@ public class Admin extends JFrame {
         });
         loadCouriers();
 
-        int _customerTotal = b.customerTotal();
-        customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
+       int _customerTotal = Files.customerTotal();
+       customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
 
-        int _sellerTotal = b.sellerTotal();
+        int _sellerTotal = Files.sellerTotal();
         sellerTotal.setText("Seller: " + String.valueOf(_sellerTotal));
 
-        int _courierTotal = b.courierTotal();
+        int _courierTotal = Files.courierTotal();
         courierTotal.setText("Courier: " + String.valueOf(_courierTotal));
 
-        int totalPeople = _customerTotal + _sellerTotal + _courierTotal;
+        int totalPeople = _sellerTotal + _courierTotal;
         showTotalPeople.setText(String.valueOf(totalPeople));
 
         setContentPane(pnlMain);

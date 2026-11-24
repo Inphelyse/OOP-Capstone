@@ -11,4 +11,10 @@ public abstract class Person {
         this.phoneNum = phoneNum;
         this.address = address;
     }
+
+    public abstract String readType();
+
+    public String readLine() {
+        return readType() + "|" + name + "|" + password + "|" + phoneNum + "|" + address;
+    }
 }

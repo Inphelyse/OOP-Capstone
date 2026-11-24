@@ -102,6 +102,145 @@ public class Files {
         return null;
     }
 
+    static void saveAccount(Person p) {
+        String path = p.readType().equals("Seller") ? "Persons/seller.txt" : p.readType().equals("Courier") ? "Persons/courier.txt" : "Persons/customer.txt";
+        String line = p.readLine();
+        File file = new File(path);
+        if (file.getParentFile() != null) file.getParentFile().mkdirs();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            bw.write(line);
+            bw.newLine();
+        } catch (IOException ex) {
+            System.err.println("Could not save " + path + ": " + ex.getMessage());
+        }
+    }
+
+    public static int customerTotal() {
+        File file1 = new File("Persons/customer.txt");
+        int count = 0;
+
+        if(file1.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    count++;
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error5: " + ex.getMessage());
+            }
+        }
+
+        return count;
+
+    }
+
+    public static int sellerTotal() {
+        File file1 = new File("Persons/seller.txt");
+        int count = 0;
+
+        if(file1.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    count++;
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error5: " + ex.getMessage());
+            }
+        }
+
+        return count;
+
+    }
+
+    public static int courierTotal() {
+        File file1 = new File("Persons/courier.txt");
+        int count = 0;
+
+        if(file1.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    count++;
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error5: " + ex.getMessage());
+            }
+        }
+
+        return count;
+
+    }
+
+    public static int totalPeople() {
+        File file1 = new File("Persons/customer.txt");
+        File file2 = new File("Persons/seller.txt");
+        File file3 = new File("Persons/courier.txt");
+        int count = 0;
+
+        if(file1.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    count++;
+                }
+                System.out.println("asda");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error5: " + ex.getMessage());
+            }
+        }
+
+        if(file2.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split(",");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    count++;
+                }
+                System.out.println("asdasda");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error6: " + ex.getMessage());
+            }
+        }
+
+        if(file3.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file3))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split(",");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    count++;
+                }
+                System.out.println("asdasda");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error6: " + ex.getMessage());
+            }
+        }
+
+        return count;
+    }
+
 
 
 }

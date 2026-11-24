@@ -3,5 +3,10 @@ public class AdminClass extends Person {
         super(name, password, phoneNum, address);
     }
 
+    @Override
+    public String readType() {
+        return "";
+    }
+
 
 }
