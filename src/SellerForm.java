@@ -29,12 +29,16 @@ public class SellerForm extends JFrame {
     private JButton clearButton;
     private JPanel OrderHistory;
     private JTable table1;
+    private JButton logOutSeller;
 
     public SellerForm(){
 
         dashboardButton.addActionListener(e->showPage("dashboard"));
 
-
+        logOutSeller.addActionListener(d->{
+            BossStore.showLogInPanel();
+            this.dispose();
+        });
 
         setContentPane(PnlMain);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
