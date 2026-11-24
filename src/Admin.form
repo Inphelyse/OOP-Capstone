@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="pnlMain" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1200" height="4845"/>
+      <xy x="20" y="20" width="1222" height="4845"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -790,7 +790,8 @@
                               <foreground color="-12957072"/>
                             </properties>
                           </component>
-                          <component id="72068" class="javax.swing.JLabel" binding="CustomerDetailNameLbl">
+                          <!-- Gi ilis nako kay conflict ang name@~@ -->
+                          <component id="72068" class="javax.swing.JLabel" binding="SellerDetailNameLbl">
                             <constraints>
                               <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -800,7 +801,8 @@
                               <text value="Elena Torres"/>
                             </properties>
                           </component>
-                          <component id="a104b" class="javax.swing.JLabel" binding="CustomerDetailsEmailLbl">
+                          <!-- Gi ilis nako kay conflict ang name@~@ -->
+                          <component id="a104b" class="javax.swing.JLabel" binding="SellerDetailEmailLbl">
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -1229,7 +1231,8 @@
                               <foreground color="-12957072"/>
                             </properties>
                           </component>
-                          <component id="c45d8" class="javax.swing.JLabel">
+                          <!-- Gi ilis nako kay conflict ang name@~@ -->
+                          <component id="c45d8" class="javax.swing.JLabel" binding="CustomerDetailNameLbl">
                             <constraints>
                               <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -1239,7 +1242,8 @@
                               <text value="Maya Chen"/>
                             </properties>
                           </component>
-                          <component id="ef0fd" class="javax.swing.JLabel">
+                          <!-- Gi ilis nako kay conflict ang name@~@ -->
+                          <component id="ef0fd" class="javax.swing.JLabel" binding="CustomerDetailEmailLbl">
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -1549,8 +1553,8 @@
                               </grid>
                             </constraints>
                             <properties>
-                              <verticalScrollBarPolicy value="22"/>
                               <horizontalScrollBarPolicy value="30"/>
+                              <verticalScrollBarPolicy value="22"/>
                             </properties>
                             <border type="line">
                               <color color="-12957072"/>

@@ -56,6 +56,11 @@ public class Admin extends JFrame {
     private JButton CourierNextBtn;
     private JButton logOutAdmin;
     private JLabel showTotalPeople;
+    // Gi ilis nako kay conflict ang name@~@
+    private JLabel SellerDetailNameLbl;
+    private JLabel SellerDetailEmailLbl;
+    private JLabel CustomerDetailNameLbl;
+    private JLabel CustomerDetailEmailLbl;
 
     private static final int COURIERS_PER_PAGE = 20;
 
