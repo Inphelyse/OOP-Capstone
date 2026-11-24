@@ -26,6 +26,7 @@ public class BossStore extends JFrame{
     private JTextField signUpPhoneField;
     private JTextField signUpAddressField;
     private JButton backToLogInButton;
+    private JRadioButton courierRadioButton;
     private JPanel AdminPnl;
     private JPanel Summary_Report_Pnl;
     private JPanel Report_Details_Admin;
@@ -50,6 +51,7 @@ public class BossStore extends JFrame{
         ButtonGroup bg = new ButtonGroup();
         bg.add(customerRadioButton);
         bg.add(sellerRadioButton);
+        bg.add(courierRadioButton);
 
         customerRadioButton.setSelected(true);
 
@@ -120,14 +122,12 @@ public class BossStore extends JFrame{
         } else if (type.equals("Courier")) {
             new CourierForm().setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Courier) Wala pay panel for Courier");
+            JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Customer) Wala pay panel for Customer");
             logInUsernameField.setText("");
             logInPasswordField.setText("");
             return;
 //            new CustomerForm().setVisible(true);
         }
-        this.dispose();
-
         this.dispose();
     }
 
@@ -171,8 +171,10 @@ public class BossStore extends JFrame{
             Person p;
             if (customerRadioButton.isSelected()) {
                 p = new Customer(username, password, phoneNum, address);
-            } else {
+            } else if(sellerRadioButton.isSelected()) {
                 p = new Seller(username, password, phoneNum, address);
+            } else {
+                p = new Courier(username, password, phoneNum, address);
             }
 
             Files.saveAccount(p);
@@ -186,13 +188,12 @@ public class BossStore extends JFrame{
 
     public static void showLogInPanel() {
         BossStore app = new BossStore();
+
         app.setContentPane(app.panelMain);
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.pack();
         app.setLocationRelativeTo(null);
-        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setVisible(true);
-
-
     }
 
     private void showPage(String page) {
@@ -251,12 +252,15 @@ public class BossStore extends JFrame{
 
     public static void main(String[] args) {
         BossStore app = new BossStore();
+
         app.setContentPane(app.panelMain);
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.pack();
         app.setLocationRelativeTo(null);
-        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setVisible(true);
+    }
 
-
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }

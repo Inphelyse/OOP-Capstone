@@ -5,6 +5,6 @@ public class Seller extends Person {
 
     @Override
     public String readType() {
-        return "";
+        return "Seller";
     }
 }//
