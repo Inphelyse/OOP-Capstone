@@ -37,7 +37,7 @@ public class SellerForm extends JFrame {
 
         logOutSeller.addActionListener(d->{
             BossStore.showLogInPanel();
-            this.dispose();
+            this.dispose();//
         });
 
         setContentPane(PnlMain);
