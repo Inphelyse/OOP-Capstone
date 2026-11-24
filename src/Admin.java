@@ -131,7 +131,6 @@ public class Admin extends JFrame {
             this.dispose();
         });
 
-
         int _customerTotal = Files.customerTotal();
         customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
 
