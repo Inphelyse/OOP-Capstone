@@ -359,9 +359,13 @@ public class BossStore extends JFrame{
                     Admin adminForm = new Admin();
                     adminForm.setVisible(true);
                     this.dispose();
+                } else if (account.equals("Seller")) {
+                    SellerForm sellerForm = new SellerForm();
+                    sellerForm.setVisible(true);
+                    this.dispose();
                 } else {
                     //
-                    JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (" + account + ") Wala pay panel for Customer ug Seller");
+                    JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (" + account + ") Wala pay panel for Customer");
                     System.out.println("Hello ");
                     logInPanel.setVisible(true);
                 }
