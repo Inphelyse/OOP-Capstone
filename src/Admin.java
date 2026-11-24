@@ -56,11 +56,11 @@ public class Admin extends JFrame {
     private JButton CourierNextBtn;
     private JButton logOutAdmin;
     private JLabel showTotalPeople;
-    // Gi ilis nako kay conflict ang name@~@
-    private JLabel SellerDetailNameLbl;
-    private JLabel SellerDetailEmailLbl;
     private JLabel CustomerDetailNameLbl;
-    private JLabel CustomerDetailEmailLbl;
+    private JLabel CustomerDetailsEmailLbl;
+    private JLabel customerTotal;
+    private JLabel sellerTotal;
+    private JLabel courierTotal;
 
     private static final int COURIERS_PER_PAGE = 20;
 
@@ -70,6 +70,13 @@ public class Admin extends JFrame {
 
     public Admin(){
         CustomerDetailsPnl.setVisible(false);
+        SellersPnl.setVisible(false);
+        CustomersPnl.setVisible(false);
+        CouriersPnl.setVisible(false);
+        BansPnl.setVisible(false);
+        HistoryPnl.setVisible(false);
+        FeedbackPnl.setVisible(false);
+
 
         BossStore b = new BossStore();
         HomeBtn.addActionListener(d -> showPage("home"));
@@ -105,7 +112,16 @@ public class Admin extends JFrame {
         });
         loadCouriers();
 
-        int totalPeople = b.totalPeople();
+        int _customerTotal = b.customerTotal();
+        customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
+
+        int _sellerTotal = b.sellerTotal();
+        sellerTotal.setText("Seller: " + String.valueOf(_sellerTotal));
+
+        int _courierTotal = b.courierTotal();
+        courierTotal.setText("Courier: " + String.valueOf(_courierTotal));
+
+        int totalPeople = _customerTotal + _sellerTotal + _courierTotal;
         showTotalPeople.setText(String.valueOf(totalPeople));
 
         setContentPane(pnlMain);
@@ -224,11 +240,9 @@ public class Admin extends JFrame {
 
     private void showPage(String page) {
         // Home part
-
         boolean home = page.equals("home");
         Summary_Report_Pnl.setVisible(home);
         Report_Details_Admin.setVisible(home);
-
         // Other pages
         SellersPnl.setVisible(page.equals("sellers"));
         CustomersPnl.setVisible(page.equals("customers"));
@@ -239,22 +253,19 @@ public class Admin extends JFrame {
     }
 
     private void generateTableCustomer(){
-
         try(BufferedReader br = new BufferedReader(new FileReader("Persons/customer.txt"))){
             String[] columns = {"Role", "Name", "Username", "Number", "Location"};
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             customerInfoTbl.setModel(model);
             String line = null;
             while((line = br.readLine()) != null){
-                String[] customerInfo = line.split(",");
+                String[] customerInfo = line.split("\\|");
                 model.addRow(new String[]{customerInfo[0], customerInfo[1], customerInfo[2], customerInfo[3], customerInfo[4]});
-
             }
-
         }catch(IOException e){
             System.out.println("No customers Info!");
         }
-    }
 
+    }
 
 }
