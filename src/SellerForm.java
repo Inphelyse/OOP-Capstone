@@ -37,9 +37,13 @@ public class SellerForm extends JFrame {
     private JButton LogOutSeller;
     private JPanel ProductImagePnl;
     private JLabel ProductImageLbl;
+    private JLabel accountType;
 
 
-    public SellerForm(){
+    public SellerForm(String username, String _accountType){
+
+        accountType.setText(username + " (" + _accountType + ")");
+
         uploadProductImageButton.addActionListener(e -> {
 
             JFileChooser chooser = new JFileChooser();

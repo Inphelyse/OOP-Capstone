@@ -27,24 +27,22 @@ public class BossStore extends JFrame{
     private JTextField signUpAddressField;
     private JButton backToLogInButton;
     private JRadioButton courierRadioButton;
-    private JPanel AdminPnl;
-    private JPanel Summary_Report_Pnl;
-    private JPanel Report_Details_Admin;
-    private JButton HomeBtn;
-    private JButton SellersButton;
-    private JPanel SellersPnl;
-    private JPanel CustomersPnl;
-    private JPanel CouriersPnl;
-    private JButton CustomersBtn;
-    private JButton CouriersBtn;
-    private JButton FeedbackBtn;
-    private JButton BansBtn;
-    private JButton HistoryBtn;
-    private JPanel FeedbackPnl;
-    private JPanel BansPnl;
-    private JPanel HistoryPnl;
-
-    private ArrayList<Person> persons = new ArrayList<>();
+//    private JPanel AdminPnl;
+//    private JPanel Summary_Report_Pnl;
+//    private JPanel Report_Details_Admin;
+//    private JButton HomeBtn;
+//    private JButton SellersButton;
+//    private JPanel SellersPnl;
+//    private JPanel CustomersPnl;
+//    private JPanel CouriersPnl;
+//    private JButton CustomersBtn;
+//    private JButton CouriersBtn;
+//    private JButton FeedbackBtn;
+//    private JButton BansBtn;
+//    private JButton HistoryBtn;
+//    private JPanel FeedbackPnl;
+//    private JPanel BansPnl;
+//    private JPanel HistoryPnl;
 
     public BossStore(){
         // Either seller or a customer (only choose one)
@@ -94,7 +92,7 @@ public class BossStore extends JFrame{
 
         // Checks if password or username is empty
         if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(logInPanel, "Please enter username || password");
+            JOptionPane.showMessageDialog(logInPanel, "Please enter username and password");
             return;
         }
 
@@ -116,11 +114,11 @@ public class BossStore extends JFrame{
 
 
         if (type.equals("Admin")) {
-            new Admin().setVisible(true);
+            new Admin(account[1], type).setVisible(true);
         } else if (type.equals("Seller")) {
-            new SellerForm().setVisible(true);
+            new SellerForm(account[1], type).setVisible(true);
         } else if (type.equals("Courier")) {
-            new CourierForm().setVisible(true);
+            new CourierForm(account[1], type).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Customer) Wala pay panel for Customer");
             logInUsernameField.setText("");
@@ -141,6 +139,7 @@ public class BossStore extends JFrame{
         String address = signUpAddressField.getText();
         boolean flagPhone = true;
 
+        // Check if phoneNum is a number
         for (int i = 0; i < phoneNumString.length(); i++) {
             if (phoneNumString.charAt(i) < '0' || phoneNumString.charAt(i) > '9') {
                 flagPhone= false;
@@ -196,21 +195,21 @@ public class BossStore extends JFrame{
         app.setVisible(true);
     }
 
-    private void showPage(String page) {
-        // Home part
-
-        boolean home = page.equals("home");
-        Summary_Report_Pnl.setVisible(home);
-        Report_Details_Admin.setVisible(home);
-
-        // Other pages
-        SellersPnl.setVisible(page.equals("sellers"));
-        CustomersPnl.setVisible(page.equals("customers"));
-        CouriersPnl.setVisible(page.equals("couriers"));
-        FeedbackPnl.setVisible(page.equals("feedbacks"));
-        BansPnl.setVisible(page.equals("bans"));
-        HistoryPnl.setVisible(page.equals("history"));
-    }
+//    private void showPage(String page) {
+//        // Home part
+//
+//        boolean home = page.equals("home");
+//        Summary_Report_Pnl.setVisible(home);
+//        Report_Details_Admin.setVisible(home);
+//
+//        // Other pages
+//        SellersPnl.setVisible(page.equals("sellers"));
+//        CustomersPnl.setVisible(page.equals("customers"));
+//        CouriersPnl.setVisible(page.equals("couriers"));
+//        FeedbackPnl.setVisible(page.equals("feedbacks"));
+//        BansPnl.setVisible(page.equals("bans"));
+//        HistoryPnl.setVisible(page.equals("history"));
+//    }
 
     public void clearFields() {
         signUpUsernameField.setText("");
@@ -218,36 +217,6 @@ public class BossStore extends JFrame{
         signUpConfirmPasswordField.setText("");
         signUpPasswordField.setText("");
         signUpAddressField.setText("");
-    }
-
-    public void savePerson(String type, String username, String password, String phone, String address) {
-        File file = new File("Persons/customer.txt");
-        File file2 = new File("Persons/seller.txt");
-        File file3 = new File("Persons/courier.txt");
-
-        // "true" = append, so old accounts aren't overwritten
-        if(type.equals("Customer")) {
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
-                bw.write(type + "|" + username + "|" + password + "|" + phone + "|" + address);
-                bw.newLine();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(signUpPanel, "Could not save account: " + ex.getMessage());
-            }
-        } else if(type.equals("Seller")) {
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file2, true))) {
-                bw.write(type + "|" + username + "|" + password + "|" + phone + "|" + address);
-                bw.newLine();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(signUpPanel, "Could not save account: " + ex.getMessage());
-            }
-        } else if(type.equals("Courier")) {
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file3, true))) {
-                bw.write(type + "|" + username + "|" + password + "|" + phone + "|" + address);
-                bw.newLine();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(signUpPanel, "Could not save account: " + ex.getMessage());
-            }
-        }
     }
 
     public static void main(String[] args) {
