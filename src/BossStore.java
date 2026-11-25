@@ -113,22 +113,21 @@ public class BossStore extends JFrame{
         }
 
 
-        if (type.equals("Admin")) {
-            new Admin().setVisible(true);
-        } else if (type.equals("Seller")) {
-            new SellerForm().setVisible(true);
-        } else if (type.equals("Courier")) {
-            new CourierForm().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Courier) Wala pay panel for Courier");
-            logInUsernameField.setText("");
-            logInPasswordField.setText("");
-            return;
+        switch (type) {
+            case "Admin" -> new Admin().setVisible(true);
+            case "Seller" -> new SellerForm().setVisible(true);
+            case "Courier" -> new CourierForm().setVisible(true);
+            case "Customer" -> new CustomerForm().setVisible(true);
+            default -> {
+                //    JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Courier) Wala pay panel for Courier");
+                logInUsernameField.setText("");
+                logInPasswordField.setText("");
+                return;
 //            new CustomerForm().setVisible(true);
+            }
         }
         this.dispose();
-
-        this.dispose();
+        // this.dispose();
     }
 
     private void signUp() {
