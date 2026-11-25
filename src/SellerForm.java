@@ -80,6 +80,13 @@ public class SellerForm extends JFrame {
         });
 
 
+        DashboardPnl.setVisible(true);
+        MyProductsPnl.setVisible(false);
+        AddProductPnl.setVisible(false);
+        FeedbackPnl.setVisible(false);
+        OrderHistory.setVisible(false);
+
+
         dashboardButton.addActionListener(e->showPage("dashboard"));
         myProductButton.addActionListener(e->showPage("Myproducts"));
         addProductsButton.addActionListener(e->showPage("addproducts"));
