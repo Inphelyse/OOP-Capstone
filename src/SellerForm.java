@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.awt.Image;
+import java.awt.*;
 
 public class SellerForm extends JFrame {
     private JPanel SellerPnl;
@@ -78,14 +78,7 @@ public class SellerForm extends JFrame {
             BossStore.showLogInPanel();
             this.dispose();
         });
-
-
-        DashboardPnl.setVisible(true);
-        MyProductsPnl.setVisible(false);
-        AddProductPnl.setVisible(false);
-        FeedbackPnl.setVisible(false);
-        OrderHistory.setVisible(false);
-
+        showPage("dashboard");
 
         dashboardButton.addActionListener(e->showPage("dashboard"));
         myProductButton.addActionListener(e->showPage("Myproducts"));
@@ -161,8 +154,66 @@ public class SellerForm extends JFrame {
         FeedbackPnl.setVisible(page.equals("feedback"));
         OrderHistory.setVisible(page.equals("OrderHistory"));
 
-    }
+        //update navigation Button
+        switch (page){
+            case "dashboard":
+                setActiveNavigation(dashboardButton);
+                break;
+            case "Myproducts":
+                setActiveNavigation(myProductButton);
+                break;
+            case "addproducts":
+                setActiveNavigation(addProductsButton);
+                break;
+            case "feedback":
+                setActiveNavigation(FeedbackBtn);
+                break;
+            case "OrderHistory":
+                setActiveNavigation(OrderHistoryBtn);
+                break;
+        }
 
+
+    }
+    private void setActiveNavigation(JButton activeButton) {
+
+        // Default navigation appearance
+        Color defaultBackground = new Color(23, 33, 64);
+        Color defaultForeground = Color.WHITE;
+
+        // Active navigation appearance
+        Color activeBackground = new Color(242, 165, 65);
+        Color activeForeground = new Color(30, 42, 74);
+
+        // All navigation buttons
+        JButton[] navButtons = {
+                dashboardButton,
+                myProductButton,
+                addProductsButton,
+                FeedbackBtn,
+                OrderHistoryBtn
+        };
+
+        // Reset all buttons
+        for (JButton button : navButtons) {
+
+            button.setOpaque(true);
+            button.setContentAreaFilled(true);
+            button.setBackground(defaultBackground);
+            button.setForeground(defaultForeground);
+            button.setBorderPainted(false);
+            button.setFocusPainted(false);
+
+            button.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        }
+
+        // Highlight selected button
+        activeButton.setBackground(activeBackground);
+        activeButton.setForeground(activeForeground);
+
+        activeButton.setFont(new Font("Segoe Ui", Font.BOLD, 13));
+
+    }
 
 
 
