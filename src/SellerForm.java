@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.awt.*;
+
 public class SellerForm extends JFrame {
     private JPanel SellerPnl;
     private JPanel HeaderPnl;
@@ -15,8 +17,6 @@ public class SellerForm extends JFrame {
     private JPanel PnlMain;
     private JPanel DashboardPnl;
     private JPanel MyProductsPnl;
-    private JTextField textField1;
-    private JPanel ProductDetails;
     private JPanel AddProductPnl;
     private JPanel productInfo;
     private JTextField ProductName;
@@ -33,15 +33,51 @@ public class SellerForm extends JFrame {
     private JTable SubmissionsTbl;
     private JPanel Info_Details;
     private JButton LogOutSeller;
+    private JPanel ProductImagePnl;
+    private JLabel ProductImageLbl;
+    private JLabel accountType;
+    private JLabel greetUsername;
+    private JPanel ProductDetails;
+    private JTextField quantityfield;
+
+    public SellerForm(String username, String _accountType){
+
+        accountType.setText(username + " (" + _accountType + ")");
+        greetUsername.setText("Hello, " + username);
+
+        uploadProductImageButton.addActionListener(e -> {
+
+            JFileChooser chooser = new JFileChooser();
+
+            // Only allow image files
+            chooser.setFileFilter(
+                    new javax.swing.filechooser.FileNameExtensionFilter(
+                            "Image Files (JPG, PNG)",
+                            "jpg", "jpeg", "png"
+                    )
+            );
+
+            // Open file selection window
+            int result = chooser.showOpenDialog(this);
+
+            // Check if seller selected an image
+            if (result == JFileChooser.APPROVE_OPTION) {
+
+                java.io.File selectedFile = chooser.getSelectedFile();
+
+                // Display selected image
+                displayImage(selectedFile);
+            }
+
+        });
 
 
-    public SellerForm(){
 
         LogOutSeller.addActionListener(e->{
             BossStore.showLogInPanel();
             this.dispose();
         });
-
+        showPage("dashboard");
 
         dashboardButton.addActionListener(e->showPage("dashboard"));
         myProductButton.addActionListener(e->showPage("Myproducts"));
@@ -60,6 +96,53 @@ public class SellerForm extends JFrame {
 
     }
 
+    private void displayImage(java.io.File file) {
+
+        // Load original image
+        ImageIcon originalIcon = new ImageIcon(file.getAbsolutePath());
+
+        Image originalImage = originalIcon.getImage();
+
+        // Get original dimensions
+        int originalWidth = originalIcon.getIconWidth();
+        int originalHeight = originalIcon.getIconHeight();
+
+        // Get JLabel dimensions
+        int labelWidth = ProductImageLbl.getWidth();
+        int labelHeight = ProductImageLbl.getHeight();
+
+        // Check dimensions
+        if (originalWidth <= 0 || originalHeight <= 0 ||
+                labelWidth <= 0 || labelHeight <= 0) {
+            return;
+        }
+
+        // Calculate resizing ratio
+        double scale = Math.min(
+                (double) labelWidth / originalWidth,
+                (double) labelHeight / originalHeight
+        );
+
+        // Calculate new dimensions
+        int newWidth = (int) (originalWidth * scale);
+        int newHeight = (int) (originalHeight * scale);
+
+        // Resize image
+        Image resizedImage = originalImage.getScaledInstance(
+                newWidth,
+                newHeight,
+                Image.SCALE_SMOOTH
+        );
+
+        // Display image
+        ProductImageLbl.setIcon(new ImageIcon(resizedImage));
+        ProductImageLbl.setText("");
+
+        // Center image
+        ProductImageLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        ProductImageLbl.setVerticalAlignment(SwingConstants.CENTER);
+    }
+
     private void showPage(String page) {
         // Home part
 
@@ -70,8 +153,66 @@ public class SellerForm extends JFrame {
         FeedbackPnl.setVisible(page.equals("feedback"));
         OrderHistory.setVisible(page.equals("OrderHistory"));
 
-    }
+        //update navigation Button
+        switch (page){
+            case "dashboard":
+                setActiveNavigation(dashboardButton);
+                break;
+            case "Myproducts":
+                setActiveNavigation(myProductButton);
+                break;
+            case "addproducts":
+                setActiveNavigation(addProductsButton);
+                break;
+            case "feedback":
+                setActiveNavigation(FeedbackBtn);
+                break;
+            case "OrderHistory":
+                setActiveNavigation(OrderHistoryBtn);
+                break;
+        }
 
+
+    }
+    private void setActiveNavigation(JButton activeButton) {
+
+        // Default navigation appearance
+        Color defaultBackground = new Color(23, 33, 64);
+        Color defaultForeground = Color.WHITE;
+
+        // Active navigation appearance
+        Color activeBackground = new Color(242, 165, 65);
+        Color activeForeground = new Color(30, 42, 74);
+
+        // All navigation buttons
+        JButton[] navButtons = {
+                dashboardButton,
+                myProductButton,
+                addProductsButton,
+                FeedbackBtn,
+                OrderHistoryBtn
+        };
+
+        // Reset all buttons
+        for (JButton button : navButtons) {
+
+            button.setOpaque(true);
+            button.setContentAreaFilled(true);
+            button.setBackground(defaultBackground);
+            button.setForeground(defaultForeground);
+            button.setBorderPainted(false);
+            button.setFocusPainted(false);
+
+            button.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        }
+
+        // Highlight selected button
+        activeButton.setBackground(activeBackground);
+        activeButton.setForeground(activeForeground);
+
+        activeButton.setFont(new Font("Segoe Ui", Font.BOLD, 13));
+
+    }
 
 
 

@@ -61,6 +61,8 @@ public class Admin extends JFrame {
     private JLabel customerTotal;
     private JLabel sellerTotal;
     private JLabel courierTotal;
+    private JLabel accountType;
+    private JLabel greetUsername;
 
     private static final int COURIERS_PER_PAGE = 20;
 
@@ -68,7 +70,10 @@ public class Admin extends JFrame {
     private final ArrayList<String[]> couriers = new ArrayList<>();
     private int courierPage = 0;
 
-    public Admin(){
+    public Admin(String username, String _accountType){
+        accountType.setText(username + " (" + _accountType + ")");
+        greetUsername.setText("Hello, " + username);
+
         CustomerDetailsPnl.setVisible(false);
         SellersPnl.setVisible(false);
         CustomersPnl.setVisible(false);
@@ -90,6 +95,8 @@ public class Admin extends JFrame {
         CouriersScroll.getVerticalScrollBar().setUnitIncrement(CouriersTbl.getRowHeight());
         CouriersTbl.setFillsViewportHeight(true);
         CouriersTbl.setPreferredScrollableViewportSize(new Dimension(480, CouriersTbl.getRowHeight() * 8));
+
+
 
         CouriersTbl.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
@@ -133,16 +140,14 @@ public class Admin extends JFrame {
 
 
         int _customerTotal = Files.customerTotal();
-        customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
-
         int _sellerTotal = Files.sellerTotal();
-        sellerTotal.setText("Seller: " + String.valueOf(_sellerTotal));
-
         int _courierTotal = Files.courierTotal();
-        courierTotal.setText("Courier: " + String.valueOf(_courierTotal));
+        int _totalPeople = Files.totalPeople();
 
-        int totalPeople = _customerTotal + _sellerTotal + _courierTotal;
-        showTotalPeople.setText(String.valueOf(totalPeople));
+        customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
+        sellerTotal.setText("Seller: " + String.valueOf(_sellerTotal));
+        courierTotal.setText("Courier: " + String.valueOf(_courierTotal));
+        showTotalPeople.setText(String.valueOf(_totalPeople + 1));
     }
 
     private void loadCouriers() {

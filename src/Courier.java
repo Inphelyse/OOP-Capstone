@@ -5,7 +5,7 @@ public class Courier extends Person{
 
     @Override
     public String readType() {
-        return "";
+        return "Courier";
     }
 
 

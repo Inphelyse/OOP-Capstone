@@ -16,7 +16,7 @@ public class Files {
         if (admin.exists() && admin.length() > 0) return;
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(admin, true))) {
-            bw.write("Admin|Boss|11112222|099912312|Secret");
+            bw.write("Admin|Boss Tamaki|11112222|099912312|Secret");
             bw.newLine();
         } catch (IOException ex) {
             System.err.println("Could not save");
@@ -28,11 +28,15 @@ public class Files {
         if (courier.exists() && courier.length() > 0) return;
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(courier, true))) {
-            bw.write("Courier|Nico Carato|courier123|09991112233|Cebu City");
+            bw.write("Courier|JK Catalo|22223333|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Courier|Courier|123123123|09171234567|Mandaue City");
+            bw.write("Courier|JK Catalo1|22223333|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Courier|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City");
+            bw.write("Courier|JK Catalo2|22223333|09991112233|Cebu City");
+            bw.newLine();
+            bw.write("Courier|JK Catalo3|22223333|09991112233|Cebu City");
+            bw.newLine();
+            bw.write("Courier|JK Catalo4|22223333|09991112233|Cebu City");
             bw.newLine();
         } catch (IOException ex) {
             System.err.println("Could not save courier");
@@ -44,11 +48,15 @@ public class Files {
         if (seller.exists() && seller.length() > 0) return;
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(seller, true))) {
-            bw.write("Seller|Nico Carato|courier123|09991112233|Cebu City");
+            bw.write("Seller|JP Magdasal|22221111|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Seller|Seller|123123123|09171234567|Mandaue City");
+            bw.write("Seller|JP Magdasal1|22221111|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Seller|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City");
+            bw.write("Seller|JP Magdasal2|22221111|09991112233|Cebu City");
+            bw.newLine();
+            bw.write("Seller|JP Magdasal3|22221111|09991112233|Cebu City");
+            bw.newLine();
+
             bw.newLine();
         } catch (IOException ex) {
             System.err.println("Could not save courier");
@@ -60,17 +68,13 @@ public class Files {
         if (customer.exists() && customer.length() > 0) return;
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(customer, true))) {
-            bw.write("Customer|Nico Carato|courier123|09991112233|Cebu City");
+            bw.write("Customer|Nico Carato|11112222|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Customer|Customer|123123123|09171234567|Mandaue City");
+            bw.write("Customer|Nico Carato1|11112222|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Customer|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City");
+            bw.write("Customer|Nico Carato2|11112222|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Customer|Nico Carato|courier123|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Customer|Ana Reyes|delivery88|09171234567|Mandaue City");
-            bw.newLine();
-            bw.write("Customer|Luis Gomez|riderpass1|09228887766|Lapu-Lapu City");
+            bw.write("Customer|Nico Carato3|11112222|09991112233|Cebu City");
             bw.newLine();
         } catch (IOException ex) {
             System.err.println("Could not save courier");
@@ -185,62 +189,6 @@ public class Files {
     }
 
     public static int totalPeople() {
-        File file1 = new File("Persons/customer.txt");
-        File file2 = new File("Persons/seller.txt");
-        File file3 = new File("Persons/courier.txt");
-        int count = 0;
-
-        if(file1.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split("\\|");
-                    if (parts.length < 5) {
-                        continue;
-                    }
-                    count++;
-                }
-                System.out.println("asda");
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Error5: " + ex.getMessage());
-            }
-        }
-
-        if(file2.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split(",");
-                    if (parts.length < 5) {
-                        continue;
-                    }
-                    count++;
-                }
-                System.out.println("asdasda");
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Error6: " + ex.getMessage());
-            }
-        }
-
-        if(file3.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file3))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split(",");
-                    if (parts.length < 5) {
-                        continue;
-                    }
-                    count++;
-                }
-                System.out.println("asdasda");
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Error6: " + ex.getMessage());
-            }
-        }
-
-        return count;
+        return customerTotal() + sellerTotal() + courierTotal();
     }
-
-
-
 }
