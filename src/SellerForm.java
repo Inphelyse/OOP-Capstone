@@ -38,11 +38,13 @@ public class SellerForm extends JFrame {
     private JPanel ProductImagePnl;
     private JLabel ProductImageLbl;
     private JLabel accountType;
+    private JLabel greetUsername;
 
 
     public SellerForm(String username, String _accountType){
 
         accountType.setText(username + " (" + _accountType + ")");
+        greetUsername.setText("Hello, " + username);
 
         uploadProductImageButton.addActionListener(e -> {
 

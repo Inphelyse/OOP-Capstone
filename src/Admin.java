@@ -62,6 +62,7 @@ public class Admin extends JFrame {
     private JLabel sellerTotal;
     private JLabel courierTotal;
     private JLabel accountType;
+    private JLabel greetUsername;
 
     private static final int COURIERS_PER_PAGE = 20;
 
@@ -71,6 +72,7 @@ public class Admin extends JFrame {
 
     public Admin(String username, String _accountType){
         accountType.setText(username + " (" + _accountType + ")");
+        greetUsername.setText("Hello, " + username);
 
         CustomerDetailsPnl.setVisible(false);
         SellersPnl.setVisible(false);

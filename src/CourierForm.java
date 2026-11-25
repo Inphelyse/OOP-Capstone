@@ -19,9 +19,11 @@ public class CourierForm extends JFrame {
     private JLabel DeliveryDropOffLbl;
     private JLabel DeliveryStatusLbl;
     private JLabel accountType;
+    private JLabel greetUsername;
 
     public CourierForm(String username, String _accountType) {
         accountType.setText(username + " (" + _accountType + ")");
+        greetUsername.setText("Hello, " + username);
 
         DeliveriesBtn.addActionListener(e -> showPage("deliveries"));
         HistoryBtn.addActionListener(e -> showPage("history"));
