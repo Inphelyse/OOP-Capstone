@@ -37,7 +37,8 @@ public class SellerForm extends JFrame {
     private JLabel ProductImageLbl;
     private JLabel accountType;
     private JLabel greetUsername;
-
+    private JPanel ProductDetails;
+    private JTextField quantityfield;
 
     public SellerForm(String username, String _accountType){
 
