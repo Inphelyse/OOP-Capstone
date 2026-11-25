@@ -5,7 +5,7 @@ public class AdminClass extends Person {
 
     @Override
     public String readType() {
-        return "";
+        return "Admin";
     }
 
 

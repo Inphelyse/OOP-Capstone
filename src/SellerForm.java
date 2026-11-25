@@ -17,8 +17,6 @@ public class SellerForm extends JFrame {
     private JPanel PnlMain;
     private JPanel DashboardPnl;
     private JPanel MyProductsPnl;
-    private JTextField textField1;
-    private JPanel ProductDetails;
     private JPanel AddProductPnl;
     private JPanel productInfo;
     private JTextField ProductName;
