@@ -908,7 +908,7 @@
                             <properties>
                               <font name="Segoe UI" size="13" style="0"/>
                               <foreground color="-1643277"/>
-                              <text value="Maya Chen · Customer"/>
+                              <text value="Maya Chen · CustomerClass"/>
                             </properties>
                           </component>
                           <component id="208ec" class="javax.swing.JLabel">
@@ -1803,7 +1803,7 @@
                             <properties>
                               <font name="Segoe UI" size="13" style="0"/>
                               <foreground color="-1643277"/>
-                              <text value="Maya Chen · Customer"/>
+                              <text value="Maya Chen · CustomerClass"/>
                             </properties>
                           </component>
                           <component id="3cb10" class="javax.swing.JLabel">

@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -117,9 +115,9 @@ public class BossStore extends JFrame{
             case "Admin" -> new Admin().setVisible(true);
             case "Seller" -> new SellerForm().setVisible(true);
             case "Courier" -> new CourierForm().setVisible(true);
-            case "Customer" -> new CustomerForm().setVisible(true);
+            case "Customer" -> new CustomerForm(new CustomerClass(account[1], account[2],account[3], account[4])).setVisible(true);
             default -> {
-                //    JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Courier) Wala pay panel for Courier");
+                JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Courier) Wala pay panel for Courier");
                 logInUsernameField.setText("");
                 logInPasswordField.setText("");
                 return;
@@ -166,12 +164,11 @@ public class BossStore extends JFrame{
         } else if (address.isEmpty()) {
             JOptionPane.showMessageDialog(logInPanel, "Enter your address");
         } else {
-            int phoneNum = Integer.parseInt(phoneNumString);
             Person p;
             if (customerRadioButton.isSelected()) {
-                p = new Customer(username, password, phoneNum, address);
+                p = new CustomerClass(username, password, phoneNumString, address);
             } else {
-                p = new Seller(username, password, phoneNum, address);
+                p = new Seller(username, password, phoneNumString, address);
             }
 
             Files.saveAccount(p);

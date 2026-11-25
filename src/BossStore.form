@@ -397,7 +397,7 @@
                   <foreground color="-1643277"/>
                   <opaque value="false"/>
                   <selected value="true"/>
-                  <text value="Customer"/>
+                  <text value="CustomerClass"/>
                 </properties>
               </component>
               <component id="e4ccb" class="javax.swing.JRadioButton" binding="sellerRadioButton" default-binding="true">

@@ -1,0 +1,4 @@
+Pictures/shoes1.jpg|Shoes|Nico|67
+Pictures/shoes2.jpg|Plate|Tamaki|68
+Pictures/shoes3.jpg|Crayons|Catalo|69
+Pictures/shoes4.jpg|Pencil|Magdasal|69
