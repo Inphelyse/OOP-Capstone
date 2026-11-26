@@ -133,6 +133,8 @@ public class BossStore extends JFrame{
             JOptionPane.showMessageDialog(logInPanel, "Please enter a username");
         } else if(Files.findAccount(username) != null) {
             JOptionPane.showMessageDialog(logInPanel, "Username already exist");
+        } else if(Files.findPhoneNum(Integer.parseInt(phoneNumString))) {
+            JOptionPane.showMessageDialog(logInPanel, "Phone number already taken");
         } else if (phoneNumString.isEmpty()) {
             JOptionPane.showMessageDialog(logInPanel, "Please enter phone number");
         } else if (phoneNumString.length() < 7 || phoneNumString.length() > 15 || !flagPhone) {

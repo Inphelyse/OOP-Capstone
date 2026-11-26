@@ -30,14 +30,6 @@ public class Files {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(courier, true))) {
             bw.write("Courier|JK Catalo|22223333|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Courier|JK Catalo1|22223333|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Courier|JK Catalo2|22223333|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Courier|JK Catalo3|22223333|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Courier|JK Catalo4|22223333|09991112233|Cebu City");
-            bw.newLine();
         } catch (IOException ex) {
             System.err.println("Could not save courier");
             System.out.println("test courier acc");
@@ -50,14 +42,6 @@ public class Files {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(seller, true))) {
             bw.write("Seller|JP Magdasal|22221111|09991112233|Cebu City");
             bw.newLine();
-            bw.write("Seller|JP Magdasal1|22221111|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Seller|JP Magdasal2|22221111|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Seller|JP Magdasal3|22221111|09991112233|Cebu City");
-            bw.newLine();
-
-            bw.newLine();
         } catch (IOException ex) {
             System.err.println("Could not save courier");
             System.out.println("test seller acc");
@@ -69,12 +53,6 @@ public class Files {
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(customer, true))) {
             bw.write("Customer|Nico Carato|11112222|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Customer|Nico Carato1|11112222|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Customer|Nico Carato2|11112222|09991112233|Cebu City");
-            bw.newLine();
-            bw.write("Customer|Nico Carato3|11112222|09991112233|Cebu City");
             bw.newLine();
         } catch (IOException ex) {
             System.err.println("Could not save courier");
@@ -104,6 +82,32 @@ public class Files {
             }
         }
         return null;
+    }
+
+    static boolean findPhoneNum(int phoneNum) {
+        String[] fileLocation = {"Persons/admin.txt", "Persons/seller.txt", "Persons/customer.txt", "Persons/courier.txt"};
+
+        for (int i = 0; i < fileLocation.length; i++) {
+            String file = fileLocation[i];
+            try {
+                Scanner read = new Scanner(new File(file));
+                while (read.hasNextLine()) {
+                    String line = read.nextLine();
+                    String[] row = line.split("\\|");
+
+                    int flagPhone = Integer.parseInt(row[2]);
+
+                    if(flagPhone == phoneNum) {
+                        read.close();
+                        return true;
+                    }
+                }
+                read.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found: " + file);
+            }
+        }
+        return false;
     }
 
     static void saveAccount(Person p) {
