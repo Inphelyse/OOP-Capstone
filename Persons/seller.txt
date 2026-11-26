@@ -1,0 +1,5 @@
+Seller|JP Magdasal|22221111|09991112233|Cebu City
+Seller|JP Magdasal1|22221111|09991112233|Cebu City
+Seller|JP Magdasal2|22221111|09991112233|Cebu City
+Seller|JP Magdasal3|22221111|09991112233|Cebu City
+

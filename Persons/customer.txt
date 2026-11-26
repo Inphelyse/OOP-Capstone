@@ -1,0 +1,4 @@
+Customer|Nico Carato|11112222|09991112233|Cebu City
+Customer|Nico Carato1|11112222|09991112233|Cebu City
+Customer|Nico Carato2|11112222|09991112233|Cebu City
+Customer|Nico Carato3|11112222|09991112233|Cebu City
