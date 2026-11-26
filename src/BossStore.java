@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -113,18 +111,18 @@ public class BossStore extends JFrame{
         }
 
 
-        if (type.equals("Admin")) {
-            new Admin(account[1], type).setVisible(true);
-        } else if (type.equals("Seller")) {
-            new SellerForm(account[1], type).setVisible(true);
-        } else if (type.equals("Courier")) {
-            new CourierForm(account[1], type).setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Customer) Wala pay panel for Customer");
-            logInUsernameField.setText("");
-            logInPasswordField.setText("");
-            return;
+        switch (type) {
+            case "Admin" -> new Admin(account[1], type).setVisible(true);
+            case "Seller" -> new SellerForm(account[1], type).setVisible(true);
+            case "Courier" -> new CourierForm(account[1], type).setVisible(true);
+            case "Customer" -> new CustomerForm(new CustomerClass(account[1], account[2],account[3], account[4])).setVisible(true);
+            default -> {
+                JOptionPane.showMessageDialog(this, "Welcome, " + username + "! (Customer) Wala pay panel for Customer");
+                logInUsernameField.setText("");
+                logInPasswordField.setText("");
+                return;
 //            new CustomerForm().setVisible(true);
+            }
         }
         this.dispose();
     }
@@ -166,14 +164,13 @@ public class BossStore extends JFrame{
         } else if (address.isEmpty()) {
             JOptionPane.showMessageDialog(logInPanel, "Enter your address");
         } else {
-            int phoneNum = Integer.parseInt(phoneNumString);
             Person p;
             if (customerRadioButton.isSelected()) {
-                p = new Customer(username, password, phoneNum, address);
-            } else if(sellerRadioButton.isSelected()) {
-                p = new Seller(username, password, phoneNum, address);
+                p = new CustomerClass(username, password, phoneNumString, address);
+            } else if(sellerRadioButton.isSelected()){
+                p = new Seller(username, password, phoneNumString, address);
             } else {
-                p = new Courier(username, password, phoneNum, address);
+                p = new Courier(username, password, phoneNumString, address);
             }
 
             Files.saveAccount(p);
@@ -187,11 +184,10 @@ public class BossStore extends JFrame{
 
     public static void showLogInPanel() {
         BossStore app = new BossStore();
-
         app.setContentPane(app.panelMain);
-        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.pack();
         app.setLocationRelativeTo(null);
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setVisible(true);
     }
 
@@ -221,15 +217,12 @@ public class BossStore extends JFrame{
 
     public static void main(String[] args) {
         BossStore app = new BossStore();
-
         app.setContentPane(app.panelMain);
-        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.pack();
         app.setLocationRelativeTo(null);
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setVisible(true);
-    }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+
     }
 }

@@ -346,7 +346,7 @@
                             <properties>
                               <font name="Segoe UI" size="11" style="0"/>
                               <foreground color="-1643277"/>
-                              <text value="Customer: 0"/>
+                              <text value="CustomerClass: 0"/>
                             </properties>
                           </component>
                           <component id="165db" class="javax.swing.JLabel" binding="sellerTotal">
@@ -883,7 +883,7 @@
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
                                   <foreground color="-1643277"/>
-                                  <text value="Customer"/>
+                                  <text value="CustomerClass"/>
                                 </properties>
                               </component>
                             </children>
@@ -1007,7 +1007,7 @@
                             <properties>
                               <font name="Segoe UI" size="16" style="1"/>
                               <foreground color="-1"/>
-                              <text value="Customer accounts"/>
+                              <text value="CustomerClass accounts"/>
                             </properties>
                           </component>
                           <hspacer id="72daf">
@@ -1214,7 +1214,7 @@
                             <properties>
                               <font name="Segoe UI" size="16" style="1"/>
                               <foreground color="-1"/>
-                              <text value="Customer details"/>
+                              <text value="CustomerClass details"/>
                             </properties>
                           </component>
                           <hspacer id="60f08">
@@ -1322,7 +1322,7 @@
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
                                   <foreground color="-1643277"/>
-                                  <text value="Customer account"/>
+                                  <text value="CustomerClass account"/>
                                 </properties>
                               </component>
                             </children>
@@ -1999,7 +1999,7 @@
                                   <font name="Segoe UI" size="13" style="0"/>
                                   <model>
                                     <item value="All roles"/>
-                                    <item value="Customer"/>
+                                    <item value="CustomerClass"/>
                                     <item value="Seller"/>
                                     <item value="Courier"/>
                                   </model>
@@ -2260,7 +2260,7 @@
                             <properties>
                               <font name="Segoe UI" size="13" style="0"/>
                               <foreground color="-1643277"/>
-                              <text value="Maya Chen · Customer"/>
+                              <text value="Maya Chen · CustomerClass"/>
                             </properties>
                           </component>
                           <component id="9e14e" class="javax.swing.JLabel">
@@ -2582,7 +2582,7 @@
                                   <font name="Segoe UI" size="13" style="0"/>
                                   <model>
                                     <item value="All roles"/>
-                                    <item value="Customer"/>
+                                    <item value="CustomerClass"/>
                                     <item value="Seller"/>
                                     <item value="Courier"/>
                                   </model>
@@ -3401,7 +3401,7 @@
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
                                   <foreground color="-1643277"/>
-                                  <text value="Customer account"/>
+                                  <text value="CustomerClass account"/>
                                 </properties>
                               </component>
                             </children>
