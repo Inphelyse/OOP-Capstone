@@ -702,7 +702,7 @@
                               </component>
                             </children>
                           </scrollpane>
-                          <grid id="43ebd" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
+                          <grid id="43ebd" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -727,57 +727,6 @@
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </hspacer>
-                              <component id="89639" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Previous"/>
-                                </properties>
-                              </component>
-                              <component id="da71d" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="36" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-875199"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="1"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="1"/>
-                                </properties>
-                              </component>
-                              <component id="ce21f" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Next"/>
-                                </properties>
-                              </component>
                             </children>
                           </grid>
                         </children>
@@ -1025,7 +974,7 @@
                             <properties>
                               <font name="Segoe UI" size="16" style="1"/>
                               <foreground color="-1"/>
-                              <text value="CustomerClass accounts"/>
+                              <text value="Customer accounts"/>
                             </properties>
                           </component>
                           <hspacer id="72daf">
@@ -1148,7 +1097,7 @@
                               </component>
                             </children>
                           </scrollpane>
-                          <grid id="70d06" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
+                          <grid id="70d06" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -1173,57 +1122,6 @@
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </hspacer>
-                              <component id="90b92" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Previous"/>
-                                </properties>
-                              </component>
-                              <component id="8c390" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="36" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-875199"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="1"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="1"/>
-                                </properties>
-                              </component>
-                              <component id="497da" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Next"/>
-                                </properties>
-                              </component>
                             </children>
                           </grid>
                         </children>
@@ -1634,7 +1532,7 @@
                               </component>
                             </children>
                           </scrollpane>
-                          <grid id="a7718" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
+                          <grid id="a7718" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -1659,57 +1557,6 @@
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </hspacer>
-                              <component id="64547" class="javax.swing.JButton" binding="CourierPrevBtn">
-                                <constraints>
-                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Previous"/>
-                                </properties>
-                              </component>
-                              <component id="4c804" class="javax.swing.JButton" binding="CourierPageBtn">
-                                <constraints>
-                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="36" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-875199"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="1"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="1"/>
-                                </properties>
-                              </component>
-                              <component id="3ba7d" class="javax.swing.JButton" binding="CourierNextBtn">
-                                <constraints>
-                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Next"/>
-                                </properties>
-                              </component>
                             </children>
                           </grid>
                         </children>
@@ -2165,7 +2012,7 @@
                               </component>
                             </children>
                           </scrollpane>
-                          <grid id="6cd6" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
+                          <grid id="6cd6" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -2190,50 +2037,6 @@
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </hspacer>
-                              <component id="ce1c7" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Previous"/>
-                                </properties>
-                              </component>
-                              <component id="855dc" class="javax.swing.JLabel">
-                                <constraints>
-                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                                <properties>
-                                  <font name="Segoe UI" size="12" style="0"/>
-                                  <foreground color="-1643277"/>
-                                  <text value="1 / 2"/>
-                                </properties>
-                              </component>
-                              <component id="27794" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Next"/>
-                                </properties>
-                              </component>
                             </children>
                           </grid>
                         </children>
@@ -2668,7 +2471,7 @@
                               </component>
                             </children>
                           </scrollpane>
-                          <grid id="35fc6" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
+                          <grid id="35fc6" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="10" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -2693,57 +2496,6 @@
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                               </hspacer>
-                              <component id="e9f46" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Previous"/>
-                                </properties>
-                              </component>
-                              <component id="23552" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="36" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-875199"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="1"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="1"/>
-                                </properties>
-                              </component>
-                              <component id="5e99f" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                    <preferred-size width="90" height="30"/>
-                                  </grid>
-                                </constraints>
-                                <properties>
-                                  <background color="-1"/>
-                                  <borderPainted value="false"/>
-                                  <contentAreaFilled value="true"/>
-                                  <focusPainted value="false"/>
-                                  <font name="Segoe UI" size="13" style="0"/>
-                                  <foreground color="-14800310"/>
-                                  <opaque value="true"/>
-                                  <text value="Next"/>
-                                </properties>
-                              </component>
                             </children>
                           </grid>
                         </children>

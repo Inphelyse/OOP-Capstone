@@ -168,11 +168,13 @@ public class BossStore extends JFrame{
         } else {
             Person p;
             if (customerRadioButton.isSelected()) {
-                p = new CustomerClass(username, password, phoneNumString, address);
+              //  p = new CustomerClass(username, password, phoneNumString, address);
+                p = PersonFactory.createPerson("Customer", username, password, phoneNumString, address);
+
             } else if(sellerRadioButton.isSelected()){
-                p = new Seller(username, password, phoneNumString, address);
+                p = PersonFactory.createPerson("Seller", username, password, phoneNumString, address);
             } else {
-                p = new Courier(username, password, phoneNumString, address);
+                p = PersonFactory.createPerson("Courier", username, password, phoneNumString, address);
             }
 
             Files.saveAccount(p);

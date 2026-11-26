@@ -53,7 +53,6 @@ public class Admin extends JFrame {
     private JLabel CourierAddressLbl;
     private JScrollPane CouriersScroll;
     private JButton CourierPrevBtn;
-    private JButton CourierPageBtn;
     private JButton CourierNextBtn;
     private JButton logOutAdmin;
     private JLabel showTotalPeople;
@@ -103,9 +102,6 @@ public class Admin extends JFrame {
         courierAccountsTable.setFillsViewportHeight(true);
         courierAccountsTable.setPreferredScrollableViewportSize(new Dimension(480, courierAccountsTable.getRowHeight() * 8));
 
-
-
-
         courierAccountsTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 showSelectedCourier();
@@ -114,13 +110,13 @@ public class Admin extends JFrame {
         CourierPrevBtn.addActionListener(e -> {
             if (courierPage > 0) {
                 courierPage--;
-                showCourierPage();
+               // showCourierPage();
             }
         });
         CourierNextBtn.addActionListener(e -> {
             if (courierPage < pageCount() - 1) {
                 courierPage++;
-                showCourierPage();
+               // showCourierPage();
             }
         });
         loadCouriers();
@@ -132,7 +128,7 @@ public class Admin extends JFrame {
 
         generateTable();
 
-
+        CustomerDetailsPnl.setVisible(false);
         customerAccountsTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -141,9 +137,7 @@ public class Admin extends JFrame {
                 CustomerDetailsPnl.setVisible(true);
             }
         });
-
-
-
+        
         logOutAdmin.addActionListener(d->{
             BossStore.showLogInPanel();
             this.dispose();
@@ -155,10 +149,10 @@ public class Admin extends JFrame {
         int _courierTotal = Files.courierTotal();
         int _totalPeople = Files.totalPeople();
 
-        customerTotal.setText("Customer: " + String.valueOf(_customerTotal));
-        sellerTotal.setText("Seller: " + String.valueOf(_sellerTotal));
-        courierTotal.setText("Courier: " + String.valueOf(_courierTotal));
-        showTotalPeople.setText(String.valueOf(_totalPeople + 1));
+        customerTotal.setText("Customer: " + _customerTotal);
+        sellerTotal.setText("Seller: " + _sellerTotal);
+        courierTotal.setText("Courier: " + _courierTotal);
+        showTotalPeople.setText(String.valueOf(_totalPeople));
     }
 
     private void loadCouriers() {
@@ -181,7 +175,6 @@ public class Admin extends JFrame {
         }
 
         courierPage = 0;
-        showCourierPage();
     }
 
     private int pageCount() {
@@ -189,49 +182,6 @@ public class Admin extends JFrame {
             return 1;
         }
         return (couriers.size() + COURIERS_PER_PAGE - 1) / COURIERS_PER_PAGE;
-    }
-
-    private void showCourierPage() {
-        int count = couriers.size();
-        int pages = pageCount();
-        if (courierPage >= pages) {
-            courierPage = pages - 1;
-        }
-        if (courierPage < 0) {
-            courierPage = 0;
-        }
-
-        int start = courierPage * COURIERS_PER_PAGE;
-        int end = Math.min(start + COURIERS_PER_PAGE, count);
-
-        DefaultTableModel model = new DefaultTableModel(new String[]{"Username", "Phone", "Address"}, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        for (int i = start; i < end; i++) {
-            String[] parts = couriers.get(i);
-            model.addRow(new Object[]{parts[1], parts[3], parts[4]});
-        }
-
-        courierAccountsTable.setModel(model);
-        courierAccountsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        courierAccountsTable.setRowHeight(44);
-
-        CourierCountLbl.setText(count + (count == 1 ? " account" : " accounts"));
-        CourierPageBtn.setText(String.valueOf(courierPage + 1));
-        CourierPrevBtn.setEnabled(courierPage > 0);
-        CourierNextBtn.setEnabled(courierPage < pages - 1);
-
-        if (count == 0) {
-            CourierRangeLbl.setText("Showing 0 accounts");
-            showSelectedCourier();
-        } else {
-            CourierRangeLbl.setText("Showing " + (start + 1) + "-" + end + " of " + count + " accounts");
-            courierAccountsTable.setRowSelectionInterval(0, 0);
-            courierAccountsTable.scrollRectToVisible(courierAccountsTable.getCellRect(0, 0, true));
-        }
     }
 
     private void showSelectedCourier() {
