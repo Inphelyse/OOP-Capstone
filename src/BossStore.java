@@ -25,22 +25,6 @@ public class BossStore extends JFrame{
     private JTextField signUpAddressField;
     private JButton backToLogInButton;
     private JRadioButton courierRadioButton;
-//    private JPanel AdminPnl;
-//    private JPanel Summary_Report_Pnl;
-//    private JPanel Report_Details_Admin;
-//    private JButton HomeBtn;
-//    private JButton SellersButton;
-//    private JPanel SellersPnl;
-//    private JPanel CustomersPnl;
-//    private JPanel CouriersPnl;
-//    private JButton CustomersBtn;
-//    private JButton CouriersBtn;
-//    private JButton FeedbackBtn;
-//    private JButton BansBtn;
-//    private JButton HistoryBtn;
-//    private JPanel FeedbackPnl;
-//    private JPanel BansPnl;
-//    private JPanel HistoryPnl;
 
     public BossStore(){
         // Either seller or a customer (only choose one)
@@ -194,22 +178,6 @@ public class BossStore extends JFrame{
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setVisible(true);
     }
-
-//    private void showPage(String page) {
-//        // Home part
-//
-//        boolean home = page.equals("home");
-//        Summary_Report_Pnl.setVisible(home);
-//        Report_Details_Admin.setVisible(home);
-//
-//        // Other pages
-//        SellersPnl.setVisible(page.equals("sellers"));
-//        CustomersPnl.setVisible(page.equals("customers"));
-//        CouriersPnl.setVisible(page.equals("couriers"));
-//        FeedbackPnl.setVisible(page.equals("feedbacks"));
-//        BansPnl.setVisible(page.equals("bans"));
-//        HistoryPnl.setVisible(page.equals("history"));
-//    }
 
     public void clearFields() {
         signUpUsernameField.setText("");

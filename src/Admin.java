@@ -54,8 +54,8 @@ public class Admin extends JFrame {
     private JScrollPane CouriersScroll;
     private JButton logOutAdmin;
     private JLabel showTotalPeople;
-    private JLabel CustomerDetailNameLbl;
-    private JLabel CustomerDetailsEmailLbl;
+    private JLabel SellerNameLbl;
+    private JLabel SellerPhoneLbl;
     private JLabel customerTotal;
     private JLabel sellerTotal;
     private JLabel courierTotal;
@@ -67,11 +67,27 @@ public class Admin extends JFrame {
     private JTable sellerAccountsTable;
     private JButton searchSellerAccountButton;
     private JButton searchCourierAccountButton;
+    private JLabel CustomerNameLbl;
+    private JLabel CustomerPhoneLbl;
+    private JLabel CustomerStatusLbl;
+    private JLabel CustomerPhoneValueLbl;
+    private JLabel CustomerAddressLbl;
+    private JLabel SellerPhoneValueLbl;
+    private JLabel SellerAddressLbl;
+    private JPanel SellerDetailsPnl;
+    private JLabel SellerStatusLbl;
+    private JPanel CourierDetailsPnl;
     private static final int COURIERS_PER_PAGE = 20;
+    private static final int CUSTOMER_PER_PAGE = 20;
+    private static final int SELLER_PER_PAGE = 20;
 
     // Each row is type|username|password|phone|address, same as Persons/courier.txt
     private final ArrayList<String[]> couriers = new ArrayList<>();
     private int courierPage = 0;
+    private final ArrayList<String[]> customer = new ArrayList<>();
+    private int customerPage = 0;
+    private final ArrayList<String[]> seller = new ArrayList<>();
+    private int sellerPage = 0;
 
     public Admin(String username, String _accountType){
         accountType.setText(username + " (" + _accountType + ")");
@@ -93,21 +109,26 @@ public class Admin extends JFrame {
         BansBtn.addActionListener(d->showPage("bans"));
         HistoryBtn.addActionListener(d->showPage("history"));
 
-        CouriersScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        CouriersScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        CouriersScroll.getVerticalScrollBar().setUnitIncrement(courierAccountsTable.getRowHeight());
-        courierAccountsTable.setFillsViewportHeight(true);
-        courierAccountsTable.setPreferredScrollableViewportSize(new Dimension(480, courierAccountsTable.getRowHeight() * 8));
-
         courierAccountsTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 showSelectedCourier();
             }
         });
+        customerAccountsTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                showSelectedCustomer();
+            }
+        });
+        sellerAccountsTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                showSelectedSeller();
+            }
+        });
+
 
         loadCouriers();
-//        loadCustomer();
-//        loadSeller();
+        loadCustomer();
+        loadSeller();
 
         setContentPane(pnlMain);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -116,15 +137,9 @@ public class Admin extends JFrame {
 
         generateTable();
 
+        CourierDetailsPnl.setVisible(false);
         CustomerDetailsPnl.setVisible(false);
-        customerAccountsTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent e) {
-                int row = customerAccountsTable.getSelectedRow();
-                String name = customerAccountsTable.getValueAt(row,1).toString();
-                CustomerDetailsPnl.setVisible(true);
-            }
-        });
+        SellerDetailsPnl.setVisible(false);
         
         logOutAdmin.addActionListener(d->{
             BossStore.showLogInPanel();
@@ -164,7 +179,7 @@ public class Admin extends JFrame {
     }
 
     private void loadCustomer() {
-        couriers.clear();
+        customer.clear();
         File file = new File("Persons/customer.txt");
 
         if (file.exists()) {
@@ -175,7 +190,7 @@ public class Admin extends JFrame {
                     if (parts.length < 5) {
                         continue;
                     }
-                    couriers.add(parts);
+                    customer.add(parts);
                 }
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
@@ -184,7 +199,7 @@ public class Admin extends JFrame {
     }
 
     private void loadSeller() {
-        couriers.clear();
+        seller.clear();
         File file = new File("Persons/seller.txt");
 
         if (file.exists()) {
@@ -195,7 +210,7 @@ public class Admin extends JFrame {
                     if (parts.length < 5) {
                         continue;
                     }
-                    couriers.add(parts);
+                    seller.add(parts);
                 }
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
@@ -214,12 +229,58 @@ public class Admin extends JFrame {
             CourierAddressLbl.setText("");
             return;
         }
-
         String[] parts = couriers.get(index);
+        CourierDetailsPnl.setVisible(true);
+        CourierStatusLbl.setText(parts[0]);
         CourierNameLbl.setText(parts[1]);
         CourierPhoneLbl.setText(parts[3]);
         CourierPhoneValueLbl.setText(parts[3]);
         CourierAddressLbl.setText(parts[4]);
+    }
+
+    private void showSelectedCustomer() {
+        int row = customerAccountsTable.getSelectedRow();
+        int index = customerPage * CUSTOMER_PER_PAGE + row;
+
+        if (row < 0 || index >= customer.size()) {
+            CustomerStatusLbl.setText("");
+            CustomerNameLbl.setText("");
+            CustomerPhoneLbl.setText("");
+            CustomerPhoneValueLbl.setText("");
+            CustomerAddressLbl.setText("");
+            CustomerDetailsPnl.setVisible(false);
+            return;
+        }
+        String[] parts = customer.get(index);
+        CustomerDetailsPnl.setVisible(true);
+        CustomerStatusLbl.setText(parts[0]);
+        CustomerNameLbl.setText(parts[1]);
+        CustomerPhoneLbl.setText(parts[3]);
+        CustomerPhoneValueLbl.setText(parts[3]);
+        CustomerAddressLbl.setText(parts[4]);
+    }
+
+    private void showSelectedSeller() {
+        int row = sellerAccountsTable.getSelectedRow();
+        int index = sellerPage * SELLER_PER_PAGE + row;
+
+        if (row < 0 || index >= customer.size()) {
+            SellerStatusLbl.setText("");
+            SellerNameLbl.setText("");
+            SellerPhoneLbl.setText("");
+            SellerPhoneValueLbl.setText("");
+            SellerAddressLbl.setText("");
+            SellerDetailsPnl.setVisible(false);
+            return;
+        }
+
+        String[] parts = seller.get(index);
+        SellerDetailsPnl.setVisible(true);
+        SellerStatusLbl.setText(parts[0]);
+        SellerNameLbl.setText(parts[1]);
+        SellerPhoneLbl.setText(parts[3]);
+        SellerPhoneValueLbl.setText(parts[3]);
+        SellerAddressLbl.setText(parts[4]);
     }
 
     private void showPage(String page) {
