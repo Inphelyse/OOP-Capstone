@@ -52,8 +52,6 @@ public class Admin extends JFrame {
     private JLabel CourierPhoneValueLbl;
     private JLabel CourierAddressLbl;
     private JScrollPane CouriersScroll;
-    private JButton CourierPrevBtn;
-    private JButton CourierNextBtn;
     private JButton logOutAdmin;
     private JLabel showTotalPeople;
     private JLabel CustomerDetailNameLbl;
@@ -69,7 +67,6 @@ public class Admin extends JFrame {
     private JTable sellerAccountsTable;
     private JButton searchSellerAccountButton;
     private JButton searchCourierAccountButton;
-    //
     private static final int COURIERS_PER_PAGE = 20;
 
     // Each row is type|username|password|phone|address, same as Persons/courier.txt
@@ -107,19 +104,10 @@ public class Admin extends JFrame {
                 showSelectedCourier();
             }
         });
-        CourierPrevBtn.addActionListener(e -> {
-            if (courierPage > 0) {
-                courierPage--;
-               // showCourierPage();
-            }
-        });
-        CourierNextBtn.addActionListener(e -> {
-            if (courierPage < pageCount() - 1) {
-                courierPage++;
-               // showCourierPage();
-            }
-        });
+
         loadCouriers();
+//        loadCustomer();
+//        loadSeller();
 
         setContentPane(pnlMain);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -173,15 +161,46 @@ public class Admin extends JFrame {
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
             }
         }
-
-        courierPage = 0;
     }
 
-    private int pageCount() {
-        if (couriers.isEmpty()) {
-            return 1;
+    private void loadCustomer() {
+        couriers.clear();
+        File file = new File("Persons/customer.txt");
+
+        if (file.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    couriers.add(parts);
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+            }
         }
-        return (couriers.size() + COURIERS_PER_PAGE - 1) / COURIERS_PER_PAGE;
+    }
+
+    private void loadSeller() {
+        couriers.clear();
+        File file = new File("Persons/seller.txt");
+
+        if (file.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|");
+                    if (parts.length < 5) {
+                        continue;
+                    }
+                    couriers.add(parts);
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+            }
+        }
     }
 
     private void showSelectedCourier() {
@@ -220,11 +239,19 @@ public class Admin extends JFrame {
     private void generateTable(){
         try(BufferedReader br = new BufferedReader(new FileReader("Persons/customer.txt"))){
             String[] columns = {"Role", "Name", "Username", "Number", "Location"};
-            DefaultTableModel model = new DefaultTableModel(columns, 0);
+            DefaultTableModel model = new DefaultTableModel(columns, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
             customerAccountsTable.setModel(model);
-            String line = null;
+            String line;
             while((line = br.readLine()) != null){
                 String[] customerInfo = line.split("\\|");
+                if (customerInfo.length < 5) {
+                    continue;
+                }
                 model.addRow(new String[]{customerInfo[0], customerInfo[1], customerInfo[2], customerInfo[3], customerInfo[4]});
             }
         }catch(IOException e){
@@ -235,9 +262,12 @@ public class Admin extends JFrame {
             String[] columns = {"Role", "Name", "Username", "Number", "Location"};
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             sellerAccountsTable.setModel(model);
-            String line = null;
+            String line;
             while((line = br.readLine()) != null){
                 String[] sellerInfo = line.split("\\|");
+                if (sellerInfo.length < 5) {
+                    continue;
+                }
                 model.addRow(new String[]{sellerInfo[0], sellerInfo[1], sellerInfo[2], sellerInfo[3], sellerInfo[4]});
             }
         }catch(IOException e){
@@ -248,10 +278,15 @@ public class Admin extends JFrame {
             String[] columns = {"Role", "Name", "Username", "Number", "Location"};
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             courierAccountsTable.setModel(model);
-            String line = null;
+            String line;
             while((line = br.readLine()) != null){
-                String[] couirerInfo = line.split("\\|");
-                model.addRow(new String[]{couirerInfo[0], couirerInfo[1], couirerInfo[2], couirerInfo[3], couirerInfo[4]});
+                String[] courierInfo = line.split("\\|");
+
+                if (courierInfo.length < 5) {
+                    continue;
+                }
+
+                model.addRow(new String[]{courierInfo[0], courierInfo[1], courierInfo[2], courierInfo[3], courierInfo[4]});
             }
         }catch(IOException e){
             System.out.println("No customers Info!");
