@@ -67,7 +67,7 @@ public class Admin extends JFrame {
     private JTextField searchCustomerAccount;
     private JTextField searchCourierAccount;
     private JTable sellerAccountsTable;
-
+//
     private static final int COURIERS_PER_PAGE = 20;
 
     // Each row is type|username|password|phone|address, same as Persons/courier.txt
