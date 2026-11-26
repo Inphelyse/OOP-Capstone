@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourierForm extends JFrame {
     private JPanel pnlMain;
@@ -15,11 +17,16 @@ public class CourierForm extends JFrame {
     private JPanel HistoryPnl;
     private JTable DeliveriesTbl;
     private JTable HistoryTbl;
-    private JLabel DeliveryOrderLbl;
-    private JLabel DeliveryDropOffLbl;
-    private JLabel DeliveryStatusLbl;
+    private JLabel ProductNameLbl;
+    private JLabel ProductPriceLbl;
+    private JLabel ProductQuantityLbl;
+    private JComboBox<String> DeliveryStatusCmb;
     private JLabel accountType;
     private JLabel greetUsername;
+
+    private final List<Delivery> active = new ArrayList<>();
+    private final List<Delivery> history = new ArrayList<>();
+    private boolean syncingStatus;
 
     public CourierForm(String username, String _accountType) {
         accountType.setText(username + " (" + _accountType + ")");
@@ -32,8 +39,14 @@ public class CourierForm extends JFrame {
             this.dispose();
         });
 
-        fillDeliveries();
-        fillHistory();
+        DeliveryStatusCmb.addActionListener(e -> applySelectedStatus());
+        DeliveriesTbl.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                showSelectedDelivery();
+            }
+        });
+
+        loadDeliveries();
         showPage("deliveries");
 
         setContentPane(pnlMain);
@@ -47,51 +60,114 @@ public class CourierForm extends JFrame {
         HistoryPnl.setVisible(page.equals("history"));
     }
 
-    private void fillDeliveries() {
+    private void loadDeliveries() {
+        active.clear();
+        history.clear();
+        active.add(new Delivery("ORD-1001", "Cebu City", "To be delivered", "Shoes", 67, 1));
+        active.add(new Delivery("ORD-1002", "Mandaue City", "Shipping", "Plate", 68, 2));
+        history.add(new Delivery("ORD-0988", "Lapu-Lapu City", "Delivered", "Pencil", 69, 1));
+        refreshDeliveriesTable(0);
+        refreshHistoryTable();
+    }
+
+    private void refreshDeliveriesTable(int selectRow) {
         DefaultTableModel model = new DefaultTableModel(new String[]{"Order", "Drop-off", "Status"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        model.addRow(new Object[]{"ORD-1001", "Cebu City", "Out for delivery"});
-        model.addRow(new Object[]{"ORD-1002", "Mandaue City", "Picked up"});
+        for (Delivery delivery : active) {
+            model.addRow(new Object[]{delivery.order, delivery.dropOff, delivery.status});
+        }
         DeliveriesTbl.setModel(model);
         DeliveriesTbl.setRowHeight(44);
         DeliveriesTbl.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        DeliveriesTbl.getSelectionModel().addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) {
-                showSelectedDelivery();
-            }
-        });
-        if (model.getRowCount() > 0) {
-            DeliveriesTbl.setRowSelectionInterval(0, 0);
+        if (selectRow >= 0 && selectRow < active.size()) {
+            DeliveriesTbl.setRowSelectionInterval(selectRow, selectRow);
+        } else {
+            clearProductDetails();
         }
+    }
+
+    private void refreshHistoryTable() {
+        DefaultTableModel model = new DefaultTableModel(new String[]{"Order", "Drop-off", "Status"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        for (Delivery delivery : history) {
+            model.addRow(new Object[]{delivery.order, delivery.dropOff, delivery.status});
+        }
+        HistoryTbl.setModel(model);
+        HistoryTbl.setRowHeight(44);
+        HistoryTbl.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     private void showSelectedDelivery() {
         int row = DeliveriesTbl.getSelectedRow();
-        if (row < 0) {
-            DeliveryOrderLbl.setText("");
-            DeliveryDropOffLbl.setText("");
-            DeliveryStatusLbl.setText("");
+        if (row < 0 || row >= active.size()) {
+            clearProductDetails();
             return;
         }
-        DeliveryOrderLbl.setText(DeliveriesTbl.getValueAt(row, 0).toString());
-        DeliveryDropOffLbl.setText(DeliveriesTbl.getValueAt(row, 1).toString());
-        DeliveryStatusLbl.setText(DeliveriesTbl.getValueAt(row, 2).toString());
+        Delivery delivery = active.get(row);
+        ProductNameLbl.setText(delivery.name);
+        ProductPriceLbl.setText(String.format("$%.2f", delivery.price));
+        ProductQuantityLbl.setText(String.valueOf(delivery.quantity));
+        DeliveryStatusCmb.setEnabled(true);
+        syncingStatus = true;
+        DeliveryStatusCmb.setSelectedItem(delivery.status);
+        syncingStatus = false;
     }
 
-    private void fillHistory() {
-        DefaultTableModel model = new DefaultTableModel(new String[]{"Order", "Drop-off", "Status"}, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        model.addRow(new Object[]{"ORD-0988", "Lapu-Lapu City", "Delivered"});
-        HistoryTbl.setModel(model);
-        HistoryTbl.setRowHeight(44);
-        HistoryTbl.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    private void clearProductDetails() {
+        ProductNameLbl.setText("Select a delivery");
+        ProductPriceLbl.setText("—");
+        ProductQuantityLbl.setText("—");
+        syncingStatus = true;
+        DeliveryStatusCmb.setSelectedIndex(-1);
+        DeliveryStatusCmb.setEnabled(false);
+        syncingStatus = false;
+    }
+
+    private void applySelectedStatus() {
+        if (syncingStatus) {
+            return;
+        }
+        int row = DeliveriesTbl.getSelectedRow();
+        if (row < 0 || row >= active.size() || DeliveryStatusCmb.getSelectedItem() == null) {
+            return;
+        }
+        String status = DeliveryStatusCmb.getSelectedItem().toString();
+        Delivery delivery = active.get(row);
+        delivery.status = status;
+        if ("Delivered".equals(status)) {
+            active.remove(row);
+            history.add(0, delivery);
+            refreshHistoryTable();
+            int next = active.isEmpty() ? -1 : Math.min(row, active.size() - 1);
+            refreshDeliveriesTable(next);
+            return;
+        }
+        DeliveriesTbl.setValueAt(status, row, 2);
+    }
+
+    private static class Delivery {
+        private final String order;
+        private final String dropOff;
+        private String status;
+        private final String name;
+        private final double price;
+        private final int quantity;
+
+        private Delivery(String order, String dropOff, String status, String name, double price, int quantity) {
+            this.order = order;
+            this.dropOff = dropOff;
+            this.status = status;
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        }
     }
 }

@@ -278,7 +278,7 @@
                             <properties>
                               <font name="Segoe UI" size="16" style="1"/>
                               <foreground color="-1"/>
-                              <text value="Delivery details"/>
+                              <text value="Product details"/>
                             </properties>
                           </component>
                           <component id="c0a36" class="javax.swing.JSeparator">
@@ -289,14 +289,14 @@
                               <foreground color="-12957072"/>
                             </properties>
                           </component>
-                          <component id="c0a37" class="javax.swing.JLabel" binding="DeliveryOrderLbl">
+                          <component id="c0a37" class="javax.swing.JLabel" binding="ProductNameLbl">
                             <constraints>
                               <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="22" style="1"/>
                               <foreground color="-1"/>
-                              <text value="ORD-1001"/>
+                              <text value="Shoes"/>
                             </properties>
                           </component>
                           <component id="c0a38" class="javax.swing.JLabel">
@@ -306,17 +306,17 @@
                             <properties>
                               <font name="Segoe UI" size="12" style="0"/>
                               <foreground color="-5785912"/>
-                              <text value="Drop-off"/>
+                              <text value="Price"/>
                             </properties>
                           </component>
-                          <component id="c0a39" class="javax.swing.JLabel" binding="DeliveryDropOffLbl">
+                          <component id="c0a39" class="javax.swing.JLabel" binding="ProductPriceLbl">
                             <constraints>
-                              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <font name="Segoe UI" size="12" style="0"/>
-                              <foreground color="-1643277"/>
-                              <text value="Cebu City"/>
+                              <font name="Segoe UI" size="14" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="$67.00"/>
                             </properties>
                           </component>
                           <component id="c0a40" class="javax.swing.JLabel">
@@ -326,22 +326,49 @@
                             <properties>
                               <font name="Segoe UI" size="12" style="0"/>
                               <foreground color="-5785912"/>
-                              <text value="Status"/>
+                              <text value="Quantity"/>
                             </properties>
                           </component>
-                          <component id="c0a41" class="javax.swing.JLabel" binding="DeliveryStatusLbl">
+                          <component id="c0a41" class="javax.swing.JLabel" binding="ProductQuantityLbl">
                             <constraints>
-                              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Segoe UI" size="14" style="1"/>
+                              <foreground color="-1"/>
+                              <text value="1"/>
+                            </properties>
+                          </component>
+                          <component id="c0a48" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="12" style="0"/>
-                              <foreground color="-1643277"/>
-                              <text value="Out for delivery"/>
+                              <foreground color="-5785912"/>
+                              <text value="Status"/>
+                            </properties>
+                          </component>
+                          <component id="c0a49" class="javax.swing.JComboBox" binding="DeliveryStatusCmb">
+                            <constraints>
+                              <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="32"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-1"/>
+                              <font name="Segoe UI" size="13" style="0"/>
+                              <foreground color="-14800310"/>
+                              <model>
+                                <item value="To be delivered"/>
+                                <item value="Shipping"/>
+                                <item value="Delivered"/>
+                              </model>
                             </properties>
                           </component>
                           <vspacer id="c0a42">
                             <constraints>
-                              <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                              <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                             </constraints>
                           </vspacer>
                         </children>

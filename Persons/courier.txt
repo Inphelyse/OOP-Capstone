@@ -1,0 +1,5 @@
+Courier|JK Catalo|22223333|09991112233|Cebu City
+Courier|JK Catalo1|22223333|09991112233|Cebu City
+Courier|JK Catalo2|22223333|09991112233|Cebu City
+Courier|JK Catalo3|22223333|09991112233|Cebu City
+Courier|JK Catalo4|22223333|09991112233|Cebu City
