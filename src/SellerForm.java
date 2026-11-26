@@ -20,10 +20,10 @@ public class SellerForm extends JFrame {
     private JPanel AddProductPnl;
     private JPanel productInfo;
     private JTextField ProductName;
-    private JTextField textField2;
+    private JTextField size;
     private JButton uploadProductImageButton;
     private JButton saveProductButton;
-    private JButton clearButton;
+    private JButton clearAllFieldButton;
     private JPanel OrderHistory;
     private JTable table1;
     private JButton myProductButton;
@@ -39,6 +39,33 @@ public class SellerForm extends JFrame {
     private JLabel greetUsername;
     private JPanel ProductDetails;
     private JTextField quantityfield;
+    private JButton showAllProducts;
+    private JButton showAvailableProducts;
+    private JButton showOutOfStockProducts;
+    private JTable productsTable;
+    private JLabel totalProducts;
+    private JLabel pedingProducts;
+    private JLabel completedProducts;
+    private JLabel totalEarning;
+    private JButton orderHistoryUsernameSearchButton;
+    private JButton productNameSearchButton;
+    private JTextField reportFeedbackSearch;
+    private JLabel usernameAccountType;
+    private JLabel reasonForReport;
+    private JButton reportFeedbackSearchButton;
+    private JButton orderHistorySearchButton;
+    private JTextField orderHistorySearch;
+    private JTextField stackQuantity;
+    private JTextField price;
+    private JTextField brandName;
+    private JTextField descriptionLabel;
+    private JButton addStock;
+    private JLabel usernameAccountTypeMyProducts;
+    private JLabel allProductsMyProducts;
+    private JLabel availableProducts;
+    private JTextField productNameSearch;
+    private JTextField orderHistoryUsernameSearch;
+    private JLabel outOfStackProduct;
 
     public SellerForm(String username, String _accountType){
 
@@ -77,13 +104,14 @@ public class SellerForm extends JFrame {
             BossStore.showLogInPanel();
             this.dispose();
         });
-        showPage("dashboard");
 
         dashboardButton.addActionListener(e->showPage("dashboard"));
         myProductButton.addActionListener(e->showPage("Myproducts"));
         addProductsButton.addActionListener(e->showPage("addproducts"));
         FeedbackBtn.addActionListener(e->showPage("feedback"));
         OrderHistoryBtn.addActionListener(e->showPage("OrderHistory"));
+
+        showPage("dashboard");
 
         setContentPane(PnlMain);
         setExtendedState(JFrame.MAXIMIZED_BOTH);

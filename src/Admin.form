@@ -640,7 +640,7 @@
                                   <text value="Search accounts"/>
                                 </properties>
                               </component>
-                              <component id="20d5b" class="javax.swing.JTextField">
+                              <component id="20d5b" class="javax.swing.JTextField" binding="searchSellerAccount">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="260" height="32"/>
@@ -652,6 +652,7 @@
                                   <font name="Segoe UI" size="13" style="0"/>
                                   <foreground color="-14800310"/>
                                   <margin top="2" left="9" bottom="2" right="6"/>
+                                  <text value=""/>
                                   <toolTipText value="Search name, email, or account ID"/>
                                 </properties>
                               </component>
@@ -668,7 +669,7 @@
                               <color color="-12957072"/>
                             </border>
                             <children>
-                              <component id="ee30c" class="javax.swing.JTable">
+                              <component id="ee30c" class="javax.swing.JTable" binding="sellerAccountsTable">
                                 <constraints/>
                                 <properties>
                                   <background color="-14207655"/>
@@ -1054,7 +1055,7 @@
                                   <text value="Status"/>
                                 </properties>
                               </component>
-                              <component id="2c13" class="javax.swing.JTextField">
+                              <component id="2c13" class="javax.swing.JTextField" binding="searchCustomerAccount">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="260" height="32"/>
@@ -1097,7 +1098,7 @@
                               <color color="-12957072"/>
                             </border>
                             <children>
-                              <component id="1204e" class="javax.swing.JTable" binding="customerInfoTbl">
+                              <component id="1204e" class="javax.swing.JTable" binding="customerAccountsTable">
                                 <constraints/>
                                 <properties>
                                   <background color="-14207655"/>
@@ -1520,7 +1521,7 @@
                                   <text value="Status"/>
                                 </properties>
                               </component>
-                              <component id="72924" class="javax.swing.JTextField">
+                              <component id="72924" class="javax.swing.JTextField" binding="searchCourierAccount">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="260" height="32"/>
@@ -1566,7 +1567,7 @@
                               <color color="-12957072"/>
                             </border>
                             <children>
-                              <component id="2c4a3" class="javax.swing.JTable" binding="CouriersTbl">
+                              <component id="2c4a3" class="javax.swing.JTable" binding="CourierAccountsTable">
                                 <constraints/>
                                 <properties>
                                   <background color="-14207655"/>
@@ -1984,6 +1985,7 @@
                                   <font name="Segoe UI" size="13" style="0"/>
                                   <foreground color="-14800310"/>
                                   <margin top="2" left="9" bottom="2" right="6"/>
+                                  <text value=""/>
                                   <toolTipText value="Search subject, name, or ID"/>
                                 </properties>
                               </component>

@@ -122,15 +122,13 @@
                       <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <background color="-15261376"/>
                       <borderPainted value="false"/>
-                      <contentAreaFilled value="true"/>
+                      <contentAreaFilled value="false"/>
                       <focusPainted value="false"/>
                       <font name="Segoe UI" size="13" style="0"/>
                       <foreground color="-1643277"/>
                       <horizontalAlignment value="2"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
-                      <opaque value="true"/>
                       <text value="Add Product"/>
                     </properties>
                   </component>
@@ -139,16 +137,13 @@
                       <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <autoscrolls value="false"/>
-                      <background color="-15261376"/>
                       <borderPainted value="false"/>
-                      <contentAreaFilled value="true"/>
+                      <contentAreaFilled value="false"/>
                       <focusPainted value="false"/>
                       <font name="Segoe UI" size="13" style="0"/>
                       <foreground color="-1643277"/>
                       <horizontalAlignment value="2"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
-                      <opaque value="true"/>
                       <text value="Feedback and reports"/>
                     </properties>
                   </component>
@@ -157,15 +152,13 @@
                       <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <background color="-15261376"/>
                       <borderPainted value="false"/>
-                      <contentAreaFilled value="true"/>
+                      <contentAreaFilled value="false"/>
                       <focusPainted value="false"/>
                       <font name="Segoe UI" size="13" style="0"/>
                       <foreground color="-1643277"/>
                       <horizontalAlignment value="2"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
-                      <opaque value="true"/>
                       <text value="Order History"/>
                     </properties>
                   </component>
@@ -174,15 +167,13 @@
                       <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <background color="-15261376"/>
                       <borderPainted value="false"/>
-                      <contentAreaFilled value="true"/>
+                      <contentAreaFilled value="false"/>
                       <focusPainted value="false"/>
                       <font name="Segoe UI" size="13" style="0"/>
                       <foreground color="-1643277"/>
                       <horizontalAlignment value="2"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
-                      <opaque value="true"/>
                       <text value="My Products"/>
                     </properties>
                   </component>
@@ -272,10 +263,10 @@
                             <properties>
                               <font name="Segoe UI" size="16" style="1"/>
                               <foreground color="-1"/>
-                              <text value="ORDERS"/>
+                              <text value="ORDER HISTORY"/>
                             </properties>
                           </component>
-                          <grid id="1e48" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
+                          <grid id="1e48" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -297,7 +288,7 @@
                               </component>
                               <component id="ef4cd" class="javax.swing.JLabel">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
@@ -305,7 +296,7 @@
                                   <text value="Status"/>
                                 </properties>
                               </component>
-                              <component id="a0c50" class="javax.swing.JTextField">
+                              <component id="a0c50" class="javax.swing.JTextField" binding="orderHistoryUsernameSearch">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="260" height="32"/>
@@ -322,7 +313,7 @@
                               </component>
                               <component id="3bae4" class="javax.swing.JComboBox">
                                 <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="32"/>
                                   </grid>
                                 </constraints>
@@ -334,6 +325,23 @@
                                     <item value="7 week"/>
                                     <item value="1 month"/>
                                   </model>
+                                </properties>
+                              </component>
+                              <component id="a0ca5" class="javax.swing.JButton" binding="orderHistoryUsernameSearchButton">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="32"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-875199"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-16777216"/>
+                                  <opaque value="true"/>
+                                  <text value="Search"/>
                                 </properties>
                               </component>
                             </children>
@@ -470,7 +478,7 @@
                                   <text value="Total Products"/>
                                 </properties>
                               </component>
-                              <component id="79b9c" class="javax.swing.JLabel">
+                              <component id="79b9c" class="javax.swing.JLabel" binding="totalProducts">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -494,7 +502,7 @@
                               <color color="-12957072"/>
                             </border>
                             <children>
-                              <component id="bb574" class="javax.swing.JLabel">
+                              <component id="bb574" class="javax.swing.JLabel" binding="totalEarning">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -538,7 +546,7 @@
                                   <text value="Completed"/>
                                 </properties>
                               </component>
-                              <component id="71e84" class="javax.swing.JLabel">
+                              <component id="71e84" class="javax.swing.JLabel" binding="completedProducts">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -572,7 +580,7 @@
                                   <text value="Pending"/>
                                 </properties>
                               </component>
-                              <component id="46f8e" class="javax.swing.JLabel">
+                              <component id="46f8e" class="javax.swing.JLabel" binding="pedingProducts">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -657,7 +665,7 @@
                                   <text value="ALL Products"/>
                                 </properties>
                               </component>
-                              <component id="c87fd" class="javax.swing.JLabel">
+                              <component id="c87fd" class="javax.swing.JLabel" binding="allProductsMyProducts">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -691,7 +699,7 @@
                                   <text value="Available"/>
                                 </properties>
                               </component>
-                              <component id="6cf51" class="javax.swing.JLabel">
+                              <component id="6cf51" class="javax.swing.JLabel" binding="availableProducts">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -725,7 +733,7 @@
                                   <text value="Out of Stock"/>
                                 </properties>
                               </component>
-                              <component id="53df4" class="javax.swing.JLabel">
+                              <component id="53df4" class="javax.swing.JLabel" binding="outOfStackProduct">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -739,7 +747,7 @@
                           </grid>
                         </children>
                       </grid>
-                      <grid id="ca3d0" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
+                      <grid id="ca3d0" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
                           <grid row="3" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -761,7 +769,7 @@
                           </component>
                           <component id="a4895" class="javax.swing.JLabel">
                             <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="12" style="0"/>
@@ -769,7 +777,7 @@
                               <text value="Categories"/>
                             </properties>
                           </component>
-                          <component id="c2f46" class="javax.swing.JTextField">
+                          <component id="c2f46" class="javax.swing.JTextField" binding="productNameSearch">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                 <preferred-size width="260" height="32"/>
@@ -786,7 +794,7 @@
                           </component>
                           <component id="5d225" class="javax.swing.JComboBox">
                             <constraints>
-                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                 <preferred-size width="150" height="32"/>
                               </grid>
                             </constraints>
@@ -797,6 +805,23 @@
                                 <item value="Available"/>
                                 <item value="Out of Stock"/>
                               </model>
+                            </properties>
+                          </component>
+                          <component id="72c7" class="javax.swing.JButton" binding="productNameSearchButton">
+                            <constraints>
+                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="32"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-875199"/>
+                              <borderPainted value="false"/>
+                              <contentAreaFilled value="true"/>
+                              <focusPainted value="false"/>
+                              <font name="Segoe UI" size="13" style="0"/>
+                              <foreground color="-16777216"/>
+                              <opaque value="true"/>
+                              <text value="Search"/>
                             </properties>
                           </component>
                         </children>
@@ -811,7 +836,7 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="56a7f" class="javax.swing.JButton">
+                          <component id="56a7f" class="javax.swing.JButton" binding="showAllProducts">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                                 <preferred-size width="-1" height="30"/>
@@ -828,7 +853,7 @@
                               <text value="All (12)"/>
                             </properties>
                           </component>
-                          <component id="2f44c" class="javax.swing.JButton">
+                          <component id="2f44c" class="javax.swing.JButton" binding="showAvailableProducts">
                             <constraints>
                               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                                 <preferred-size width="-1" height="30"/>
@@ -843,7 +868,7 @@
                               <text value="Available"/>
                             </properties>
                           </component>
-                          <component id="b8b4f" class="javax.swing.JButton">
+                          <component id="b8b4f" class="javax.swing.JButton" binding="showOutOfStockProducts">
                             <constraints>
                               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                                 <preferred-size width="-1" height="30"/>
@@ -876,7 +901,7 @@
                           <color color="-12957072"/>
                         </border>
                         <children>
-                          <component id="a6ff8" class="javax.swing.JTable">
+                          <component id="a6ff8" class="javax.swing.JTable" binding="productsTable">
                             <constraints/>
                             <properties>
                               <background color="-14207655"/>
@@ -934,7 +959,7 @@
                               <text value="#R-1048 · Submitted 21 Nov 2026, 10:18 AM"/>
                             </properties>
                           </component>
-                          <component id="8827e" class="javax.swing.JLabel">
+                          <component id="8827e" class="javax.swing.JLabel" binding="usernameAccountTypeMyProducts">
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -1001,7 +1026,7 @@
                               <text value="Add Stock"/>
                             </properties>
                           </component>
-                          <component id="fb734" class="javax.swing.JButton">
+                          <component id="fb734" class="javax.swing.JButton" binding="addStock">
                             <constraints>
                               <grid row="9" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                                 <preferred-size width="-1" height="34"/>
@@ -1135,7 +1160,7 @@
                                   <text value="Size:"/>
                                 </properties>
                               </component>
-                              <component id="eb150" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+                              <component id="eb150" class="javax.swing.JTextField" binding="size">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -1177,7 +1202,7 @@
                                   <text value="Brand:"/>
                                 </properties>
                               </component>
-                              <component id="8eefe" class="javax.swing.JTextField" default-binding="true">
+                              <component id="8eefe" class="javax.swing.JTextField" binding="brandName">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -1211,7 +1236,7 @@
                           <text value="Description*"/>
                         </properties>
                       </component>
-                      <component id="26adb" class="javax.swing.JTextField">
+                      <component id="26adb" class="javax.swing.JTextField" binding="descriptionLabel">
                         <constraints>
                           <grid row="7" column="0" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="50" height="50"/>
@@ -1272,7 +1297,7 @@
                                       <text value="Price:"/>
                                     </properties>
                                   </component>
-                                  <component id="783ed" class="javax.swing.JTextField" default-binding="true">
+                                  <component id="783ed" class="javax.swing.JTextField" binding="price">
                                     <constraints>
                                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                         <preferred-size width="150" height="-1"/>
@@ -1312,7 +1337,7 @@
                                   <text value="Stack Quantity"/>
                                 </properties>
                               </component>
-                              <component id="caaa" class="javax.swing.JTextField" default-binding="true">
+                              <component id="caaa" class="javax.swing.JTextField" binding="stackQuantity">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -1360,7 +1385,7 @@
                           <text value="Save Product"/>
                         </properties>
                       </component>
-                      <component id="b96fd" class="javax.swing.JButton" binding="clearButton" default-binding="true">
+                      <component id="b96fd" class="javax.swing.JButton" binding="clearAllFieldButton">
                         <constraints>
                           <grid row="13" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -1569,7 +1594,7 @@
                           </grid>
                         </children>
                       </grid>
-                      <grid id="bbcbb" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
+                      <grid id="bbcbb" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
                           <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -1591,7 +1616,7 @@
                           </component>
                           <component id="3a09b" class="javax.swing.JLabel">
                             <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Segoe UI" size="12" style="0"/>
@@ -1599,7 +1624,7 @@
                               <text value="Status"/>
                             </properties>
                           </component>
-                          <component id="f18e6" class="javax.swing.JTextField">
+                          <component id="f18e6" class="javax.swing.JTextField" binding="orderHistorySearch">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                 <preferred-size width="260" height="32"/>
@@ -1616,7 +1641,7 @@
                           </component>
                           <component id="cb91d" class="javax.swing.JComboBox">
                             <constraints>
-                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                 <preferred-size width="150" height="32"/>
                               </grid>
                             </constraints>
@@ -1630,6 +1655,23 @@
                                 <item value="Delivered"/>
                                 <item value="Cancelled"/>
                               </model>
+                            </properties>
+                          </component>
+                          <component id="471d4" class="javax.swing.JButton" binding="orderHistorySearchButton">
+                            <constraints>
+                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="32"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-875199"/>
+                              <borderPainted value="false"/>
+                              <contentAreaFilled value="true"/>
+                              <focusPainted value="false"/>
+                              <font name="Segoe UI" size="13" style="0"/>
+                              <foreground color="-16777216"/>
+                              <opaque value="true"/>
+                              <text value="Search"/>
                             </properties>
                           </component>
                         </children>
@@ -1682,7 +1724,7 @@
                               <text value="REPORTS &amp; FEEDBACKS"/>
                             </properties>
                           </component>
-                          <grid id="c9c6f" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
+                          <grid id="c9c6f" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="12" vgap="4">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -1704,7 +1746,7 @@
                               </component>
                               <component id="a3c16" class="javax.swing.JLabel">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <font name="Segoe UI" size="12" style="0"/>
@@ -1712,7 +1754,7 @@
                                   <text value="Status"/>
                                 </properties>
                               </component>
-                              <component id="9c32a" class="javax.swing.JTextField">
+                              <component id="9c32a" class="javax.swing.JTextField" binding="reportFeedbackSearch">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="260" height="32"/>
@@ -1729,7 +1771,7 @@
                               </component>
                               <component id="663ec" class="javax.swing.JComboBox">
                                 <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="32"/>
                                   </grid>
                                 </constraints>
@@ -1741,6 +1783,23 @@
                                     <item value="In review"/>
                                     <item value="Resolved"/>
                                   </model>
+                                </properties>
+                              </component>
+                              <component id="bb025" class="javax.swing.JButton" binding="reportFeedbackSearchButton">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                    <preferred-size width="-1" height="32"/>
+                                  </grid>
+                                </constraints>
+                                <properties>
+                                  <background color="-875199"/>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="true"/>
+                                  <focusPainted value="false"/>
+                                  <font name="Segoe UI" size="13" style="0"/>
+                                  <foreground color="-16777216"/>
+                                  <opaque value="true"/>
+                                  <text value="Search"/>
                                 </properties>
                               </component>
                             </children>
@@ -1901,7 +1960,7 @@
                               <text value="#R-1048 · Submitted 21 Nov 2026, 10:18 AM"/>
                             </properties>
                           </component>
-                          <component id="c4abf" class="javax.swing.JLabel">
+                          <component id="c4abf" class="javax.swing.JLabel" binding="reasonForReport">
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -1911,7 +1970,7 @@
                               <text value="Payment not reflected"/>
                             </properties>
                           </component>
-                          <component id="5716e" class="javax.swing.JLabel">
+                          <component id="5716e" class="javax.swing.JLabel" binding="usernameAccountType">
                             <constraints>
                               <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
