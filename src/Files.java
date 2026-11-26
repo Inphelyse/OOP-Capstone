@@ -16,7 +16,7 @@ public class Files {
         if (admin.exists() && admin.length() > 0) return;
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(admin, true))) {
-            bw.write("Admin|Boss Tamaki|11112222|099912312|Secret");
+            bw.write("Admin|B|1231231233|099912312|Secret");
             bw.newLine();
         } catch (IOException ex) {
             System.err.println("Could not save");
@@ -61,7 +61,7 @@ public class Files {
     }
 
     static String[] findAccount(String username) {
-        String[] fileLocation = {"Persons/admin.txt", "Persons/seller.txt", "Persons/customer.txt", "Persons/courier.txt"};
+        String[] fileLocation = {"Persons/admin.txt", "Persons/seller.txt", "Persons/customer.txt", "Persons/courier.txt", "Persons/banned.txt"};
 
         for (int i = 0; i < fileLocation.length; i++) {
             String file = fileLocation[i];
@@ -85,7 +85,7 @@ public class Files {
     }
 
     static boolean findPhoneNum(int phoneNum) {
-        String[] fileLocation = {"Persons/admin.txt", "Persons/seller.txt", "Persons/customer.txt", "Persons/courier.txt"};
+        String[] fileLocation = {"Persons/admin.txt", "Persons/seller.txt", "Persons/customer.txt", "Persons/courier.txt", "Persons/banned.txt"};
 
         for (int i = 0; i < fileLocation.length; i++) {
             String file = fileLocation[i];

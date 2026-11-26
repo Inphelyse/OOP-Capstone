@@ -1,9 +1,7 @@
 import javax.swing.*;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.Scanner;
 
 public class BossStore extends JFrame{
     public static int size = 0;
@@ -72,17 +70,21 @@ public class BossStore extends JFrame{
         //       boolean flagUsername = false;
         //       String account = null;
 
+
+
         // Checks if password or username is empty
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(logInPanel, "Please enter username and password");
             return;
         }
 
+
         // It checks if the username do exists
         if (account == null) {
             JOptionPane.showMessageDialog(logInPanel, "Username does not exist");
             logInUsernameField.setText("");
             logInPasswordField.setText("");
+
             return;
         }
 
@@ -95,6 +97,24 @@ public class BossStore extends JFrame{
         }
 
 
+        try {
+            Scanner read = new Scanner(new File("Persons/banned.txt"));
+            while (read.hasNextLine()) {
+                String line = read.nextLine();
+                String[] row = line.split("\\|");
+
+                if (row.length >= 5 && row[1].equals(username)) {
+                    System.out.println("User banned");
+                    JOptionPane.showMessageDialog(this, "User banned");
+                    read.close();
+                    return;
+                }
+            }
+            read.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found ");
+        }
+
         switch (type) {
             case "Admin" -> new Admin(account[1], type).setVisible(true);
             case "Seller" -> new SellerForm(account[1], type).setVisible(true);
@@ -105,7 +125,6 @@ public class BossStore extends JFrame{
                 logInUsernameField.setText("");
                 logInPasswordField.setText("");
                 return;
-//            new CustomerForm().setVisible(true);
             }
         }
         this.dispose();

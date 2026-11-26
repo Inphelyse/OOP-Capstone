@@ -1,10 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 
@@ -24,7 +20,6 @@ public class Admin extends JFrame {
     private JPanel DataPnl;
     private JPanel Summary_Report_Pnl;
     private JPanel Report_Details_Admin;
-    private JTable ReportsTbl;
     private JPanel SellersPnl;
     private JPanel CustomersPnl;
     private JPanel CouriersPnl;
@@ -38,7 +33,7 @@ public class Admin extends JFrame {
     private JPanel Band_DetailsPnl;
     private JPanel HistoryPnl;
     private JPanel ActiveLog_or_HistoryPnl;
-    private JTable HistoryTbl;
+    private JTable activityLogHistoryTbl;
     private JPanel ActionDetailsPnl;
     private JPanel pnlMain;
     private JTable customerAccountsTable;
@@ -77,6 +72,39 @@ public class Admin extends JFrame {
     private JPanel SellerDetailsPnl;
     private JLabel SellerStatusLbl;
     private JPanel CourierDetailsPnl;
+    private JButton banCourierButton;
+    private JTextField allSearchSubmissionsReport;
+    private JButton allSearchSubmissionsReportButton;
+    private JTextField bannedSearchAccounts;
+    private JButton bannedSearchAccountsButton;
+    private JComboBox sortAccountTypes;
+    private JComboBox sortSubmittedBy;
+    private JComboBox sortStatusReport;
+    private JComboBox sortStatusCourierReports;
+    private JComboBox sortStatusCustomerReports;
+    private JComboBox sortStatusSellerrReports;
+    private JButton sellerBanButton;
+    private JTextArea banReasonDisplayInLogIn;
+    private JTextArea reviewNoteBan;
+    private JLabel accountName;
+    private JLabel accountRole;
+    private JLabel dateBanned;
+    private JTable currentCartCustomerTable;
+    private JLabel cartTotalCustomer;
+    private JButton unbanningAccount;
+    private JLabel accountUsernameRemovedAccount;
+    private JLabel dateRemovedAccount;
+    private JLabel accountTypeRemoved;
+    private JTextArea reasonForRemoving;
+    private JTable ReportsTbl;
+    private JTextField activityLogAccountSearch;
+    private JButton activityLogAccountSearchButton;
+    private JButton allSubmissionsButton;
+    private JButton reportSubmissionsButton;
+    private JButton feedSubmissionsButton;
+    private JButton customerBanButton;
+    private JTextArea internalNotes;
+    private JTextArea reportMessage_feedbackMessage;
     private static final int COURIERS_PER_PAGE = 20;
     private static final int CUSTOMER_PER_PAGE = 20;
     private static final int SELLER_PER_PAGE = 20;
@@ -106,7 +134,12 @@ public class Admin extends JFrame {
         CustomersBtn.addActionListener(d -> showPage("customers"));
         CouriersBtn.addActionListener(d -> showPage("couriers"));
         FeedbackBtn.addActionListener(d -> showPage("feedbacks"));
-        BansBtn.addActionListener(d->showPage("bans"));
+        //
+        BansBtn.addActionListener(d -> {
+            loadBannedAccounts();
+            showPage("bans");
+        });
+        //
         HistoryBtn.addActionListener(d->showPage("history"));
 
         courierAccountsTable.getSelectionModel().addListSelectionListener(e -> {
@@ -156,6 +189,60 @@ public class Admin extends JFrame {
         sellerTotal.setText("Seller: " + _sellerTotal);
         courierTotal.setText("Courier: " + _courierTotal);
         showTotalPeople.setText(String.valueOf(_totalPeople));
+
+        //==== For banning and banning an account=====//
+        unbanningAccount.addActionListener(e -> unbanSelectedAccount());
+
+        BannedTbl.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                showSelectedBannedAccount();
+            }
+        });
+
+        banCourierButton.addActionListener(e -> {
+            int row = courierAccountsTable.getSelectedRow();
+            if (row < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a courier first");
+                return;
+            }
+
+            System.out.println("Banning courier");
+
+            int index = customerAccountsTable.getSelectedRow();
+            // -1 indicates that the user did not selected a row or clicked any row
+            if (index != -1) {
+                banAccount("Customer", customer.get(index));
+            }
+        });
+
+
+        sellerBanButton.addActionListener(e -> {
+            int row = sellerAccountsTable.getSelectedRow();
+            if (row < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a seller first");
+                return;
+            }
+            System.out.println("Banning seller");
+
+            int index = customerAccountsTable.getSelectedRow();
+            if (index != -1) {
+                banAccount("Customer", customer.get(index));
+            }
+        });
+
+        customerBanButton.addActionListener(e -> {
+            int row = customerAccountsTable.getSelectedRow();
+            if (row < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a customer first");
+                return;
+            }
+            System.out.println("Banning customer");
+
+            int index = customerAccountsTable.getSelectedRow();
+            if (index != -1) {
+                banAccount("Customer", customer.get(index));
+            }
+        });
     }
 
     private void loadCouriers() {
@@ -264,7 +351,7 @@ public class Admin extends JFrame {
         int row = sellerAccountsTable.getSelectedRow();
         int index = sellerPage * SELLER_PER_PAGE + row;
 
-        if (row < 0 || index >= customer.size()) {
+        if (row < 0 || index >= seller.size()) {
             SellerStatusLbl.setText("");
             SellerNameLbl.setText("");
             SellerPhoneLbl.setText("");
@@ -297,9 +384,11 @@ public class Admin extends JFrame {
         HistoryPnl.setVisible(page.equals("history"));
     }
 
+
+    // Generating Tables for Customer, Seller, and Courier
     private void generateTable(){
         try(BufferedReader br = new BufferedReader(new FileReader("Persons/customer.txt"))){
-            String[] columns = {"Role", "Name", "Username", "Number", "Location"};
+            String[] columns = {"Role", "Name", "Password", "Number", "Location"};
             DefaultTableModel model = new DefaultTableModel(columns, 0) {
                 @Override
                 public boolean isCellEditable(int row, int column) {
@@ -320,7 +409,7 @@ public class Admin extends JFrame {
         }
 
         try(BufferedReader br = new BufferedReader(new FileReader("Persons/seller.txt"))){
-            String[] columns = {"Role", "Name", "Username", "Number", "Location"};
+            String[] columns = {"Role", "Name", "Password", "Number", "Location"};
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             sellerAccountsTable.setModel(model);
             String line;
@@ -336,7 +425,7 @@ public class Admin extends JFrame {
         }
 
         try(BufferedReader br = new BufferedReader(new FileReader("Persons/courier.txt"))){
-            String[] columns = {"Role", "Name", "Username", "Number", "Location"};
+            String[] columns = {"Role", "Name", "Password", "Number", "Location"};
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             courierAccountsTable.setModel(model);
             String line;
@@ -356,7 +445,220 @@ public class Admin extends JFrame {
     }
 
 
+    // For loading the banned accounts in the Table
+    private void loadBannedAccounts() {
+        DefaultTableModel model = new DefaultTableModel(new String[]{"Name", "Role"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
+        // Setting up the Table
+        BannedTbl.setModel(model);
+
+        //For storing the banned accounts to banned.txt file
+        File file = new File("Persons/banned.txt");
+
+        if (!file.exists()) {
+            return;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|", -1);
+
+                if (parts.length >= 6) {
+                    model.addRow(new Object[]{parts[1], parts[0]});
+                }
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error loading banned accounts: " + e.getMessage());
+        }
+    }
+
+
+    // Feature in Ban Table when clicking a banned account
+    private void showSelectedBannedAccount() {
+        System.out.println("Banned Accountt");
+        int row = BannedTbl.getSelectedRow();
+
+        if (row < 0) {
+            return;
+        }
+
+        String name = BannedTbl.getValueAt(row, 0).toString();
+        String role = BannedTbl.getValueAt(row, 1).toString();
+
+        accountName.setText(name);
+        accountRole.setText(role);
+
+        // Find the selected account and showing the reason for banning
+        File file = new File("Persons/banned.txt");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            System.out.println("Reading the file banned.txt");
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|", -1);
+
+                if (parts.length >= 6 && parts[1].equals(name) && parts[0].equals(role)) {
+                    banReasonDisplayInLogIn.setText(parts[5]);
+                    return;
+                }
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error ");
+        }
+    }
+
+
+    // Unbanning an account
+    private void unbanSelectedAccount() {
+        System.out.println("Test");
+        int row = BannedTbl.getSelectedRow();
+
+        if (row < 0) {
+            System.out.println("Selected");
+            JOptionPane.showMessageDialog(this, "Please select an account first");
+            return;
+        }
+
+        String username = BannedTbl.getValueAt(row, 1).toString();
+
+        File file = new File("Persons/banned.txt");
+        ArrayList<String> remainingAccounts = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            System.out.println("Test unban account");
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|", -1);
+
+                if (parts.length >= 2 && !parts[1].equals(username)) {
+                    System.out.println("Success unban");
+                    remainingAccounts.add(line);
+                }
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error");
+            return;
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Persons/customer.txt"));) {
+            for (String account : remainingAccounts) {
+                bw.write(account);
+                bw.newLine();
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error");
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Account successfully unbanned!");
+
+        // Reloading the newly table for Customer, Seller, and Courier
+        loadBannedAccounts();
+
+        accountName.setText("");
+        accountRole.setText("");
+    }
+
+
+    // Banning an account and giving the reason why it was banned
+    private void banAccount(String role, String[] account) {
+        ArrayList<String> remainingAccounts = new ArrayList<>();
+
+        if (account == null) {
+            JOptionPane.showMessageDialog(this, "Please select an account first");
+            return;
+        }
+
+        String reason = JOptionPane.showInputDialog(this, "Reason for ban:");
+
+        if (reason == null || reason.trim().isEmpty()) {
+            return;
+        }
+
+//        if(role == "Customer") {
+//            File file = new File("Persons/customer.txt");
+//        } else if(role == "Seller") {
+//            File file = new File("Persons/seller.txt");
+//        } else {
+//            File file = new File("Persons/courier.txt");
+//        }
+
+        File file = new File("Persons/" + role.toLowerCase() + ".txt");
+
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|", -1);
+
+            //Matching the selected account
+                if (!(parts.length >= 5 &&
+                        parts[0].equals(role) &&
+                        parts[1].equals(account[1]) &&
+                        parts[2].equals(account[2]))) {
+
+                    remainingAccounts.add(line);
+                }
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error reading account file: " + e.getMessage());
+            return;
+        }
+
+        // Adding the account to banned.txt
+        File bannedFile = new File("Persons/banned.txt");
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(bannedFile, true))) {
+            bw.write(String.join("|", account) + "|" + reason);
+            bw.newLine();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error" + e.getMessage());
+            return;
+        }
+
+        // Removing the account from original file
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            for (String line : remainingAccounts) {
+                bw.write(line);
+                bw.newLine();
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error updating account file: " + e.getMessage());
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this,
+                "Account successfully banned!");
+
+        // Refreshing the account data
+        loadCouriers();
+        loadCustomer();
+        loadSeller();
+        generateTable();
+        loadBannedAccounts();
+
+        // Clearing the selected account details l
+        CustomerDetailsPnl.setVisible(false);
+        SellerDetailsPnl.setVisible(false);
+        CourierDetailsPnl.setVisible(false);
+    }
 
 
 }
