@@ -3,7 +3,6 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class CustomerForm extends JFrame {
     // Root panel (bound in CustomerForm.form)
@@ -38,7 +37,7 @@ public class CustomerForm extends JFrame {
     private JButton btnSearch;
     private JLabel lblHello;
     private JButton btnCart;
-    private JButton btnLogout;
+    private JButton logOutCustomer;
 
     // Sidebar
     private JButton btnShop;
@@ -92,6 +91,11 @@ public class CustomerForm extends JFrame {
             showPage("MyAccount");
         });
         btnReport.addActionListener(e -> showPage("ReportFeedback"));
+
+        logOutCustomer.addActionListener(d->{
+            BossStore.showLogInPanel();
+            this.dispose();
+        });
 
 
         shopScrollPane.setBorder(null);

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
+
 public class Admin extends JFrame {
     private JPanel AdminPnl;
     private JPanel HeaderPnl;
@@ -42,7 +43,7 @@ public class Admin extends JFrame {
     private JPanel pnlMain;
     private JTable customerAccountsTable;
     private JPanel CustomerDetailsPnl;
-    private JTable CourierAccountsTable;
+    private JTable courierAccountsTable;
     private JLabel CourierCountLbl;
     private JLabel CourierRangeLbl;
     private JLabel CourierStatusLbl;
@@ -67,7 +68,9 @@ public class Admin extends JFrame {
     private JTextField searchCustomerAccount;
     private JTextField searchCourierAccount;
     private JTable sellerAccountsTable;
-//
+    private JButton searchSellerAccountButton;
+    private JButton searchCourierAccountButton;
+    //
     private static final int COURIERS_PER_PAGE = 20;
 
     // Each row is type|username|password|phone|address, same as Persons/courier.txt
@@ -96,13 +99,14 @@ public class Admin extends JFrame {
 
         CouriersScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         CouriersScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        CouriersScroll.getVerticalScrollBar().setUnitIncrement(CourierAccountsTable.getRowHeight());
-        CourierAccountsTable.setFillsViewportHeight(true);
-        CourierAccountsTable.setPreferredScrollableViewportSize(new Dimension(480, CourierAccountsTable.getRowHeight() * 8));
+        CouriersScroll.getVerticalScrollBar().setUnitIncrement(courierAccountsTable.getRowHeight());
+        courierAccountsTable.setFillsViewportHeight(true);
+        courierAccountsTable.setPreferredScrollableViewportSize(new Dimension(480, courierAccountsTable.getRowHeight() * 8));
 
 
 
-        CourierAccountsTable.getSelectionModel().addListSelectionListener(e -> {
+
+        courierAccountsTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 showSelectedCourier();
             }
@@ -126,7 +130,7 @@ public class Admin extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        generateTableCustomer();
+        generateTable();
 
 
         customerAccountsTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,6 +141,9 @@ public class Admin extends JFrame {
                 CustomerDetailsPnl.setVisible(true);
             }
         });
+
+
+
         logOutAdmin.addActionListener(d->{
             BossStore.showLogInPanel();
             this.dispose();
@@ -208,9 +215,9 @@ public class Admin extends JFrame {
             model.addRow(new Object[]{parts[1], parts[3], parts[4]});
         }
 
-        CourierAccountsTable.setModel(model);
-        CourierAccountsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        CourierAccountsTable.setRowHeight(44);
+        courierAccountsTable.setModel(model);
+        courierAccountsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        courierAccountsTable.setRowHeight(44);
 
         CourierCountLbl.setText(count + (count == 1 ? " account" : " accounts"));
         CourierPageBtn.setText(String.valueOf(courierPage + 1));
@@ -222,13 +229,13 @@ public class Admin extends JFrame {
             showSelectedCourier();
         } else {
             CourierRangeLbl.setText("Showing " + (start + 1) + "-" + end + " of " + count + " accounts");
-            CourierAccountsTable.setRowSelectionInterval(0, 0);
-            CourierAccountsTable.scrollRectToVisible(CourierAccountsTable.getCellRect(0, 0, true));
+            courierAccountsTable.setRowSelectionInterval(0, 0);
+            courierAccountsTable.scrollRectToVisible(courierAccountsTable.getCellRect(0, 0, true));
         }
     }
 
     private void showSelectedCourier() {
-        int row = CourierAccountsTable.getSelectedRow();
+        int row = courierAccountsTable.getSelectedRow();
         int index = courierPage * COURIERS_PER_PAGE + row;
         if (row < 0 || index >= couriers.size()) {
             CourierStatusLbl.setText("");
@@ -260,7 +267,7 @@ public class Admin extends JFrame {
         HistoryPnl.setVisible(page.equals("history"));
     }
 
-    private void generateTableCustomer(){
+    private void generateTable(){
         try(BufferedReader br = new BufferedReader(new FileReader("Persons/customer.txt"))){
             String[] columns = {"Role", "Name", "Username", "Number", "Location"};
             DefaultTableModel model = new DefaultTableModel(columns, 0);
@@ -274,6 +281,36 @@ public class Admin extends JFrame {
             System.out.println("No customers Info!");
         }
 
+        try(BufferedReader br = new BufferedReader(new FileReader("Persons/seller.txt"))){
+            String[] columns = {"Role", "Name", "Username", "Number", "Location"};
+            DefaultTableModel model = new DefaultTableModel(columns, 0);
+            sellerAccountsTable.setModel(model);
+            String line = null;
+            while((line = br.readLine()) != null){
+                String[] sellerInfo = line.split("\\|");
+                model.addRow(new String[]{sellerInfo[0], sellerInfo[1], sellerInfo[2], sellerInfo[3], sellerInfo[4]});
+            }
+        }catch(IOException e){
+            System.out.println("No customers Info!");
+        }
+
+        try(BufferedReader br = new BufferedReader(new FileReader("Persons/courier.txt"))){
+            String[] columns = {"Role", "Name", "Username", "Number", "Location"};
+            DefaultTableModel model = new DefaultTableModel(columns, 0);
+            courierAccountsTable.setModel(model);
+            String line = null;
+            while((line = br.readLine()) != null){
+                String[] couirerInfo = line.split("\\|");
+                model.addRow(new String[]{couirerInfo[0], couirerInfo[1], couirerInfo[2], couirerInfo[3], couirerInfo[4]});
+            }
+        }catch(IOException e){
+            System.out.println("No customers Info!");
+        }
+
     }
+
+
+
+
 
 }

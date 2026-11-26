@@ -10,10 +10,10 @@ public class CustomerClass extends Person{
     }
 
 
-
-
     @Override
     public String readType() {
-        return "";
+        return "Customer";
     }
+
+
 }//
