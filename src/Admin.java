@@ -118,7 +118,12 @@ public class Admin extends JFrame {
     private final ArrayList<String[]> seller = new ArrayList<>();
     private int sellerPage = 0;
 
+    // Admin name
+    private String adminUsername;
+
     public Admin(String username, String _accountType){
+        adminUsername = username;
+
         accountType.setText(username + " (" + _accountType + ")");
         greetUsername.setText("Hello, " + username);
 
@@ -141,7 +146,10 @@ public class Admin extends JFrame {
             showPage("bans");
         });
         //
-        HistoryBtn.addActionListener(d->showPage("history"));
+        HistoryBtn.addActionListener(e -> {
+            loadActivityHistory();
+            showPage("history");
+        });
 
         courierAccountsTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
@@ -246,6 +254,31 @@ public class Admin extends JFrame {
             }
         });
         //==== ======================================//
+    }
+
+    // This is for Moderation History, where the admin can see the history when they banned, unbanned, and removed an account
+    // Activity Log Table
+    private void loadActivityHistory() {
+        String[] columns = {"Action", "Username", "Role", "Admin"};
+        DefaultTableModel model = new DefaultTableModel(columns, 0);
+
+        File file = new File("Persons/history.txt");
+
+        if (file.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\|", -1);
+                    if (parts.length == 4) {
+                        model.addRow(parts);
+                    }
+                }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        }
+
+        activityLogHistoryTbl.setModel(model);
     }
 
     private void loadCouriers() {
@@ -494,6 +527,10 @@ public class Admin extends JFrame {
             System.out.println("unbanning acc");
 
             Files.unbanAccount(account[0], account[1]);
+
+            // This is for saving the action (unbanning) to the history
+            Files.saveHistory("Unbanned", account[1], account[0], adminUsername);
+
             refreshAccounts();
 
             accountName.setText("");
@@ -501,7 +538,6 @@ public class Admin extends JFrame {
             banReasonDisplayInLogIn.setText("");
 
             JOptionPane.showMessageDialog(this, "Account successfully unbanned!");
-
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -519,6 +555,10 @@ public class Admin extends JFrame {
         try {
             System.out.println("Banning acc");
             Files.banAccount(role, account, reason);
+
+            // This is for saving the action (banning) to the history
+            Files.saveHistory("Banned", account[1], account[0], adminUsername);
+
             refreshAccounts();
 
             CustomerDetailsPnl.setVisible(false);

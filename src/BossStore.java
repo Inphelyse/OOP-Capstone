@@ -25,6 +25,7 @@ public class BossStore extends JFrame{
     private JRadioButton courierRadioButton;
 
     public BossStore(){
+        Files.defaultAccount();
         // Either seller or a customer (only choose one)
         ButtonGroup bg = new ButtonGroup();
         bg.add(customerRadioButton);
@@ -33,7 +34,6 @@ public class BossStore extends JFrame{
 
         customerRadioButton.setSelected(true);
 
-        Files.defaultAccount();
 
         signUpPanel.setVisible(false);
 

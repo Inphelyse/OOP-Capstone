@@ -11,26 +11,43 @@ public class Files {
         System.out.println("default accs");
         new File("Persons").mkdirs();
 
-        createDefaultFile("admin", "Admin|B|1231231233|099912312|Secret");
+        createDefaultFile("admin", "Admin|C|123123123|099912712|Secret");
+        createDefaultFile("admin", "Admin|B|123123123|099912312|Secret");
+        createDefaultFile("admin", "Admin|A|123123123|099911262|Secret");
         createDefaultFile("courier", "Courier|JK Catalo|22223333|09991112233|Cebu City");
-        createDefaultFile("seller", "Seller|JP Magdasal|22221111|09991112233|Cebu City");
-        createDefaultFile("customer", "Customer|Nico Carato|11112222|09991112233|Cebu City");
-        createDefaultFile("seller", "Seller|Shinya Tamaki|11111111|09991112233|Cebu City");
+        createDefaultFile("seller", "Seller|JP Magdasal|22221111|09991112333|Cebu City");
+        createDefaultFile("customer", "Customer|Nico Carato|11112222|09991152233|Cebu City");
+        createDefaultFile("seller", "Seller|Shinya Tamaki|11111111|09991192233|Cebu City");
 
         // Create banned.txt without adding a default account
         File file = new File("Persons/banned.txt");
     }
 
+    private static int ctr = 0;
+
     // Creating a default account (already made accounts in files such as for Customer, Seller, Courier, and Admin)
     private static void createDefaultFile(String role, String line) {
         File file = new File("Persons/" + role + ".txt");
+        ctr++;
+        System.out.println(ctr);
 
-        if (file.exists() && file.length() > 0) {
-            return;
+        // This will check if an existing accounts already exists or already stored in the file
+        if (file.exists()) {
+            try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String thisLine;
+
+                while((thisLine = br.readLine()) != null) {
+                    if(thisLine.equals(line)) {
+                        return;
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println("Error 12 " + role);
+                return;
+            }
         }
 
-        try (BufferedWriter bw = new BufferedWriter(
-                new FileWriter(file, true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
             bw.write(line);
             bw.newLine();
         } catch (IOException e) {
@@ -216,6 +233,8 @@ public class Files {
         }
     }
 
+    // ======== Banning =======//
+
     // This is
     public static void banAccount(String role, String[] account, String reason) throws IOException {
         ArrayList<String[]> accounts = readAccounts(role);
@@ -270,5 +289,15 @@ public class Files {
 
         writeAccounts(role, accounts);
         writeAccounts("banned", banned);
+    }
+
+    // This creates a new file named history.txt, it saves the activity of the admin whenever they uses their authority like banning
+    public static void saveHistory(String action, String username, String role, String admin) throws IOException {
+        File file = new File("Persons/history.txt");
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            bw.write(action + "|" + username + "|" + role + "|" + admin);
+            bw.newLine();
+        }
     }
 }
