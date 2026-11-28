@@ -8,6 +8,7 @@ public class Files {
 
     // Creating a default data
     public static void defaultAccount() {
+        System.out.println("default accs");
         new File("Persons").mkdirs();
 
         createDefaultFile("admin", "Admin|B|1231231233|099912312|Secret");

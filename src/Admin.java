@@ -105,6 +105,7 @@ public class Admin extends JFrame {
     private JButton customerBanButton;
     private JTextArea internalNotes;
     private JTextArea reportMessage_feedbackMessage;
+    private JButton removeAccountButton;
     private static final int COURIERS_PER_PAGE = 20;
     private static final int CUSTOMER_PER_PAGE = 20;
     private static final int SELLER_PER_PAGE = 20;
@@ -212,7 +213,7 @@ public class Admin extends JFrame {
             int index = courierAccountsTable.getSelectedRow();
             // -1 indicates that the user did not selected a row or clicked any row
             if (index != -1) {
-                banAccount("Customer", couriers.get(index));
+                banAccount("Courier", couriers.get(index));
             }
         });
 
@@ -227,7 +228,7 @@ public class Admin extends JFrame {
 
             int index = sellerAccountsTable.getSelectedRow();
             if (index != -1) {
-                banAccount("Customer", seller.get(index));
+                banAccount("Seller", seller.get(index));
             }
         });
 
