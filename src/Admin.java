@@ -390,6 +390,7 @@ public class Admin extends JFrame {
     // because it will refresh your table every time you ban and unban an account
     private void refreshAccounts() {
         try {
+            System.out.println("refreshed");
             couriers.clear();
             couriers.addAll(Files.readAccounts("courier"));
 
@@ -399,9 +400,9 @@ public class Admin extends JFrame {
             seller.clear();
             seller.addAll(Files.readAccounts("seller"));
 
+            //
             generateTable();
             loadBannedAccounts();
-
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -413,6 +414,7 @@ public class Admin extends JFrame {
     // Generating Tables for Customer, Seller, and Courier ()
     private void generateTable() {
         String[] columns = {"Role", "Name", "Password", "Number", "Location"};
+        System.out.println("generate");
 
         DefaultTableModel customerModel = new DefaultTableModel(columns, 0);
         DefaultTableModel sellerModel = new DefaultTableModel(columns, 0);
@@ -488,6 +490,8 @@ public class Admin extends JFrame {
         String[] account = bannedAccounts.get(row);
 
         try {
+            System.out.println("unbanning acc");
+
             Files.unbanAccount(account[0], account[1]);
             refreshAccounts();
 
@@ -512,6 +516,7 @@ public class Admin extends JFrame {
         }
 
         try {
+            System.out.println("Banning acc");
             Files.banAccount(role, account, reason);
             refreshAccounts();
 

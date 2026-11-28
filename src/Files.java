@@ -119,8 +119,10 @@ public class Files {
         String path = p.readType().equals("Seller") ? "Persons/seller.txt" : p.readType().equals("Courier") ? "Persons/courier.txt" : "Persons/customer.txt";
         String line = p.readLine();
         File file = new File(path);
+        // Reading
         if (file.getParentFile() != null) file.getParentFile().mkdirs();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            System.out.println("save");
             bw.write(line);
             bw.newLine();
         } catch (IOException ex) {
@@ -135,6 +137,7 @@ public class Files {
 
         if(file1.exists()) {
             try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
+                System.out.println("Exist");
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.split("\\|");
@@ -147,9 +150,7 @@ public class Files {
                 JOptionPane.showMessageDialog(null, "Error5: " + ex.getMessage());
             }
         }
-
         return count;
-
     }
 
     // This checks how many seller accounts were made or are stored in the customer.txt file
@@ -171,9 +172,7 @@ public class Files {
                 JOptionPane.showMessageDialog(null, "Error5: " + ex.getMessage());
             }
         }
-
         return count;
-
     }
 
     // This checks how many courier accounts were made or are stored in the courier.txt file
@@ -195,9 +194,7 @@ public class Files {
                 JOptionPane.showMessageDialog(null, "Error5: " + ex.getMessage());
             }
         }
-
         return count;
-
     }
 
     // This checks how many accounts were made or are stored in all files
@@ -211,6 +208,7 @@ public class Files {
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             for (int i = 0; i < accounts.size(); i++) {
+                System.out.println("write" + i);
                 bw.write(String.join("|", accounts.get(i)));
                 bw.newLine();
             }
@@ -225,11 +223,8 @@ public class Files {
         boolean flag = false;
 
         for (int i = 0; i < accounts.size(); i++) {String[] parts = accounts.get(i);
-
             if (parts[0].equals(role) && parts[1].equals(account[1]) && parts[2].equals(account[2])) {
-
                 String[] bannedAccount = {parts[0], parts[1], parts[2], parts[3], parts[4], reason};
-
                 banned.add(bannedAccount);
                 accounts.remove(i);
                 flag = true;
@@ -238,6 +233,7 @@ public class Files {
         }
 
         if (!flag) {
+
             throw new IOException("Account not found.");
         }
 
@@ -255,10 +251,9 @@ public class Files {
 
         for (int i = 0; i < banned.size(); i++) {
             String[] parts = banned.get(i);
-
             if (parts[0].equals(role) && parts[1].equals(username)) {
+                System.out.println("restore" + i);
                 String[] restored = {parts[0], parts[1], parts[2], parts[3], parts[4]};
-
                 accounts.add(restored);
                 banned.remove(i);
                 found = true;
@@ -269,6 +264,8 @@ public class Files {
         if (!found) {
             throw new IOException("Banned account not found.");
         }
+
+        System.out.println("Unban success");
 
         writeAccounts(role, accounts);
         writeAccounts("banned", banned);
