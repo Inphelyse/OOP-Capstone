@@ -8,58 +8,61 @@ public class Files {
 
     // Creating a default data
     public static void defaultAccount() {
-        // Creating the folder
-        new File("Persons").mkdir();
+        new File("Persons").mkdirs();
 
-        // For admin
-        File admin = new File("Persons/admin.txt");
-        if (admin.exists() && admin.length() > 0) return;
+        createDefaultFile("admin", "Admin|B|1231231233|099912312|Secret");
+        createDefaultFile("courier", "Courier|JK Catalo|22223333|09991112233|Cebu City");
+        createDefaultFile("seller", "Seller|JP Magdasal|22221111|09991112233|Cebu City");
+        createDefaultFile("customer", "Customer|Nico Carato|11112222|09991112233|Cebu City");
+        createDefaultFile("seller", "Seller|Shinya Tamaki|11111111|09991112233|Cebu City");
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(admin, true))) {
-            bw.write("Admin|B|1231231233|099912312|Secret");
-            bw.newLine();
-        } catch (IOException ex) {
-            System.err.println("Could not save");
-            System.out.println("test admin acc");
+        // Create banned.txt without adding a default account
+        File file = new File("Persons/banned.txt");
+    }
+
+    // Creating a default account (already made accounts in files such as for Customer, Seller, Courier, and Admin)
+    private static void createDefaultFile(String role, String line) {
+        File file = new File("Persons/" + role + ".txt");
+
+        if (file.exists() && file.length() > 0) {
+            return;
         }
 
-        // For courier
-        File courier = new File("Persons/courier.txt");
-        if (courier.exists() && courier.length() > 0) return;
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(courier, true))) {
-            bw.write("Courier|JK Catalo|22223333|09991112233|Cebu City");
+        try (BufferedWriter bw = new BufferedWriter(
+                new FileWriter(file, true))) {
+            bw.write(line);
             bw.newLine();
-        } catch (IOException ex) {
-            System.err.println("Could not save courier");
-            System.out.println("test courier acc");
-        }
-
-        // For seller
-        File seller = new File("Persons/seller.txt");
-        if (seller.exists() && seller.length() > 0) return;
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(seller, true))) {
-            bw.write("Seller|JP Magdasal|22221111|09991112233|Cebu City");
-            bw.newLine();
-        } catch (IOException ex) {
-            System.err.println("Could not save courier");
-            System.out.println("test seller acc");
-        }
-
-        // For customer
-        File customer = new File("Persons/customer.txt");
-        if (customer.exists() && customer.length() > 0) return;
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(customer, true))) {
-            bw.write("Customer|Nico Carato|11112222|09991112233|Cebu City");
-            bw.newLine();
-        } catch (IOException ex) {
-            System.err.println("Could not save courier");
-            System.out.println("test customer acc");
+        } catch (IOException e) {
+            System.out.println("Error creating " + role + ".txt");
         }
     }
 
+
+    // This method/function  reads all account from a specific file (reason why we need "String role") and return as ArrayList of that account
+    public static ArrayList<String[]> readAccounts(String role) throws IOException {
+        ArrayList<String[]> accounts = new ArrayList<>();
+        File file = new File("Persons/" + role.toLowerCase() + ".txt");
+
+        if (!file.exists()) {
+            return accounts;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|", -1);
+
+                if (parts.length >= 5) {
+                    accounts.add(parts);
+                }
+            }
+        }
+
+        return accounts;
+    }
+
+    // This
     static String[] findAccount(String username) {
         String[] fileLocation = {"Persons/admin.txt", "Persons/seller.txt", "Persons/customer.txt", "Persons/courier.txt", "Persons/banned.txt"};
 
@@ -95,7 +98,7 @@ public class Files {
                     String line = read.nextLine();
                     String[] row = line.split("\\|");
 
-                    int flagPhone = Integer.parseInt(row[2]);
+                    int flagPhone = Integer.parseInt(row[3]);
 
                     if(flagPhone == phoneNum) {
                         read.close();
@@ -110,6 +113,8 @@ public class Files {
         return false;
     }
 
+
+    // This saves the account to a file. This is used in signing up
     static void saveAccount(Person p) {
         String path = p.readType().equals("Seller") ? "Persons/seller.txt" : p.readType().equals("Courier") ? "Persons/courier.txt" : "Persons/customer.txt";
         String line = p.readLine();
@@ -123,6 +128,7 @@ public class Files {
         }
     }
 
+    // This checks how many customer accounts were made or are stored in the customer.txt file
     public static int customerTotal() {
         File file1 = new File("Persons/customer.txt");
         int count = 0;
@@ -146,6 +152,7 @@ public class Files {
 
     }
 
+    // This checks how many seller accounts were made or are stored in the customer.txt file
     public static int sellerTotal() {
         File file1 = new File("Persons/seller.txt");
         int count = 0;
@@ -169,6 +176,7 @@ public class Files {
 
     }
 
+    // This checks how many courier accounts were made or are stored in the courier.txt file
     public static int courierTotal() {
         File file1 = new File("Persons/courier.txt");
         int count = 0;
@@ -192,7 +200,77 @@ public class Files {
 
     }
 
+    // This checks how many accounts were made or are stored in all files
     public static int totalPeople() {
         return customerTotal() + sellerTotal() + courierTotal();
+    }
+
+    // Write a list of accounts to a file
+    private static void writeAccounts(String role, ArrayList<String[]> accounts) throws IOException {
+        File file = new File("Persons/" + role.toLowerCase() + ".txt");
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            for (int i = 0; i < accounts.size(); i++) {
+                bw.write(String.join("|", accounts.get(i)));
+                bw.newLine();
+            }
+        }
+    }
+
+    // This is
+    public static void banAccount(String role, String[] account, String reason) throws IOException {
+        ArrayList<String[]> accounts = readAccounts(role);
+        ArrayList<String[]> banned = readAccounts("banned");
+
+        boolean flag = false;
+
+        for (int i = 0; i < accounts.size(); i++) {String[] parts = accounts.get(i);
+
+            if (parts[0].equals(role) && parts[1].equals(account[1]) && parts[2].equals(account[2])) {
+
+                String[] bannedAccount = {parts[0], parts[1], parts[2], parts[3], parts[4], reason};
+
+                banned.add(bannedAccount);
+                accounts.remove(i);
+                flag = true;
+                break;
+            }
+        }
+
+        if (!flag) {
+            throw new IOException("Account not found.");
+        }
+
+        // Save the banned account first
+        writeAccounts("banned", banned);
+        writeAccounts(role, accounts);
+    }
+
+    // Restore a banned account to its original role file
+    public static void unbanAccount(String role, String username) throws IOException {
+        ArrayList<String[]> banned = readAccounts("banned");
+        ArrayList<String[]> accounts = readAccounts(role);
+
+        boolean found = false;
+
+        for (int i = 0; i < banned.size(); i++) {
+            String[] parts = banned.get(i);
+
+            if (parts[0].equals(role) && parts[1].equals(username)) {
+                String[] restored = {parts[0], parts[1], parts[2], parts[3], parts[4]};
+
+                accounts.add(restored);
+                banned.remove(i);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            throw new IOException("Banned account not found.");
+        }
+
+        writeAccounts(role, accounts);
+        writeAccounts("banned", banned);
     }
 }

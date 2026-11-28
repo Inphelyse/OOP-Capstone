@@ -194,9 +194,10 @@ public class Admin extends JFrame {
         unbanningAccount.addActionListener(e -> unbanSelectedAccount());
 
         BannedTbl.getSelectionModel().addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) {
-                showSelectedBannedAccount();
-            }
+//            if (!e.getValueIsAdjusting()) {
+//                showSelectedBannedAccount();
+//            }
+            showSelectedBannedAccount();
         });
 
         banCourierButton.addActionListener(e -> {
@@ -208,10 +209,10 @@ public class Admin extends JFrame {
 
             System.out.println("Banning courier");
 
-            int index = customerAccountsTable.getSelectedRow();
+            int index = courierAccountsTable.getSelectedRow();
             // -1 indicates that the user did not selected a row or clicked any row
             if (index != -1) {
-                banAccount("Customer", customer.get(index));
+                banAccount("Customer", couriers.get(index));
             }
         });
 
@@ -224,9 +225,9 @@ public class Admin extends JFrame {
             }
             System.out.println("Banning seller");
 
-            int index = customerAccountsTable.getSelectedRow();
+            int index = sellerAccountsTable.getSelectedRow();
             if (index != -1) {
-                banAccount("Customer", customer.get(index));
+                banAccount("Customer", seller.get(index));
             }
         });
 
@@ -243,6 +244,7 @@ public class Admin extends JFrame {
                 banAccount("Customer", customer.get(index));
             }
         });
+        //==== ======================================//
     }
 
     private void loadCouriers() {
@@ -384,280 +386,144 @@ public class Admin extends JFrame {
         HistoryPnl.setVisible(page.equals("history"));
     }
 
+    // This refresh accounts. Very helpful function when you ban and unban an account
+    // because it will refresh your table every time you ban and unban an account
+    private void refreshAccounts() {
+        try {
+            couriers.clear();
+            couriers.addAll(Files.readAccounts("courier"));
 
-    // Generating Tables for Customer, Seller, and Courier
-    private void generateTable(){
-        try(BufferedReader br = new BufferedReader(new FileReader("Persons/customer.txt"))){
-            String[] columns = {"Role", "Name", "Password", "Number", "Location"};
-            DefaultTableModel model = new DefaultTableModel(columns, 0) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false;
-                }
-            };
-            customerAccountsTable.setModel(model);
-            String line;
-            while((line = br.readLine()) != null){
-                String[] customerInfo = line.split("\\|");
-                if (customerInfo.length < 5) {
-                    continue;
-                }
-                model.addRow(new String[]{customerInfo[0], customerInfo[1], customerInfo[2], customerInfo[3], customerInfo[4]});
-            }
-        }catch(IOException e){
-            System.out.println("No customers Info!");
+            customer.clear();
+            customer.addAll(Files.readAccounts("customer"));
+
+            seller.clear();
+            seller.addAll(Files.readAccounts("seller"));
+
+            generateTable();
+            loadBannedAccounts();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
-        try(BufferedReader br = new BufferedReader(new FileReader("Persons/seller.txt"))){
-            String[] columns = {"Role", "Name", "Password", "Number", "Location"};
-            DefaultTableModel model = new DefaultTableModel(columns, 0);
-            sellerAccountsTable.setModel(model);
-            String line;
-            while((line = br.readLine()) != null){
-                String[] sellerInfo = line.split("\\|");
-                if (sellerInfo.length < 5) {
-                    continue;
-                }
-                model.addRow(new String[]{sellerInfo[0], sellerInfo[1], sellerInfo[2], sellerInfo[3], sellerInfo[4]});
-            }
-        }catch(IOException e){
-            System.out.println("No customers Info!");
-        }
-
-        try(BufferedReader br = new BufferedReader(new FileReader("Persons/courier.txt"))){
-            String[] columns = {"Role", "Name", "Password", "Number", "Location"};
-            DefaultTableModel model = new DefaultTableModel(columns, 0);
-            courierAccountsTable.setModel(model);
-            String line;
-            while((line = br.readLine()) != null){
-                String[] courierInfo = line.split("\\|");
-
-                if (courierInfo.length < 5) {
-                    continue;
-                }
-
-                model.addRow(new String[]{courierInfo[0], courierInfo[1], courierInfo[2], courierInfo[3], courierInfo[4]});
-            }
-        }catch(IOException e){
-            System.out.println("No customers Info!");
-        }
-
     }
 
 
-    // For loading the banned accounts in the Table
-    private void loadBannedAccounts() {
-        DefaultTableModel model = new DefaultTableModel(new String[]{"Name", "Role"}, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
+    //==========Banning and unbanning funxtions============//
 
-        // Setting up the Table
-        BannedTbl.setModel(model);
+    // Generating Tables for Customer, Seller, and Courier ()
+    private void generateTable() {
+        String[] columns = {"Role", "Name", "Password", "Number", "Location"};
 
-        //For storing the banned accounts to banned.txt file
-        File file = new File("Persons/banned.txt");
+        DefaultTableModel customerModel = new DefaultTableModel(columns, 0);
+        DefaultTableModel sellerModel = new DefaultTableModel(columns, 0);
+        DefaultTableModel courierModel = new DefaultTableModel(columns, 0);
 
-        if (!file.exists()) {
-            return;
+        // This
+        for (int i = 0; i < customer.size(); i++) {
+            customerModel.addRow(customer.get(i));
+        }
+        for (int i = 0; i < seller.size(); i++) {
+            sellerModel.addRow(seller.get(i));
+        }
+        for (int i = 0; i < couriers.size(); i++) {
+            courierModel.addRow(couriers.get(i));
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
+        customerAccountsTable.setModel(customerModel);
+        sellerAccountsTable.setModel(sellerModel);
+        courierAccountsTable.setModel(courierModel);
+    }
 
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split("\\|", -1);
 
-                if (parts.length >= 6) {
-                    model.addRow(new Object[]{parts[1], parts[0]});
-                }
+    private ArrayList<String[]> bannedAccounts = new ArrayList<>();
+    // For loading the banned accounts in the Table
+    private void loadBannedAccounts() {
+        try {
+            bannedAccounts = Files.readAccounts("banned");
+
+            DefaultTableModel model = new DefaultTableModel(
+                    new String[]{"Name", "Role"}, 0);
+
+            for (int i = 0; i < bannedAccounts.size(); i++) {
+                String[] parts = bannedAccounts.get(i);
+                model.addRow(new Object[]{parts[1], parts[0]});
             }
 
+            BannedTbl.setModel(model);
+
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error loading banned accounts: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
 
 
     // Feature in Ban Table when clicking a banned account
     private void showSelectedBannedAccount() {
-        System.out.println("Banned Accountt");
         int row = BannedTbl.getSelectedRow();
 
-        if (row < 0) {
+        if (row < 0 || row >= bannedAccounts.size()) {
             return;
         }
 
-        String name = BannedTbl.getValueAt(row, 0).toString();
-        String role = BannedTbl.getValueAt(row, 1).toString();
+        String[] account = bannedAccounts.get(row);
 
-        accountName.setText(name);
-        accountRole.setText(role);
+        accountName.setText(account[1]);
+        accountRole.setText(account[0]);
 
-        // Find the selected account and showing the reason for banning
-        File file = new File("Persons/banned.txt");
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            System.out.println("Reading the file banned.txt");
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split("\\|", -1);
-
-                if (parts.length >= 6 && parts[1].equals(name) && parts[0].equals(role)) {
-                    banReasonDisplayInLogIn.setText(parts[5]);
-                    return;
-                }
-            }
-
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error ");
+        if (account.length >= 6) {
+            banReasonDisplayInLogIn.setText(account[5]);
         }
     }
 
 
-    // Unbanning an account
+    // Unbanning an account. Removing the account from the banned.txt and updating the table at the same time
     private void unbanSelectedAccount() {
-        System.out.println("Test");
         int row = BannedTbl.getSelectedRow();
 
-        if (row < 0) {
-            System.out.println("Selected");
+        if (row < 0 || row >= bannedAccounts.size()) {
             JOptionPane.showMessageDialog(this, "Please select an account first");
             return;
         }
 
-        String username = BannedTbl.getValueAt(row, 1).toString();
+        String[] account = bannedAccounts.get(row);
 
-        File file = new File("Persons/banned.txt");
-        ArrayList<String> remainingAccounts = new ArrayList<>();
+        try {
+            Files.unbanAccount(account[0], account[1]);
+            refreshAccounts();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            System.out.println("Test unban account");
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split("\\|", -1);
+            accountName.setText("");
+            accountRole.setText("");
+            banReasonDisplayInLogIn.setText("");
 
-                if (parts.length >= 2 && !parts[1].equals(username)) {
-                    System.out.println("Success unban");
-                    remainingAccounts.add(line);
-                }
-            }
+            JOptionPane.showMessageDialog(this, "Account successfully unbanned!");
 
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error");
-            return;
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Persons/customer.txt"));) {
-            for (String account : remainingAccounts) {
-                bw.write(account);
-                bw.newLine();
-            }
-
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error");
-            return;
-        }
-
-        JOptionPane.showMessageDialog(this, "Account successfully unbanned!");
-
-        // Reloading the newly table for Customer, Seller, and Courier
-        loadBannedAccounts();
-
-        accountName.setText("");
-        accountRole.setText("");
     }
 
 
     // Banning an account and giving the reason why it was banned
     private void banAccount(String role, String[] account) {
-        ArrayList<String> remainingAccounts = new ArrayList<>();
-
-        if (account == null) {
-            JOptionPane.showMessageDialog(this, "Please select an account first");
-            return;
-        }
-
         String reason = JOptionPane.showInputDialog(this, "Reason for ban:");
 
         if (reason == null || reason.trim().isEmpty()) {
             return;
         }
 
-//        if(role == "Customer") {
-//            File file = new File("Persons/customer.txt");
-//        } else if(role == "Seller") {
-//            File file = new File("Persons/seller.txt");
-//        } else {
-//            File file = new File("Persons/courier.txt");
-//        }
+        try {
+            Files.banAccount(role, account, reason);
+            refreshAccounts();
 
-        File file = new File("Persons/" + role.toLowerCase() + ".txt");
+            CustomerDetailsPnl.setVisible(false);
+            SellerDetailsPnl.setVisible(false);
+            CourierDetailsPnl.setVisible(false);
 
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split("\\|", -1);
-
-            //Matching the selected account
-                if (!(parts.length >= 5 &&
-                        parts[0].equals(role) &&
-                        parts[1].equals(account[1]) &&
-                        parts[2].equals(account[2]))) {
-
-                    remainingAccounts.add(line);
-                }
-            }
+            JOptionPane.showMessageDialog(this, "Account successfully banned!");
 
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Error reading account file: " + e.getMessage());
-            return;
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
-        // Adding the account to banned.txt
-        File bannedFile = new File("Persons/banned.txt");
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(bannedFile, true))) {
-            bw.write(String.join("|", account) + "|" + reason);
-            bw.newLine();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Error" + e.getMessage());
-            return;
-        }
-
-        // Removing the account from original file
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            for (String line : remainingAccounts) {
-                bw.write(line);
-                bw.newLine();
-            }
-
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Error updating account file: " + e.getMessage());
-            return;
-        }
-
-        JOptionPane.showMessageDialog(this,
-                "Account successfully banned!");
-
-        // Refreshing the account data
-        loadCouriers();
-        loadCustomer();
-        loadSeller();
-        generateTable();
-        loadBannedAccounts();
-
-        // Clearing the selected account details l
-        CustomerDetailsPnl.setVisible(false);
-        SellerDetailsPnl.setVisible(false);
-        CourierDetailsPnl.setVisible(false);
     }
 
 
