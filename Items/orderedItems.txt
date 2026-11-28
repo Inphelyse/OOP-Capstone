@@ -1,0 +1,5 @@
+AB-57340|Nico Carato1|Cebu City|Nico|Shoes|Pictures/shoes1.jpg|67.0|1|Pending
+AB-44695|Nico Carato1|Cebu City|Nico|Shoes|Pictures/shoes1.jpg|67.0|2|Pending
+AB-44695|Nico Carato1|Cebu City|Tamaki|Plate|Pictures/shoes2.jpg|68.0|2|Pending
+AB-44695|Nico Carato1|Cebu City|Catalo|Crayons|Pictures/shoes3.jpg|69.0|1|Pending
+AB-44695|Nico Carato1|Cebu City|Magdasal|Pencil|Pictures/shoes4.jpg|69.0|1|Pending
